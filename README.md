@@ -1,1 +1,1 @@
-# kids-reward-app
+# app
