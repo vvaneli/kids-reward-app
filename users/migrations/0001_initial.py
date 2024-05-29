@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
                 ('uuid', models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True, serialize=False)),
                 ('nickname', models.CharField(blank=True, max_length=50, null=True)),
                 ('access_level', models.PositiveIntegerField(default=0, validators=[django.core.validators.MinValueValidator(0), django.core.validators.MaxValueValidator(4)])),
-                ('image_profile', models.CharField(default=users.models.get_default_profile_image)),
+                ('image_profile', models.CharField(default=users.models.default_profile_image)),
                 ('groups', models.ManyToManyField(blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.', related_name='user_set', related_query_name='user', to='auth.group', verbose_name='groups')),
                 ('ref_uuid_head', models.OneToOneField(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('ref_uuid_tribe', models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL)),

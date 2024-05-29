@@ -40,6 +40,12 @@ INSTALLED_APPS = [
     # 'pwa',
     'rest_framework',
     'users',
+    'comments',
+    'stories',
+    'rewards_define',
+    'tasks_define',
+    'goals_log',
+    'tasks_log',
 ]
 
 MIDDLEWARE = [
