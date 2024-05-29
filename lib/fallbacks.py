@@ -28,6 +28,5 @@ def default_story_id():
   return 1  # Primary key of the default story
 
 # PLACEHOLDER USER ACCOUNTS
-
 # def get_past_member():
 #     return get_user_model().objects.get_or_create(uuid='1f4bf0a9-6e04-45b3-ac4a-9db14c21b7d2')[0]
