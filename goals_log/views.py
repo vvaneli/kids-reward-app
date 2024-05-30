@@ -1,20 +1,26 @@
-from rest_framework.views import generics
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .serializers.common import GoalLogSerializer
 from .models import GoalLog
 
-# Create your views here
+# PERMISSIONS:
+# 1 2 3 4     level
+# y y y y     get list
+# y y y y     get item
+# y y n n     create item
+# y y n n     edit item
+# y y n n     delete item
 
 #? Index/List view:
-# GET
-# /stories
-class GoalLogIndexView(generics.ListCreatAPIView):
+# GET/POST (list)
+# /goals-log
+class GoalLogIndexView(ListCreateAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer
 	
 
-  #? Item view
-# GET/UPDATE/DELETE
-# /stories/<int:pk>
-class ModelDetailView(generics.RetrieveUpdateDestroyAPIView):
+#? Item view
+# GET/UPDATE/DELETE (item)
+# /goals-log/<int:pk>
+class GoalLogDetailView(RetrieveUpdateDestroyAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer

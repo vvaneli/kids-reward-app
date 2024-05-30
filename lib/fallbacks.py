@@ -23,9 +23,8 @@ def default_goal_log_image():
   return 'https://res.cloudinary.com/vli/image/upload/v1716922792/smelly-earnie/default_goal_log.svg'
 
 # PLACEHOLDER DATA VIZ (STORY)
-
-def default_story_id():
-  return 1  # Primary key of the default story
+# def default_story_id():
+#   return 1  # Primary key of the default story
 
 # PLACEHOLDER USER ACCOUNTS
 # def get_past_member():

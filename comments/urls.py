@@ -1,15 +1,20 @@
-from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView
-from .serializers.common import CommentSerializer
-from .models import Comment
+from django.urls import path
+from .views import CommentIndexView_R, CommentDetailView_R, CommentDetailView_C, CommentDetailView_RUD
 
-#? PERMISSIONS:
-# 1 2 3 4     level
-# y y y y     get list
-# y y y y     get item
-# y y y n     create item
-# (if owner)  edit item
-# (if owner)  delete item
+# Index endpoint: /comments
+# Show endpoint: /comments/:commentId
 
+# This route starts with:
+#? /comments/
+
+urlpatterns = [
+    path('', CommentIndexView_R.as_view()), # /comments
+    path('<int:pk>/', CommentDetailView_R.as_view()), # /:pk/comments/:commentId
+    path('<int:pk>/', CommentDetailView_C.as_view()), # /:pk/comments/:commentId
+    path('<int:pk>/', CommentDetailView_RUD.as_view()), # /:pk/comments/:commentId
+]
+
+"""
 #? L1 to L4 (view only)
 # GET (list)
 # goals/<int:pk>/comments
@@ -41,3 +46,4 @@ class CommentDetailView_C(CreateAPIView):
 class CommentDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
+"""

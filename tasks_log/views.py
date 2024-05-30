@@ -1,20 +1,26 @@
-from rest_framework.views import generics
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
 from .serializers.common import TaskLogSerializer
 from .models import TaskLog
 
-# Create your views here
+# PERMISSIONS:
+# 1 2 3 4     level
+# y y y y     get list
+# y y y y     get item
+# y y y n     create item
+# y y y n     edit item
+# y y y n     delete item
 
 #? Index/List view:
-# GET
-# /stories
-class TaskLogIndexView(generics.ListCreatAPIView):
+# GET/POST (list)
+# /tasks-log
+class TaskLogIndexView(ListCreateAPIView):
 	queryset = TaskLog.objects.all()
 	serializer_class = TaskLogSerializer
 	
 
   #? Item view
-# GET/UPDATE/DELETE
-# /stories/<int:pk>
-class ModelDetailView(generics.RetrieveUpdateDestroyAPIView):
+# GET/UPDATE/DELETE (item)
+# /tasks-log/<int:pk>
+class TaskLogDetailView(RetrieveUpdateDestroyAPIView):
 	queryset = TaskLog.objects.all()
 	serializer_class = TaskLogSerializer
