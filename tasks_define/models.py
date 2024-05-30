@@ -18,7 +18,6 @@ class TaskDefine(models.Model):
     related_name='tasks_defined',
     on_delete=models.SET_NULL, # if owner account is deleted, set to null
     null=True, blank=True, # defined so that if owner is deleted, this field can be null
-    # on_delete=models.SET(get_past_member) # if owner account is deleted, replace with placeholder 'Past member' account
     )
   
   def __str__(self):

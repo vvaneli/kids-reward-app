@@ -97,6 +97,7 @@ AUTH_USER_MODEL = 'users.User' # appname.ModelName
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
+        # 'rest_framework.permissions.IsAuthenticated',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }

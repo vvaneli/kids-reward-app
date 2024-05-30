@@ -27,7 +27,7 @@ class GoalLog(models.Model):
     related_name='goals_assigned',
     )
   # the reward definition for this goal:
-  ref_reward_define = models.ForeignKey(
+  ref_rewards_define = models.ForeignKey(
     to='rewards_define.RewardDefine',
     related_name='related_goals',
     on_delete=models.PROTECT,  # definition cannot be deleted from DB (but can be hidden from view)

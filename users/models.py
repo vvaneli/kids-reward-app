@@ -1,13 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
-import uuid
 
 from lib.fallbacks import default_profile_image
 
-# Create your models here
 class User(AbstractUser):
-  # uuid = models.UUIDField(default=uuid.uuid4, editable=False)
   timestamp_created = models.DateTimeField(auto_now_add=True)
   nickname = models.CharField()
   # Access levels: new account = 0; Account owner 'Head' = 1; Editors 'Elders' = 2; Contributors 'Helpers' = 3; Viewers 'Youngsters' = 4.
