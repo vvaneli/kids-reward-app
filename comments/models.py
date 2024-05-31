@@ -15,14 +15,14 @@ class Comment(models.Model):
   # the task this comment was made on; if task is deleted, comment is deleted
   ref_task_log = models.ForeignKey(
     to='tasks_log.TaskLog',
-    related_name='related_comments',
+    related_name='comments',
     on_delete=models.CASCADE,
     blank=True, null=True,
     )
   # the goal this comment was made on; if goal is deleted, comment is deleted
   ref_goal_log = models.ForeignKey(
     to='goals_log.GoalLog',
-    related_name='related_comments',
+    related_name='comments',
     on_delete=models.CASCADE,
     blank=True, null=True,
     )

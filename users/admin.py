@@ -1,17 +1,15 @@
 from django.contrib import admin
 from .models import User
-from django.contrib.auth.admin import UserAdmin # <--- this is a new import 
+
+# from django.contrib.auth.admin import UserAdmin
 
 # class CustomUserAdmin(UserAdmin): # <--- Extend the UserAdmin class, this will allow us to update later if needed
-#   pass
+
+#   def save(self, *args, **kwargs):
+#     if self.password and not self.password.startswith('pbkdf2_sha256$'):
+#       self.set_password(self.password)
+#     super().save(*args, **kwargs)
 
 # Register your models here.
 # admin.site.register(User, CustomUserAdmin) # <--- We have subclassed our CustomUserAdmin class
-
-class CustomUserAdmin(UserAdmin):
-  def save(self, *args, **kwargs):
-    if self.password and not self.password.startswith('pbkdf2_sha256$'):
-      self.set_password(self.password)
-    super().save(*args, **kwargs)
-
-admin.site.register(User, CustomUserAdmin)
+admin.site.register(User)

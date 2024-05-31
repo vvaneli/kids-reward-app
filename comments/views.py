@@ -1,43 +1,45 @@
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, RetrieveUpdateDestroyAPIView
+from lib.views import ObjectOwnerView
+from lib.permissions import IsOwner, IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 from .serializers.common import CommentSerializer
 from .models import Comment
 
 #? PERMISSIONS:
 # 1 2 3 4     level
-# y y y y     get list
-# y y y y     get item
-# y y y n     create item
-# (if owner)  edit item
+# y y y y     get list      ListAPIView
+# y y y y     get item      RetrieveAPIView
+# y y y n     create item   CreateAPIView
+# (if owner)  edit item     RetrieveUpdateDestroyAPIView
 # (if owner)  delete item
 
-#? L1 to L4 (view only)
+#? L1 to L4 (list: view)
 # GET (list)
-# goals/<int:pk>/comments
-# tasks/<int:pk>/comments
-class CommentIndexView_R(ListAPIView):
+# comments
+class CommentIndexView(ListAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
-
-#? L1 to L4 (view only)
+	permission_class = [IsUpToAccessL4_ViewOnly]
+	
+#? L1 to L4 (item: view)
 # GET (item)
-# goals/<int:pk>/comments/<int:pk>/
-# tasks/<int:pk>/comments/<int:pk>/
-class CommentDetailView_R(RetrieveAPIView):
+# comments/<int:pk>/
+class CommentDetailView(RetrieveAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
+	permission_class = [IsUpToAccessL4_ViewOnly]
 	
 #? L1 to L3 (create)
 # POST (item)
-# goals/<int:pk>/comments/add
-# tasks/<int:pk>/comments/add
-class CommentDetailView_C(CreateAPIView):
+# comments/add
+class CommentDetailView_C(ObjectOwnerView, CreateAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
+	permission_class = [IsUpToAccessL3]
 
 #? Comment owner
 # GET/UPDATE/DELETE (item)
-# goals/<int:pk>/comments/<int:pk>/
-# tasks/<int:pk>/comments/<int:pk>/
+# comments/<int:pk>/
 class CommentDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
+	permission_class = [IsOwner]

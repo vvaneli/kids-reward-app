@@ -27,7 +27,7 @@ class TaskLog(models.Model):
   # the goal a logged task belongs to:
   ref_goal_log = models.ForeignKey(
     to='goals_log.GoalLog',
-    related_name='related_goal',
+    related_name='goal',
     on_delete=models.SET_DEFAULT,  # if goal is deleted, this task log can have no associated goal
     default='',
     blank=True, null=True

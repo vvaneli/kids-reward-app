@@ -15,9 +15,9 @@ def default_task_def_image():
 
 def default_task_log_image():
   #! NEED TO MAKE A DEFAULT
+  # if tasks_define.TaskDefine.value < 0:
+    # return 'https://res.cloudinary.com/vli/image/upload/v1716923419/smelly-earnie/default_task_log_negative.svg'
   return 'https://res.cloudinary.com/vli/image/upload/v1716923419/smelly-earnie/default_task_log_positive.svg'
-  # if tasks_define.TaskDefine.value < 0
-  #   return 'https://res.cloudinary.com/vli/image/upload/v1716923419/smelly-earnie/default_task_log_negative.svg'
 
 def default_goal_log_image():
   return 'https://res.cloudinary.com/vli/image/upload/v1716922792/smelly-earnie/default_goal_log.svg'
@@ -28,4 +28,4 @@ def default_goal_log_image():
 
 # PLACEHOLDER USER ACCOUNTS
 # def get_past_member():
-#     return get_user_model().objects.get_or_create(uuid='1f4bf0a9-6e04-45b3-ac4a-9db14c21b7d2')[0]
+#     return get_user_model().objects.get_or_create(id=2)[0]

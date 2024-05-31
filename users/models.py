@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MinValueValidator, MaxValueValidator
-
+# from django.contrib.auth.admin import UserAdmin
 from lib.fallbacks import default_profile_image
 
 class User(AbstractUser):
@@ -18,4 +18,10 @@ class User(AbstractUser):
     )
   
   def __str__(self):
-    return f'{self.username} -- L{self.access_level}'
+    return f'{self.username} - L{self.access_level}'
+
+# class CustomUserAdmin(UserAdmin): # <--- Extend the UserAdmin class, this will allow us to update later if needed
+  def save(self, *args, **kwargs):
+    if self.password and not self.password.startswith('pbkdf2_sha256$'):
+      self.set_password(self.password)
+    super().save(*args, **kwargs)
