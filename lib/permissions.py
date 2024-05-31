@@ -21,10 +21,15 @@ class IsOwneOrAccessUpToL2(BasePermission):
 #? Goal.objects.filter(owner=request.user.head)
 #? Goal.objects.filter(ref_owner=request.user.ref_head) //? owner of the goal is the group head
 
+# helpers own user profile
+class IsMyProfile(BasePermission):
+  def has_object_permission(self, request, view, obj):
+    return request.user == obj.id
+
 # up to helpers
 class IsUpToAccessL3(BasePermission):
   def has_object_permission(self, request, view, obj):
-    if self.User.access_level <= 3:
+    if :
       return True
     return False
 

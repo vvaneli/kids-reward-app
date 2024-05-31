@@ -1,11 +1,10 @@
+from django.contrib.auth.models import User
 from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
-# from rest_framework import generics
-from lib.views import ObjectOwnerView
-from lib.permissions import IsUpToAccessL4_ViewOnly, IsUpToAccessL3, IsUpToAccessL2
+from lib.views import ObjectOwnerView  # saves owner field on POST request
+from lib.permissions import IsMyProfile, IsUpToAccessL2, IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 from .serializers.common import UserSerializer, RegisterSerializer
 # from .serializers.populated import ProfileSerializer
 # from rest_framework.permissions import IsAuthenticated
-from django.contrib.auth.models import User
 from .models import User
 
 # PERMISSIONS:
@@ -41,19 +40,27 @@ class RegisterView(CreateAPIView):
 #? L1 to L2 Register another member view:
 # POST (item)
 # /accounts/add
-class ManageGroupMemberView(ObjectOwnerView, CreateAPIView):
+class AddGroupMemberView(ObjectOwnerView, CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     # serializer_class = UpdateProfileSerializer
     permission_class = [IsUpToAccessL2]
-		
-#? L1 to L3 Profile edit view (item: view, update, delete)
-# GET/UPDATE/DELETE (my item)
+
+#? L1 to L2 Profile edit view (item: view, update, delete)
+# GET/UPDATE/DELETE (member item)
 # /accounts/<int:pk>
-class ProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
+class GroupMemberEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_class = [IsUpToAccessL3]
+	permission_class = [IsUpToAccessL2]
+		
+#? L1 to L3 My Profile edit view (item: view, update, delete)
+# GET/UPDATE/DELETE (my item)
+# /accounts/<int:pk>
+class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
+	permission_class = [IsMyProfile, IsUpToAccessL3]
 
 #? L1 to L4 Profile view (item: view only)
 # GET (list, item)
