@@ -11,7 +11,7 @@ class GoalLog(models.Model):
   date_start = models.DateField(default=date.today)
   # end date optional (easier to achieve goal)
   date_end = models.DateField(blank=True, null=True)
-  image1 = models.URLField(default=models.SET(default_goal_log_image))
+  image1 = models.URLField(default=default_goal_log_image)
   notes = models.TextField(blank=True, null=True)
   reward_is_claimed = models.BooleanField(default=False)
   timestamp_reward_claimed = models.DateTimeField(blank=True, null=True)

@@ -9,6 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
     model = User		# which model
     fields = '__all__'	# which fields in that model
 
+class GroupMemebersSerializer(serializers.ModelSerializer):
+  class Meta:
+    model = User		# which model
+    fields = '__all__'	# which fields in that model
+
 class RegisterSerializer(serializers.ModelSerializer):
   # for hiding password during deserialization
   password = serializers.CharField(write_only=True)

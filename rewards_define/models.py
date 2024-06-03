@@ -6,7 +6,7 @@ class RewardDefine(models.Model):
   timestamp_created = models.DateTimeField(auto_now_add=True)
   title = models.CharField()
   title_audio_url = models.URLField(blank=True, null=True)
-  image1  = models.URLField(default=models.SET(default_reward_def_image))
+  image1  = models.URLField(default=default_reward_def_image)
   value = models.PositiveIntegerField()
   description = models.TextField(blank=True, null=True)
   description_audio_url = models.URLField(blank=True, null=True)

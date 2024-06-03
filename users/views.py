@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from lib.views import GroupHeadView  # saves ref_head field on POST request
 from lib.permissions import IsMyProfile, IsUpToAccessL2, IsUpToAccessL3, IsUpToAccessL4_ViewOnly
@@ -44,7 +45,7 @@ class AddGroupMemberView(GroupHeadView, CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     # serializer_class = UpdateProfileSerializerpy
-    permission_class = [IsUpToAccessL2]
+    permission_class = [IsAuthenticated, IsUpToAccessL2]
 
 #? L1 to L2 Profile edit view (item: view, update, delete)
 # GET/UPDATE/DELETE (member item)
@@ -52,7 +53,7 @@ class AddGroupMemberView(GroupHeadView, CreateAPIView):
 class GroupMemberEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_class = [IsUpToAccessL2]
+	permission_class = [IsAuthenticated, IsUpToAccessL2]
 		
 #? L1 to L3 My Profile edit view (item: view, update, delete)
 # GET/UPDATE/DELETE (my item)
@@ -60,7 +61,7 @@ class GroupMemberEditView_RUD(RetrieveUpdateDestroyAPIView):
 class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_class = [IsMyProfile, IsUpToAccessL3]
+	permission_class = [IsAuthenticated, IsMyProfile, IsUpToAccessL3]
 
 #? L1 to L4 Profile view (item: view only)
 # GET (list, item)
@@ -69,4 +70,4 @@ class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
 class Profiles_ViewOnly(RetrieveAPIView, ListAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]

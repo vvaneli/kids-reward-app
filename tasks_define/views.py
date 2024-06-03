@@ -1,5 +1,6 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
 # from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from lib.views import ObjectOwnerView
 from lib.permissions import IsUpToAccessL2, IsUpToAccessL4_ViewOnly
 from .serializers.common import TaskDefineSerializer
@@ -21,7 +22,7 @@ class TaskDefineIndexView_R(ListAPIView):
 	# 	return Response('At task definition index view')
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L4 (item: view)
 # GET (item)
@@ -29,7 +30,7 @@ class TaskDefineIndexView_R(ListAPIView):
 class TaskDefineDetailView_R(RetrieveAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L2 (item: create)
 # POST
@@ -37,7 +38,7 @@ class TaskDefineDetailView_R(RetrieveAPIView):
 class TaskDefineCreateView_C(ObjectOwnerView, ListCreateAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
-	permission_class = [IsUpToAccessL2]
+	permission_class = [IsAuthenticated, IsUpToAccessL2]
 
 #? L1 to L2 (item: view, update, delete)
 # GET/UPDATE/DELETE (item)
@@ -45,4 +46,4 @@ class TaskDefineCreateView_C(ObjectOwnerView, ListCreateAPIView):
 class TaskDefineEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
-	permission_class = [IsUpToAccessL2]
+	permission_class = [IsAuthenticated, IsUpToAccessL2]

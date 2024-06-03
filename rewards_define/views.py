@@ -1,5 +1,6 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 # from rest_framework.response import Response
+from rest_framework.permissions import IsAuthenticated
 from .serializers.common import RewardDefineSerializer
 from .models import RewardDefine
 from lib.permissions import IsUpToAccessL2, IsUpToAccessL4_ViewOnly
@@ -19,7 +20,7 @@ from lib.views import ObjectOwnerView
 class RewardDefineIndexView_R(ListAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_classes = [IsUpToAccessL4_ViewOnly]
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	# def get(self, request):
 	# 	if IsUpToAccessL4_ViewOnly:
 	# 		queryset = RewardDefine.objects.all()
@@ -33,7 +34,7 @@ class RewardDefineIndexView_R(ListAPIView):
 class RewardDefineDetailView_R(RetrieveAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L2 (item: create)
 # POST
@@ -41,7 +42,7 @@ class RewardDefineDetailView_R(RetrieveAPIView):
 class RewardDefineCreateView_C(ObjectOwnerView, CreateAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_class = [IsUpToAccessL2]
+	permission_class = [IsAuthenticated, IsUpToAccessL2]
 
 #? L1 to L2 (item: view, update, delete)
 # GET/UPDATE/DELETE (item)
@@ -49,4 +50,4 @@ class RewardDefineCreateView_C(ObjectOwnerView, CreateAPIView):
 class RewardDefineEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_class = [IsUpToAccessL2]	
+	permission_class = [IsAuthenticated, IsUpToAccessL2]	

@@ -1,4 +1,5 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated
 from .serializers.common import GoalLogSerializer
 from lib.views import ObjectOwnerView
 from .models import GoalLog
@@ -26,7 +27,7 @@ from lib.permissions import IsUpToAccessL2, IsUpToAccessL4_ViewOnly
 class GoalLogIndexView_R(ListAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L4: (item: view)
 # GET (item)
@@ -34,7 +35,7 @@ class GoalLogIndexView_R(ListAPIView):
 class GoalLogDetailView_R(RetrieveAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L2: (item: create)
 # POST (item)
@@ -42,7 +43,7 @@ class GoalLogDetailView_R(RetrieveAPIView):
 class GoalLogCreateView_C(ObjectOwnerView, CreateAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer
-	permission_class = [IsUpToAccessL2]
+	permission_class = [IsAuthenticated, IsUpToAccessL2]
 
 #? L1 to L2: (item: get, edit, delete)
 # GET/UPDATE/DELETE (item)
@@ -50,4 +51,4 @@ class GoalLogCreateView_C(ObjectOwnerView, CreateAPIView):
 class GoalLogDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer
-	permission_class = [IsUpToAccessL2]
+	permission_class = [IsAuthenticated, IsUpToAccessL2]

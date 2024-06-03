@@ -1,5 +1,6 @@
 # from django.shortcuts import render
 from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.permissions import IsAuthenticated
 from .serializers.common import StorySerializer
 from lib.permissions import IsUpToAccessL4_ViewOnly
 from .models import Story
@@ -20,7 +21,7 @@ from .models import Story
 class StoryIndexView_R(ListAPIView):
 	queryset = Story.objects.all()
 	serializer_class = StorySerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L4 -- Get single story
 # GET (single)
@@ -30,4 +31,4 @@ class StoryDetailView_R(RetrieveAPIView):
 	# queryset = Story.objects.filter()
 	# queryset = GoalLog.objects.filter()
 	serializer_class = StorySerializer
-	permission_class = [IsUpToAccessL4_ViewOnly]
+	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
