@@ -17,7 +17,7 @@ from .models import Story
 #? L1 to L4 -- See list of stories
 # GET (list)
 # /stories
-class StoryIndexView_L1234(ListAPIView):
+class StoryIndexView_R(ListAPIView):
 	queryset = Story.objects.all()
 	serializer_class = StorySerializer
 	permission_class = [IsUpToAccessL4_ViewOnly]
@@ -25,7 +25,7 @@ class StoryIndexView_L1234(ListAPIView):
 #? L1 to L4 -- Get single story
 # GET (single)
 # /stories/<int:pk>
-class StoryDetailView_L1234(RetrieveAPIView):
+class StoryDetailView_R(RetrieveAPIView):
 	queryset = Story.objects.all()
 	# queryset = Story.objects.filter()
 	# queryset = GoalLog.objects.filter()

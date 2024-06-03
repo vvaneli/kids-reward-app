@@ -9,7 +9,7 @@ from .views import RewardDefineIndexView_R, RewardDefineDetailView_R, RewardDefi
 
 urlpatterns = [
     path('', RewardDefineIndexView_R.as_view()), # /rewards-define/
+    path('<int:pk>/', RewardDefineEditView_RUD.as_view()), # /rewards-define/:rewarddefineId/
     path('<int:pk>/', RewardDefineDetailView_R.as_view()), # /rewards-define/:rewarddefineId/
     path('add/', RewardDefineCreateView_C.as_view()), # /rewards-define/add/
-    path('<int:pk>/', RewardDefineEditView_RUD.as_view()), # /rewards-define/:rewarddefineId/
 ]

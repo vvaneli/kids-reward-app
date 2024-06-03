@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 # from rest_framework.response import Response
 from .serializers.common import RewardDefineSerializer
 from .models import RewardDefine
@@ -9,7 +9,7 @@ from lib.views import ObjectOwnerView
 # 1 2 3 4     level
 # y y y y     get list      ListAPIView
 # y y y y     get item      RetrieveAPIView
-# y y n n     create item   CreateListAPIView
+# y y n n     create item   CreateAPIView
 # y y n n     edit item     RetrieveUpdateDestroyAPIView
 # y y n n     delete item
 
@@ -37,8 +37,8 @@ class RewardDefineDetailView_R(RetrieveAPIView):
 
 #? L1 to L2 (item: create)
 # POST
-# /rewards-define/<int:pk>
-class RewardDefineCreateView_C(ObjectOwnerView, ListCreateAPIView):
+# /rewards-define/
+class RewardDefineCreateView_C(ObjectOwnerView, CreateAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
 	permission_class = [IsUpToAccessL2]

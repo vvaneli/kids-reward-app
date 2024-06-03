@@ -23,7 +23,7 @@ from lib.permissions import IsUpToAccessL2, IsUpToAccessL4_ViewOnly
 #? L1 to L4: (list: view)
 # GET (list)
 # /goals
-class GoalLogIndexView(ListAPIView):
+class GoalLogIndexView_R(ListAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer
 	permission_class = [IsUpToAccessL4_ViewOnly]
@@ -31,7 +31,7 @@ class GoalLogIndexView(ListAPIView):
 #? L1 to L4: (item: view)
 # GET (item)
 # /goals/<int:pk>
-class GoalLogDetailView(RetrieveAPIView):
+class GoalLogDetailView_R(RetrieveAPIView):
 	queryset = GoalLog.objects.all()
 	serializer_class = GoalLogSerializer
 	permission_class = [IsUpToAccessL4_ViewOnly]

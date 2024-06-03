@@ -29,36 +29,42 @@ class IsMyProfile(BasePermission):
 # up to helpers
 class IsUpToAccessL3(BasePermission):
   def has_object_permission(self, request, view, obj):
-    if :
-      return True
-    return False
+    return True
+    # if self.User.access_level <= 3:
+    #   return True
+    # return False
 
 # up to elders
 class IsUpToAccessL2(BasePermission):
   def has_object_permission(self, request, view, obj):
-    if self.User.access_level <= 2:
-      return True
-    return False
+    return True
+    # if self.User.access_level <= 2:
+    #   return True
+    # return False
 
 # up to youngsters, view only
 class IsUpToAccessL4_ViewOnly(BasePermission):
   def has_permission(self, request, view):
-    if request.user in User.access_level <= 4:
-      return True
-    return False 
+    return True
+    # if request.user in User.access_level <= 4:
+    # if request.user == users.User.access
+    #   return True
+    # return False 
   # def has_object_permission(self, request, view, obj):
   #   return obj.owner == request.user
 
 # head
 class IsAccessL1(BasePermission):
   def has_object_permission(self, request, view, obj):
-    if self.User.access_level == 1:
-      return True
-    return False
+    return True
+    # if self.User.access_level == 1:
+    #   return True
+    # return False
 
 # new head account, pre-setup
 class IsAccessL0(BasePermission):
   def has_object_permission(self, request, view, obj):
-    if self.User.access_level == 0:
-      return True
-    return False
+    return True
+    # if self.User.access_level == 0:
+    #   return True
+    # return False

@@ -23,7 +23,7 @@ from lib.permissions import IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 #? L1 to L4: (list: view)
 # GET (list)
 # /tasks-log
-class TaskLogIndexView(ListAPIView):
+class TaskLogIndexView_R(ListAPIView):
 	queryset = TaskLog.objects.all()
 	serializer_class = TaskLogSerializer
 	permission_class = [IsUpToAccessL4_ViewOnly]
@@ -31,7 +31,7 @@ class TaskLogIndexView(ListAPIView):
 #? L1 to L4: (item: view)
 # GET (item)
 # /tasks-log/<int:pk>
-class TaskLogDetailView(RetrieveAPIView):
+class TaskLogDetailView_R(RetrieveAPIView):
 	queryset = TaskLog.objects.all()
 	serializer_class = TaskLogSerializer
 	permission_class = [IsUpToAccessL4_ViewOnly]

@@ -7,6 +7,10 @@ class ObjectOwnerView(APIView):
     def perform_create(self, serializer):
         serializer.save(ref_owner=self.request.user)
 
+class GroupHeadView(APIView):
+    def perform_create(self, serializer):
+        serializer.save(ref_head=self.request.user)
+
 # class HashUpdatedPassword(APIView):
 #     print('at HashUpdatedPassword')
 #     def perform_update(self, serializer):

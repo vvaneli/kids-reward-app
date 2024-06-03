@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
-from lib.views import ObjectOwnerView  # saves owner field on POST request
+from lib.views import GroupHeadView  # saves ref_head field on POST request
 from lib.permissions import IsMyProfile, IsUpToAccessL2, IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 from .serializers.common import UserSerializer, RegisterSerializer
 # from .serializers.populated import ProfileSerializer
@@ -32,7 +32,7 @@ from .models import User
 
 #? Register view:
 # POST (item)
-# /register
+# /accounts/register
 class RegisterView(CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
@@ -40,10 +40,10 @@ class RegisterView(CreateAPIView):
 #? L1 to L2 Register another member view:
 # POST (item)
 # /accounts/add
-class AddGroupMemberView(ObjectOwnerView, CreateAPIView):
+class AddGroupMemberView(GroupHeadView, CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
-    # serializer_class = UpdateProfileSerializer
+    # serializer_class = UpdateProfileSerializerpy
     permission_class = [IsUpToAccessL2]
 
 #? L1 to L2 Profile edit view (item: view, update, delete)
