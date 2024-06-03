@@ -1,5 +1,6 @@
 # from rest_framework.permissions import BasePermission, SAFE_METHODS
 from rest_framework.permissions import BasePermission
+from rest_framework.response import Response
 
 # from lib.permissions import IsUpToAccessL4_View
 # https://www.django-rest-framework.org/api-guide/permissions/#custom-permissions
@@ -7,19 +8,11 @@ from rest_framework.permissions import BasePermission
 class IsOwner(BasePermission):
   def has_object_permission(self, request, view, obj):
     return obj.ref_owner == request.user
-  
-class IsOwneOrAccessUpToL2(BasePermission):
-  def has_object_permission(self, request, view, obj):
-    return obj.ref_owner == request.user
 
-#! NEED TO SET FAMILY GROUP
-# class IsInMyGroup(BasePermission):
-#   def has_object_permission(self, request, view, obj):
-#     if self.User.ref_head == 
-#       return True
-#     return False
-#? Goal.objects.filter(owner=request.user.head)
-#? Goal.objects.filter(ref_owner=request.user.ref_head) //? owner of the goal is the group head
+#! Group head has permission to delete account
+class IsGroupHead(BasePermission):
+  def has_object_permission(self, request, view, obj):
+    return obj.ref_head == request.user
 
 # helpers own user profile
 class IsMyProfile(BasePermission):
@@ -28,43 +21,36 @@ class IsMyProfile(BasePermission):
 
 # up to helpers
 class IsUpToAccessL3(BasePermission):
-  def has_object_permission(self, request, view, obj):
-    return True
-    # if self.User.access_level <= 3:
-    #   return True
-    # return False
+  def has_permission(self, request, view):
+    if request.user.access_level <= 3:
+      return True
+    return False
 
 # up to elders
 class IsUpToAccessL2(BasePermission):
-  def has_object_permission(self, request, view, obj):
-    return True
-    # if self.User.access_level <= 2:
-    #   return True
-    # return False
+  def has_permission(self, request, view):
+    # print(f'access level: ', request.user.access_level)
+    if request.user.access_level <= 2:
+      return True
+    return False
 
 # up to youngsters, view only
 class IsUpToAccessL4_ViewOnly(BasePermission):
   def has_permission(self, request, view):
-    return True
-    # if request.user in User.access_level <= 4:
-    # if request.user == users.User.access
-    #   return True
-    # return False 
-  # def has_object_permission(self, request, view, obj):
-  #   return obj.owner == request.user
+    if request.user.access_level <= 4: # object has no attribute 'User'
+      return True
+    return False 
 
 # head
 class IsAccessL1(BasePermission):
-  def has_object_permission(self, request, view, obj):
-    return True
-    # if self.User.access_level == 1:
-    #   return True
-    # return False
+  def has_permission(self, request, view):
+    if request.user.access_level == 1:
+      return True
+    return False
 
 # new head account, pre-setup
 class IsAccessL0(BasePermission):
-  def has_object_permission(self, request, view, obj):
-    return True
-    # if self.User.access_level == 0:
-    #   return True
-    # return False
+  def has_permission(self, request, view):
+    if request.user.access_level == 0:
+      return True
+    return False

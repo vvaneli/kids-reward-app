@@ -34,7 +34,7 @@ class RewardDefineIndexView_R(ListAPIView):
 class RewardDefineDetailView_R(RetrieveAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L2 (item: create)
 # POST
@@ -42,7 +42,7 @@ class RewardDefineDetailView_R(RetrieveAPIView):
 class RewardDefineCreateView_C(ObjectOwnerView, CreateAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL2]
+	permission_classes = [IsAuthenticated, IsUpToAccessL2]
 
 #? L1 to L2 (item: view, update, delete)
 # GET/UPDATE/DELETE (item)
@@ -50,4 +50,4 @@ class RewardDefineCreateView_C(ObjectOwnerView, CreateAPIView):
 class RewardDefineEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL2]	
+	permission_classes = [IsAuthenticated, IsUpToAccessL2]	

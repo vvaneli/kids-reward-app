@@ -1,4 +1,4 @@
-from .common import GroupMemebersSerializer
+from .common import UserSerializer
 
-class PopulatedGroupMemebersSerializer(GroupMemebersSerializer):
-  ref_head = GroupMemebersSerializer()
+class PopulatedUserSerializer(UserSerializer):
+  ref_head = UserSerializer()

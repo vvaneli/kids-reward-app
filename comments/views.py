@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from lib.views import ObjectOwnerView
 from lib.permissions import IsOwner, IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 from .serializers.common import CommentSerializer
+from .serializers.populated import PopulatedCommentSerializer
 from .models import Comment
 
 #? PERMISSIONS:
@@ -18,16 +19,16 @@ from .models import Comment
 # comments
 class CommentIndexView(ListAPIView):
 	queryset = Comment.objects.all()
-	serializer_class = CommentSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	serializer_class = PopulatedCommentSerializer
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	
 #? L1 to L4 (item: view)
 # GET (item)
 # comments/<int:pk>/
 class CommentDetailView(RetrieveAPIView):
 	queryset = Comment.objects.all()
-	serializer_class = CommentSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	serializer_class = PopulatedCommentSerializer
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	
 #? L1 to L3 (create)
 # POST (item)
@@ -35,12 +36,12 @@ class CommentDetailView(RetrieveAPIView):
 class CommentDetailView_C(ObjectOwnerView, CreateAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = CommentSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL3]
+	permission_classes = [IsAuthenticated, IsUpToAccessL3]
 
 #? Comment owner
 # GET/UPDATE/DELETE (item)
 # comments/<int:pk>/
 class CommentDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = Comment.objects.all()
-	serializer_class = CommentSerializer
-	permission_class = [IsAuthenticated, IsOwner]
+	serializer_class = PopulatedCommentSerializer
+	permission_classes = [IsAuthenticated, IsOwner]

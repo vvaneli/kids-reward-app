@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.db.models import Q
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import RetrieveAPIView, ListAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 from lib.views import GroupHeadView  # saves ref_head field on POST request
@@ -31,43 +32,60 @@ from .models import User
 # y y y y     get list of profiles (see group members)
 # y y y y     get single other profile (see a group member's profile)
 
+
 #? Register view:
 # POST (item)
 # /accounts/register
 class RegisterView(CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = RegisterSerializer
+  queryset = User.objects.all()
+  serializer_class = RegisterSerializer
 
-#? L1 to L2 Register another member view:
-# POST (item)
-# /accounts/add
-class AddGroupMemberView(GroupHeadView, CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = RegisterSerializer
-    # serializer_class = UpdateProfileSerializerpy
-    permission_class = [IsAuthenticated, IsUpToAccessL2]
-
-#? L1 to L2 Profile edit view (item: view, update, delete)
-# GET/UPDATE/DELETE (member item)
-# /accounts/<int:pk>
-class GroupMemberEditView_RUD(RetrieveUpdateDestroyAPIView):
-	queryset = User.objects.all()
-	serializer_class = UserSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL2]
-		
 #? L1 to L3 My Profile edit view (item: view, update, delete)
 # GET/UPDATE/DELETE (my item)
 # /accounts/<int:pk>
 class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_class = [IsAuthenticated, IsMyProfile, IsUpToAccessL3]
+	permission_classes = [IsAuthenticated, IsMyProfile, IsUpToAccessL3]
+
+#? L1 to L2 Register another member view:
+# POST (item)
+# /accounts/add
+class AddGroupMemberView_C(GroupHeadView, CreateAPIView):
+  queryset = User.objects.all()
+  serializer_class = RegisterSerializer
+  # serializer_class = UpdateProfileSerializer
+  permission_classes = [IsAuthenticated, IsUpToAccessL2]
+
+#? L1 to L4 Profile view (list: view only)
+# GET (list)
+# /accounts/
+class GroupMembersIndexView_R(ListAPIView):
+	# queryset = User.objects.all()
+	serializer_class = UserSerializer
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	# Only see members from my own group
+	def get_queryset(self):
+		return User.objects.filter(Q(ref_head=self.request.user.ref_head) | Q(ref_head=self.request.user.id))
 
 #? L1 to L4 Profile view (item: view only)
-# GET (list, item)
-# /accounts/
+# GET (item)
 # /accounts/<int:pk>
-class Profiles_ViewOnly(RetrieveAPIView, ListAPIView):
-	queryset = User.objects.all()
+class GroupMemberDetailView_R(RetrieveAPIView):
+	# queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	# Only see members from my own group
+	def get_queryset(self):
+		return User.objects.filter(Q(ref_head=self.request.user.ref_head) | Q(ref_head=self.request.user.id))
+	
+#? L1 to L2 Profile edit view (item: view, update, delete)
+# GET/UPDATE/DELETE (member item)
+# /accounts/<int:pk>
+class GroupMemberDetailView_RUD(RetrieveUpdateDestroyAPIView):
+	# queryset = User.objects.all()
+	serializer_class = UserSerializer
+	permission_classes = [IsAuthenticated, IsUpToAccessL2]
+	# Only see members from my own group
+	def get_queryset(self):
+		return User.objects.filter(Q(ref_head=self.request.user.ref_head) | Q(ref_head=self.request.user.id))

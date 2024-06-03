@@ -2,6 +2,7 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView,
 from rest_framework.permissions import IsAuthenticated
 from lib.views import ObjectOwnerView
 from .serializers.common import TaskLogSerializer
+from .serializers.populated import PopulatedTaskLogSerializer
 from .models import TaskLog
 from lib.permissions import IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 
@@ -26,16 +27,24 @@ from lib.permissions import IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 # /tasks-log
 class TaskLogIndexView_R(ListAPIView):
 	queryset = TaskLog.objects.all()
-	serializer_class = TaskLogSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	# serializer_class = TaskLogSerializer
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	def get_serializer_class(self):
+		if self.request.method == 'GET':
+			return  PopulatedTaskLogSerializer
+		return TaskLogSerializer
 
 #? L1 to L4: (item: view)
 # GET (item)
 # /tasks-log/<int:pk>
 class TaskLogDetailView_R(RetrieveAPIView):
 	queryset = TaskLog.objects.all()
-	serializer_class = TaskLogSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	# serializer_class = TaskLogSerializer
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	def get_serializer_class(self):
+		if self.request.method == 'GET':
+			return  PopulatedTaskLogSerializer
+		return TaskLogSerializer
 
 #? L1 to L3: (item: create)
 # POST (item)
@@ -43,12 +52,12 @@ class TaskLogDetailView_R(RetrieveAPIView):
 class TaskLogCreateView_C(ObjectOwnerView, CreateAPIView):
 	queryset = TaskLog.objects.all()
 	serializer_class = TaskLogSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL3]
+	permission_classes = [IsAuthenticated, IsUpToAccessL3]
 
 #? L1 to L3: (item: get, edit, delete)
 # GET/UPDATE/DELETE (item)
 # /tasks-log/<int:pk>
 class TaskLogEditlView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = TaskLog.objects.all()
-	serializer_class = TaskLogSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL3]
+	serializer_class = PopulatedTaskLogSerializer
+	permission_classes = [IsAuthenticated, IsUpToAccessL3]

@@ -9,6 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
     model = User		# which model
     fields = '__all__'	# which fields in that model
 
+#! Not used
 class GroupMemebersSerializer(serializers.ModelSerializer):
   class Meta:
     model = User		# which model

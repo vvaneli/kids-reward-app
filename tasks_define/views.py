@@ -22,7 +22,7 @@ class TaskDefineIndexView_R(ListAPIView):
 	# 	return Response('At task definition index view')
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L4 (item: view)
 # GET (item)
@@ -30,15 +30,16 @@ class TaskDefineIndexView_R(ListAPIView):
 class TaskDefineDetailView_R(RetrieveAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L2 (item: create)
 # POST
-# /tasks-define/
+# /tasks-define/add/
 class TaskDefineCreateView_C(ObjectOwnerView, ListCreateAPIView):
-	queryset = TaskDefine.objects.all()
-	serializer_class = TaskDefineSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL2]
+  queryset = TaskDefine.objects.all()
+  serializer_class = TaskDefineSerializer
+  permission_classes = [IsUpToAccessL2]
+  # permission_classes = [IsAuthenticated, IsUpToAccessL2]
 
 #? L1 to L2 (item: view, update, delete)
 # GET/UPDATE/DELETE (item)
@@ -46,4 +47,4 @@ class TaskDefineCreateView_C(ObjectOwnerView, ListCreateAPIView):
 class TaskDefineEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL2]
+	permission_classes = [IsAuthenticated, IsUpToAccessL2]

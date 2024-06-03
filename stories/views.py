@@ -21,7 +21,7 @@ from .models import Story
 class StoryIndexView_R(ListAPIView):
 	queryset = Story.objects.all()
 	serializer_class = StorySerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 
 #? L1 to L4 -- Get single story
 # GET (single)
@@ -31,4 +31,4 @@ class StoryDetailView_R(RetrieveAPIView):
 	# queryset = Story.objects.filter()
 	# queryset = GoalLog.objects.filter()
 	serializer_class = StorySerializer
-	permission_class = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
