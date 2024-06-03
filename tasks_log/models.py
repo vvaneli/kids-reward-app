@@ -5,7 +5,7 @@ from lib.fallbacks import default_task_log_image
 class TaskLog(models.Model):
   timestamp_created = models.DateTimeField(auto_now_add=True)
   notes = models.TextField(blank=True, null=True)
-  image1 = models.URLField(default=models.SET(default_task_log_image))
+  image1 = models.URLField(default=default_task_log_image)
   image2 = models.URLField(blank=True, null=True)
   ref_owner = models.ForeignKey(
     to='users.User',
