@@ -46,7 +46,8 @@ class RegisterView(CreateAPIView):
 class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_classes = [IsAuthenticated, IsMyProfile, IsUpToAccessL3]
+	permission_classes = [IsAuthenticated, IsUpToAccessL3, IsMyProfile]
+	# permission_classes = [IsAuthenticated, IsUpToAccessL3]
 
 #? L1 to L2 Register another member view:
 # POST (item)
@@ -59,7 +60,7 @@ class AddGroupMemberView_C(GroupHeadView, CreateAPIView):
 
 #? L1 to L4 Profile view (list: view only)
 # GET (list)
-# /accounts/
+# /accounts/group/
 class GroupMembersIndexView_R(ListAPIView):
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer
@@ -70,7 +71,7 @@ class GroupMembersIndexView_R(ListAPIView):
 
 #? L1 to L4 Profile view (item: view only)
 # GET (item)
-# /accounts/<int:pk>
+# /accounts/group/view/<int:pk>
 class GroupMemberDetailView_R(RetrieveAPIView):
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer
@@ -81,7 +82,7 @@ class GroupMemberDetailView_R(RetrieveAPIView):
 	
 #? L1 to L2 Profile edit view (item: view, update, delete)
 # GET/UPDATE/DELETE (member item)
-# /accounts/<int:pk>
+# /accounts/group/edit/<int:pk>
 class GroupMemberDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer

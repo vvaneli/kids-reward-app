@@ -10,6 +10,6 @@ from .views import TaskLogIndexView_R, TaskLogDetailView_R, TaskLogCreateView_C,
 urlpatterns = [
     path('', TaskLogIndexView_R.as_view()), # /tasks/
     path('<int:pk>/', TaskLogEditlView_RUD.as_view()), # /tasks/:taskId/
-    path('<int:pk>/', TaskLogDetailView_R.as_view()), # /tasks/:taskId/
+    path('view/<int:pk>/', TaskLogDetailView_R.as_view()), # /tasks/view/:taskId/
     path('add/', TaskLogCreateView_C.as_view()), # /tasks/add/
 ]

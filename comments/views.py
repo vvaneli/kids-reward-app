@@ -17,7 +17,7 @@ from .models import Comment
 #? L1 to L4 (list: view)
 # GET (list)
 # comments
-class CommentIndexView(ListAPIView):
+class CommentIndexView_R(ListAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = PopulatedCommentSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
@@ -25,7 +25,7 @@ class CommentIndexView(ListAPIView):
 #? L1 to L4 (item: view)
 # GET (item)
 # comments/<int:pk>/
-class CommentDetailView(RetrieveAPIView):
+class CommentDetailView_R(RetrieveAPIView):
 	queryset = Comment.objects.all()
 	serializer_class = PopulatedCommentSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
@@ -43,5 +43,5 @@ class CommentDetailView_C(ObjectOwnerView, CreateAPIView):
 # comments/<int:pk>/
 class CommentDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = Comment.objects.all()
-	serializer_class = PopulatedCommentSerializer
+	serializer_class = CommentSerializer
 	permission_classes = [IsAuthenticated, IsOwner]

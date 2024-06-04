@@ -7,10 +7,10 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 
 urlpatterns = [
     path('register/', RegisterView.as_view()),  # /account/register/
-    path('add/', AddGroupMemberView_C.as_view()),  # /account/add/
     path('login/', TokenObtainPairView.as_view()),  # /account/login/
-    path('<int:pk>/', MyProfileEditView_RUD.as_view()),  # /account/1/
-    path('', GroupMembersIndexView_R.as_view()),  # /account/
-    path('<int:pk>/', GroupMemberDetailView_R.as_view()),  # /account/1/
-    path('<int:pk>/', GroupMemberDetailView_RUD.as_view()),  # /account/1/
+    path('<int:pk>/', MyProfileEditView_RUD.as_view()),  # /account/:id/
+    path('group/add/', AddGroupMemberView_C.as_view()),  # /account/group/add/
+    path('group/', GroupMembersIndexView_R.as_view()),  # /account/group/
+    path('group/view/<int:pk>/', GroupMemberDetailView_R.as_view()),  # /account/group/view/:id/
+    path('group/edit/<int:pk>/', GroupMemberDetailView_RUD.as_view()),  # /account/group/edit/:id/
 ]

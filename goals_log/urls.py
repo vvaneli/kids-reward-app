@@ -10,6 +10,6 @@ from .views import GoalLogIndexView_R, GoalLogDetailView_R, GoalLogCreateView_C,
 urlpatterns = [
     path('', GoalLogIndexView_R.as_view()), # /goals/
     path('<int:pk>/', GoalLogDetailView_RUD.as_view()), # /goals/:goalId/
-    path('<int:pk>/', GoalLogDetailView_R.as_view()), # /goals/:goalId/
+    path('view/<int:pk>/', GoalLogDetailView_R.as_view()), # /goals/view/:goalId/
     path('add/', GoalLogCreateView_C.as_view()), # /goals/add/
 ]

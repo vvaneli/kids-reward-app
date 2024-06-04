@@ -6,7 +6,6 @@ class TaskDefine(models.Model):
   timestamp_created = models.DateTimeField(auto_now_add=True)
   title = models.CharField()
   title_audio_url = models.URLField(blank=True, null=True)
-  # image1 = models.URLField()
   image1 = models.URLField(default=default_task_def_image)
   value = models.IntegerField()
   description = models.TextField(blank=True, null=True)

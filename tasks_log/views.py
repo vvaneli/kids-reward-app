@@ -24,7 +24,7 @@ from lib.permissions import IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 
 #? L1 to L4: (list: view)
 # GET (list)
-# /tasks-log
+# /tasks
 class TaskLogIndexView_R(ListAPIView):
 	queryset = TaskLog.objects.all()
 	# serializer_class = TaskLogSerializer
@@ -36,7 +36,7 @@ class TaskLogIndexView_R(ListAPIView):
 
 #? L1 to L4: (item: view)
 # GET (item)
-# /tasks-log/<int:pk>
+# /tasks/view/<int:pk>
 class TaskLogDetailView_R(RetrieveAPIView):
 	queryset = TaskLog.objects.all()
 	# serializer_class = TaskLogSerializer
@@ -48,7 +48,7 @@ class TaskLogDetailView_R(RetrieveAPIView):
 
 #? L1 to L3: (item: create)
 # POST (item)
-# /tasks-log/add
+# /tasks/add
 class TaskLogCreateView_C(ObjectOwnerView, CreateAPIView):
 	queryset = TaskLog.objects.all()
 	serializer_class = TaskLogSerializer
@@ -56,8 +56,12 @@ class TaskLogCreateView_C(ObjectOwnerView, CreateAPIView):
 
 #? L1 to L3: (item: get, edit, delete)
 # GET/UPDATE/DELETE (item)
-# /tasks-log/<int:pk>
+# /tasks/<int:pk>
 class TaskLogEditlView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = TaskLog.objects.all()
-	serializer_class = PopulatedTaskLogSerializer
+	# serializer_class = TaskLogSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL3]
+	def get_serializer_class(self):
+		if self.request.method == 'GET':
+			return  PopulatedTaskLogSerializer
+		return TaskLogSerializer
