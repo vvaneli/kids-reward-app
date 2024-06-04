@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { setToken } from '../lib/auth'
+import { setToken } from '../../lib/auth'
 
 export default function Login() {
 

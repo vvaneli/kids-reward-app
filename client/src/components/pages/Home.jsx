@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Link, useParams, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { isLoggedIn } from '../lib/auth.js'
-import { getToken } from '../lib/auth.js'
+import { isLoggedIn } from '../../lib/auth.js'
+import { getToken } from '../../lib/auth.js'
 
 // Sub-Components
-import Nav from '../components/Nav.jsx'
+import Nav from '../subcomponents/Nav.jsx'
 
 export default function Home() {
 
@@ -17,23 +17,23 @@ export default function Home() {
   const [myAccount, setMyAccount] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
 
-  useEffect(() => {
-    async function getAccount() {
-      try {
-        const { data } = await axios.get(`/api/account/`, {
-          headers: {
-            Authorization: `Bearer ${getToken()}`
-          }
-        })
-        console.log(data)
-        setMyAccount(data)
-      } catch (error) {
-        console.log(error.message)
-        setErrorMsg(error.message)
-      }
-    }
-    getAccount()
-  }, [])
+  // useEffect(() => {
+  //   async function getAccount() {
+  //     try {
+  //       const { data } = await axios.get(`/api/account/`, {
+  //         headers: {
+  //           Authorization: `Bearer ${getToken()}`
+  //         }
+  //       })
+  //       console.log(data)
+  //       setMyAccount(data)
+  //     } catch (error) {
+  //       console.log(error.message)
+  //       setErrorMsg(error.message)
+  //     }
+  //   }
+  //   getAccount()
+  // }, [])
 
   return (
     <>
