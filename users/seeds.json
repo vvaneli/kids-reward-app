@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "password": "pbkdf2_sha256$720000$WEYwc65VhRlP43RtQfxoMM$3pVhIM46FLsZFOREsTfugxTo5edv2+ltcsZEjDsvaGs=",
+    "last_login": "2024-05-31T15:16:36.760619Z",
+    "is_superuser": true,
+    "username": "v",
+    "first_name": "",
+    "last_name": "",
+    "email": "v@example.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-05-30T13:25:01.304339Z",
+    "timestamp_created": "2024-05-30T13:25:01.464994Z",
+    "nickname": "vv nickname",
+    "access_level": 1,
+    "image_profile": "https://res.cloudinary.com/vli/image/upload/v1716910772/smelly-earnie/default_profile.svg",
+    "ref_head": null,
+    "groups": [],
+    "user_permissions": []
+  }
+]
