@@ -19,13 +19,13 @@ from django.urls import path, include
 # from rest_framework_simplejwt.views import TokenObtainPairView
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('api/admin/', admin.site.urls),
     # path('login/', TokenObtainPairView.as_view()),
-    path('account/', include('users.urls')),
-    path('rewards-define/', include('rewards_define.urls')),
-    path('tasks-define/', include('tasks_define.urls')),
-    path('tasks/', include('tasks_log.urls')),
-    path('goals/', include('goals_log.urls')),
-    path('stories/', include('stories.urls')),
-    path('comments/', include('comments.urls')),
+    path('api/account/', include('users.urls')),
+    path('api/rewards-define/', include('rewards_define.urls')),
+    path('api/tasks-define/', include('tasks_define.urls')),
+    path('api/tasks/', include('tasks_log.urls')),
+    path('api/goals/', include('goals_log.urls')),
+    path('api/stories/', include('stories.urls')),
+    path('api/comments/', include('comments.urls')),
 ]
