@@ -16,6 +16,7 @@ class RewardDefine(models.Model):
   ref_owner = models.ForeignKey(
     to='users.User',
     related_name='rewards_defined',
+    # on_delete=models.CASCADE,
     on_delete=models.SET_NULL, # if owner account is deleted, set to null
     null=True, blank=True, # defined so that if owner is deleted, this field can be null
     # on_delete=models.SET(get_past_member) # if owner account is deleted, replace with placeholder 'Past member' account

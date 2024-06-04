@@ -1,4 +1,5 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from django.db.models import Q
 # from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from lib.views import ObjectOwnerView
@@ -23,6 +24,11 @@ class TaskDefineIndexView_R(ListAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	# def get_queryset(self):
+	# 	return TaskDefine.objects.filter(Q(self.request.user.ref_head = tasks_define.ref_owner) | Q(id = 4))
+
+#! In TaskDefine, find items that are: Owned by people (who are) Owned by the same Group Head as me
+#! id = 4 (this is a default owner for all starter items you get by default with an account)
 
 #? L1 to L4 (item: view)
 # GET (item)

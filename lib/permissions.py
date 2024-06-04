@@ -9,7 +9,6 @@ class IsOwner(BasePermission):
   def has_object_permission(self, request, view, obj):
     return obj.ref_owner == request.user
 
-#! Group head has permission to delete account
 class IsGroupHead(BasePermission):
   def has_object_permission(self, request, view, obj):
     return obj.ref_head == request.user
