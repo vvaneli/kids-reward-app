@@ -1,6 +1,6 @@
 # from django.shortcuts import render
-from rest_framework.generics import ListAPIView, RetrieveAPIView
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .serializers.common import StorySerializer
 from lib.permissions import IsUpToAccessL4_ViewOnly
 from .models import Story
@@ -32,3 +32,21 @@ class StoryDetailView_R(RetrieveAPIView):
 	# queryset = GoalLog.objects.filter()
 	serializer_class = StorySerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	
+#? Admin -- post stories
+# POST
+# /stories/admin
+class StoryAdminListView_C(ListCreateAPIView):
+	queryset = Story.objects.all()
+	serializer_class = StorySerializer
+	permission_classes = [IsAdminUser]
+	# permission_classes = [IsAuthenticated, IsAdminUser]
+
+#? Admin -- post stories
+# POST
+# /stories/admin/<int:pk>
+class StoryAdminDetailView_RUD(RetrieveUpdateDestroyAPIView):
+	queryset = Story.objects.all()
+	serializer_class = StorySerializer
+	permission_classes = [IsAdminUser]
+	# permission_classes = [IsAuthenticated, IsAdminUser]
