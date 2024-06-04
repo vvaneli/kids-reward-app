@@ -7,6 +7,8 @@ from lib.fallbacks import default_profile_image
 class User(AbstractUser):
   timestamp_created = models.DateTimeField(auto_now_add=True)
   nickname = models.CharField()
+  # For youngsters:
+  birthday = models.DateField(blank=True, null=True)
   # Access levels: new account = 0; Account owner 'Head' = 1; Editors 'Elders' = 2; Contributors 'Helpers' = 3; Viewers 'Youngsters' = 4.
   access_level = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(4)], default=0)
   image_profile = models.URLField(default=default_profile_image)
