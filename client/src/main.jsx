@@ -13,10 +13,15 @@ import Login from './components/pages/Login.jsx'
 import ProfilesList from './components/pages/ProfilesList.jsx'
 import ProfileItem from './components/pages/ProfileItem.jsx'
 import Home from './components/pages/Home.jsx'
-import RewardDefList from './components/pages/RewardDefList.jsx'
-import TaskDefList from './components/pages/TaskDefList.jsx'
+import RewardDefineList from './components/pages/RewardDefineList.jsx'
+import TaskDefineList from './components/pages/TaskDefineList.jsx'
+import GoalAddNew from './components/pages/GoalAddNew.jsx'
 import GoalsList from './components/pages/GoalsList.jsx'
+import GoalItem from './components/pages/GoalItem.jsx'
 import TasksList from './components/pages/TasksLists.jsx'
+import TaskItem from './components/pages/TaskItem.jsx'
+import StoriesList from './components/pages/StoriesList.jsx'
+import StoryItem from './components/pages/StoryItem.jsx'
 
 // Routes
 const router = createBrowserRouter([
@@ -41,24 +46,44 @@ const router = createBrowserRouter([
         element: <ProfilesList />
       },
       {
-        path: 'profile',
+        path: 'profiles/:profileId',
         element: <ProfileItem />
       },
       {
         path: 'rewards-define',
-        element: <RewardDefList />
+        element: <RewardDefineList />
       },
       {
         path: 'tasks-define',
-        element: <TaskDefList />
+        element: <TaskDefineList />
+      },
+      {
+        path: 'goals/add',
+        element: <GoalAddNew />
       },
       {
         path: 'goals',
         element: <GoalsList />
       },
       {
+        path: 'goals/:goalId',
+        element: <GoalItem />
+      },
+      {
         path: 'tasks',
         element: <TasksList />
+      },
+      {
+        path: 'tasks/:taskId',
+        element: <TaskItem />
+      },
+      {
+        path: 'stories',
+        element: <StoriesList />
+      },
+      {
+        path: 'stories/:storyId',
+        element: <StoryItem />
       },
     ]
   }

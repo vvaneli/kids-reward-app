@@ -30,15 +30,16 @@ export default function ProfilesList() {
 
   return (
     <>
-      <main id=''>
-        <h1>Profiles</h1>
+      <main id='profiles-list'>
+        <h1>Profiles List</h1>
         {profilesList.length > 0 ?
               profilesList.map(profilesList => {
                 return (
                   <article key={profilesList.id}>
                     <h2>{profilesList.nickname}</h2>
-                    <img src={profilesList.image1} alt={profilesList.title} />
+                    <img src={profilesList.image_profile} alt={profilesList.title} />
                     <p>{profilesList.access_level}</p>
+                    <Link to={`/profiles/${profilesList.id}`} className=''>Details</Link>
                   </article>
                 )
               })

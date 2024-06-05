@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react'
-import Creatable from 'react-select/creatable'
+// import Creatable from 'react-select/creatable'
 
 export default function Form({ request, fields, submit, onLoad }){
 
@@ -53,11 +53,12 @@ export default function Form({ request, fields, submit, onLoad }){
           <Fragment key={fieldName}>
             <label hidden htmlFor={fieldName}>{fieldNameCaps}</label>
             { !['select', 'multi'].includes(fieldType) &&
-              <input required type={fieldType} name={fieldName} id={fieldName} placeholder={fieldNameCaps} value={formData[fieldName]} onChange={handleChange} />
+              <input type={fieldType} name={fieldName} id={fieldName} placeholder={fieldNameCaps} value={formData[fieldName]} onChange={handleChange} />
+              // <input required type={fieldType} name={fieldName} id={fieldName} placeholder={fieldNameCaps} value={formData[fieldName]} onChange={handleChange} />
             }
 
             {/* Multi */}
-            { fieldType === 'multi' &&
+            {/* { fieldType === 'multi' &&
               <Creatable 
                 onCreateOption={(value) => {
                   setFormData({ ...formData, [fieldName]: [ ...formData[fieldName], value ]})
@@ -70,7 +71,7 @@ export default function Form({ request, fields, submit, onLoad }){
                 })}
                 isMulti={true}
               />
-            }
+            } */}
 
             {error && error[fieldName] && <p className='error'>{error[fieldName]}</p>}
           </Fragment>

@@ -56,6 +56,7 @@ export default function TasksList() {
                     <p>{tasksList.ref_goal_log.timestamp_reward_claimed}</p>
                     {/* <p>{TasksList.refs_assignees[0].nickname}</p> */}
                     {/* <img src={TasksList.refs_assignees[0].image_profile} alt='' /> */}
+                    <Link to={`/tasks/${tasksList.id}`} className=''>Details</Link>
                   </article>
                 )
               })

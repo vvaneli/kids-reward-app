@@ -64,6 +64,7 @@ export default function GoalsList() {
                     <p>{goalsList.ref_rewards_define.description_audio_url}</p>
                     {/* <p>{goalsList.refs_assignees[0].nickname}</p> */}
                     {/* <img src={goalsList.refs_assignees[0].image_profile} alt='' /> */}
+                    <Link to={`/goals/${goalsList.id}`} className=''>Details</Link>
                   </article>
                 )
               })
