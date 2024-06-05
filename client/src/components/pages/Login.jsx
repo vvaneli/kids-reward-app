@@ -23,7 +23,7 @@ export default function Login() {
       // setSuccessMsg(message)
       setToken(access) // save token to localStorage
       // saveMsgLogin(message)
-      navigate('/home', { state: { successMsg: message } })
+      navigate('/', { state: { successMsg: message } })
     } catch (error) {
       console.log(error)
       // console.log(error.response.data.message)

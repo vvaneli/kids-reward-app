@@ -7,6 +7,7 @@ from lib.fallbacks import default_profile_image
 class User(AbstractUser):
   timestamp_created = models.DateTimeField(auto_now_add=True) #! surplus column
   nickname = models.CharField()
+  legal_agree = models.BooleanField()
   # For youngsters:
   birthday = models.DateField(blank=True, null=True)
   # Access levels: new account = 0; Account owner 'Head' = 1; Editors 'Elders' = 2; Contributors 'Helpers' = 3; Viewers 'Youngsters' = 4.

@@ -14,6 +14,7 @@ import ProfilesList from './components/pages/ProfilesList.jsx'
 import ProfileItem from './components/pages/ProfileItem.jsx'
 import Home from './components/pages/Home.jsx'
 import RewardDefineList from './components/pages/RewardDefineList.jsx'
+import TaskAddNew from './components/pages/TaskAddNew.jsx'
 import TaskDefineList from './components/pages/TaskDefineList.jsx'
 import GoalAddNew from './components/pages/GoalAddNew.jsx'
 import GoalsList from './components/pages/GoalsList.jsx'
@@ -68,6 +69,10 @@ const router = createBrowserRouter([
       {
         path: 'goals/:goalId',
         element: <GoalItem />
+      },
+      {
+        path: 'tasks/add',
+        element: <TaskAddNew />
       },
       {
         path: 'tasks',

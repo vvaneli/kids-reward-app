@@ -22,7 +22,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
   class Meta:
     model = User
-    fields = ('id', 'email', 'username', 'nickname', 'password', 'password_confirmation')
+    fields = ('id', 'email', 'username', 'nickname', 'password', 'password_confirmation', 'legal_agree')
 
   # obj level validation:
   def validate(self, data): # request.data

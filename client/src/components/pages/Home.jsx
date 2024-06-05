@@ -11,6 +11,8 @@ export default function Home() {
 
   const navigate = useNavigate()
 
+  // let { profileId } = useParams()
+
   const { state } = useLocation()
 
   // set data from DB
@@ -20,7 +22,7 @@ export default function Home() {
   // useEffect(() => {
   //   async function getAccount() {
   //     try {
-  //       const { data } = await axios.get(`/api/account/`, {
+  //       const { data } = await axios.get(`/api/account/${profileId}/`, {
   //         headers: {
   //           Authorization: `Bearer ${getToken()}`
   //         }

@@ -51,7 +51,6 @@ export default function RewardDefineList() {
                 <p><em>{errorMsg}</em></p>
                 :
                 <p><em>Downloading&#8230;</em></p>
-
             }
       </main>
     </>
