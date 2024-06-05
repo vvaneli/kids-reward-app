@@ -35,14 +35,14 @@ from .models import User
 
 #? Register view:
 # POST (item)
-# /accounts/register
+# /api/account/register
 class RegisterView(CreateAPIView):
   queryset = User.objects.all()
   serializer_class = RegisterSerializer
 
 #? L1 to L3 My Profile edit view (item: view, update, delete)
 # GET/UPDATE/DELETE (my item)
-# /accounts/<int:pk>
+# /api/account/<int:pk>
 class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
@@ -51,7 +51,7 @@ class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
 
 #? L1 to L2 Register another member view:
 # POST (item)
-# /accounts/add
+# /api/account/add
 class AddGroupMemberView_C(GroupHeadView, CreateAPIView):
   queryset = User.objects.all()
   serializer_class = RegisterSerializer
@@ -60,7 +60,7 @@ class AddGroupMemberView_C(GroupHeadView, CreateAPIView):
 
 #? L1 to L4 Profile view (list: view only)
 # GET (list)
-# /accounts/group/
+# /api/account/group/
 class GroupMembersIndexView_R(ListAPIView):
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer
@@ -71,7 +71,7 @@ class GroupMembersIndexView_R(ListAPIView):
 
 #? L1 to L4 Profile view (item: view only)
 # GET (item)
-# /accounts/group/view/<int:pk>
+# /api/account/group/view/<int:pk>
 class GroupMemberDetailView_R(RetrieveAPIView):
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer
@@ -82,7 +82,7 @@ class GroupMemberDetailView_R(RetrieveAPIView):
 	
 #? L1 to L2 Profile edit view (item: view, update, delete)
 # GET/UPDATE/DELETE (member item)
-# /accounts/group/edit/<int:pk>
+# /api/account/group/edit/<int:pk>
 class GroupMemberDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer

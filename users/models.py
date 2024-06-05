@@ -5,7 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from lib.fallbacks import default_profile_image
 
 class User(AbstractUser):
-  timestamp_created = models.DateTimeField(auto_now_add=True)
+  timestamp_created = models.DateTimeField(auto_now_add=True) #! surplus column
   nickname = models.CharField()
   # For youngsters:
   birthday = models.DateField(blank=True, null=True)
