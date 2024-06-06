@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+psycopg2-binary = "*"
+djangorestframework = "*"
+pylint = "*"
+django-pwa = "*"
+django-environ = "*"
+pillow = "*"
+djangorestframework-simplejwt = "*"
+django-on-heroku = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
