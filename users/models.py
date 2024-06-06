@@ -25,6 +25,8 @@ class User(AbstractUser):
 
 # class CustomUserAdmin(UserAdmin): # <--- Extend the UserAdmin class, this will allow us to update later if needed
   def save(self, *args, **kwargs):
+    if not self.ref_head:
+      self.ref_head=self.id
     if self.password and not self.password.startswith('pbkdf2_sha256$'):
       self.set_password(self.password)
     super().save(*args, **kwargs)
