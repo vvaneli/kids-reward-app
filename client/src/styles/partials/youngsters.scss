@@ -1,0 +1,93 @@
+.logo {
+  display: block;
+  margin: auto;
+  padding: 1em 0;
+}
+
+// FLEX C
+
+.rewards-define.kids,
+.tasks-define.kids,
+.rewards-define.kids header,
+.tasks-define.kids header,
+.rewards-define.kids section,
+.tasks-define.kids section {
+  display: flex;
+  justify-content: center;
+}
+
+.rewards-define.kids,
+.tasks-define.kids {
+  flex-direction: column;
+}
+
+// .rewards-define.kids header,
+// .tasks-define.kids header {
+  //  flex-direction: row;
+  //  background-color: red;
+  // border-bottom: 10px solid $colourGold;
+  // margin-bottom: 50px;
+// }
+
+.rewards-define.kids section,
+.tasks-define.kids section {
+  //  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+// LAYOUT ITEMS
+
+// main.kids {
+//   max-width: $viewWidthTablet;
+// }
+
+#tasks-define-list {
+  background-color: $colourPink;
+  min-height: 100vh;
+}
+
+.rewards-define.kids,
+.tasks-define.kids {
+
+  box-sizing: border-box;
+
+  // img.earnie {
+  // width: calc($heroWidth * 0.9);
+  // height: calc($heroHeight * 0.9);
+  // }
+  .hero {
+    display: block;
+    margin: auto;
+    padding: 1em;
+    background-color: $colourWhite;
+    border-radius: $heroRadius;
+    width: $heroWidth;
+    height: $heroHeight;
+    margin: 50px;
+  }
+
+  .audioImg {
+    width: $audioImgWidth;
+    height: $audioImgHeight;
+    border-radius: $heroRadius;
+    background-color: $colourWhite;
+    margin: 30px;
+    border: 10px solid $colourSea;
+  }
+}
+
+.rewards-define.kids {
+  background-color: $colourSky;
+}
+
+.tasks-define.kids {
+  background-color: $colourGold60;
+}
+
+.reward-define.kids section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),$backImg2;
+}
+
+.tasks-define.kids section {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),$backImg_rabbits;
+}

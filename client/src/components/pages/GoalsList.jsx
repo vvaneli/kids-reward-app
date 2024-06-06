@@ -54,7 +54,8 @@ export default function GoalsList() {
                     <p>{goalsList.ref_story.about_audio_url}</p>
                     <p>{goalsList.ref_story.scenes_narrative}</p>
                     <p>{goalsList.ref_story.scenes_narrative_audio_url}</p>
-                    <img src={goalsList.ref_story.scenes_artwork[0]} alt={goalsList.ref_story.title} />
+                    {/* //! needs to be a calculated field */}
+                    <img src={goalsList.ref_story.scenes_artwork[1]} alt={goalsList.ref_story.title} />
                     <img src={goalsList.ref_story.items_artwork[0]} alt={goalsList.ref_story.title} />
                     <h3>{goalsList.ref_rewards_define.title}</h3>
                     <p>{goalsList.ref_rewards_define.title_audio_url}</p>
@@ -62,8 +63,9 @@ export default function GoalsList() {
                     <p>{goalsList.ref_rewards_define.value}</p>
                     <p>{goalsList.ref_rewards_define.description}</p>
                     <p>{goalsList.ref_rewards_define.description_audio_url}</p>
-                    {/* <p>{goalsList.refs_assignees[0].nickname}</p> */}
-                    {/* <img src={goalsList.refs_assignees[0].image_profile} alt='' /> */}
+                    {/* //! needs to map out this field */}
+                    <p>{goalsList.refs_assignees[0].nickname}</p>
+                    <img src={goalsList.refs_assignees[0].image_profile} alt='' />
                     <Link to={`/goals/${goalsList.id}`} className=''>Details</Link>
                   </article>
                 )

@@ -106,16 +106,21 @@ export default function GoalAddNew() {
   }
 
   function handleChange(e) {
+    console.log(e.target.value)
     e.preventDefault()
     let value = e.target.value
     //   if e.target.name does include date_ (i.e. the input name contains string 'date_') then  Date(e.target.vale).toISOString().slice(0, 10),
     if (e.target.name.includes('date_')) {
       value = new Date(value).toISOString().slice(0, 10)
     }
+    if (e.target.multiple){
+      const valueOptions = ([...e.target.options].filter(option => option.selected).map(option => option.value))
+      value = [...valueOptions]
+    }
 
     setFormData({ ...formData, [e.target.name]: value })
     setFormError('')
-    console.log(formData, formError)
+    // console.log(formData, formError)
   }
 
   return (

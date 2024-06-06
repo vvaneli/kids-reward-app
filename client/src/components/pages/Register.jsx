@@ -3,6 +3,8 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { setToken } from '../../lib/auth'
 
+import logoWord from '../../assets/smelly-earnie-logo.svg'
+
 export default function Register() {
   // State variables
   const [registerFormData, setRegisterFormData] = useState({
@@ -57,8 +59,10 @@ export default function Register() {
 
   return (
     <>
-      <main id=''>
+    <div className='register'>
+      <main id='register'>
         <section className='auth-form'>
+        <img className='logo' src={logoWord} alt='Smelly Earnie logo' />
           <h1>Register</h1>
           <form onSubmit={handleRegister}>
             <label htmlFor='text'>Username</label>
@@ -81,6 +85,7 @@ export default function Register() {
           <Link to={'/login'} className='link-to'>Log in</Link>
         </section>
       </main>
+      </div>
     </>
   )
 }

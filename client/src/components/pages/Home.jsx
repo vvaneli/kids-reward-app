@@ -5,7 +5,7 @@ import { isLoggedIn } from '../../lib/auth.js'
 import { getToken } from '../../lib/auth.js'
 
 // Sub-Components
-import Nav from '../subcomponents/Nav.jsx'
+import Menu from '../subcomponents/Menu.jsx'
 
 export default function Home() {
 
@@ -40,7 +40,7 @@ export default function Home() {
   return (
     <>
       <main id='home'>
-        <Nav />
+        <Menu />
         <h1>Home</h1>
         {(!state)
           ? <h1>Hello {myAccount.nickname}</h1>

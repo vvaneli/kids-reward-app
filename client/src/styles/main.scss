@@ -1,18 +1,18 @@
-img {
-  width: 100px;
-  height: 100px;
+@import './partials/fonts.scss';
+@import './partials/colours.scss';
+@import './partials/sizes.scss';
+@import './partials/common.scss';
+@import './partials/forms.scss';
+@import './partials/youngsters.scss';
+@import './partials/bigpeople.scss';
+
+// body {
+//   // background-color: red;
+// }
+//! TEMPORARY
+
+#admin .link-to {
+  margin: 1em;
+  display: block;
+  // background-color: red;
 }
-
-// FORMS
-
-// image preview in image upload form
-// .upload-thumbnail {
-// }
-
-// error messages in forms
-// .error {
-// }
-
-// span for asterisk required field
-// .required {
-// }

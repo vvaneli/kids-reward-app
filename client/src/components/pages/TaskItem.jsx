@@ -6,7 +6,7 @@ import axios from 'axios'
 import { getToken, isLoggedIn } from '../../lib/auth.js'
 
 export default function TaskItem() {
-  const [taskItem, setTaskItem] = useState([])
+  const [taskItem, setTaskItem] = useState() // [] is truthy in py
   const [errorMsg, setErrorMsg] = useState('')
 
   let { taskId } = useParams()

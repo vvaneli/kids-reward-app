@@ -17,7 +17,7 @@ export default function TaskAddNew() {
     ref_rewards_define: Number(),
     ref_story: Number(),
   })
-  const [rewardDefineList, setRewardDefineList] = useState([])
+  // const [rewardDefineList, setRewardDefineList] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
   const [formError, setFormError] = useState('')
 

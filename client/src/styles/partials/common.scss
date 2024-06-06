@@ -1,0 +1,22 @@
+$splashMargin: 1.5em;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.hide {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+
+}
+
+a:link,
+a:hover,
+a:visited {
+  color: inherit;
+}
+

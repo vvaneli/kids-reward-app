@@ -1,0 +1,163 @@
+// FORMS
+
+// image preview in image upload form
+// .upload-thumbnail {
+// }
+
+// error messages in forms
+// .error {
+// }
+
+// span for asterisk required field
+// .required {
+// }
+
+// div.login, div.register
+
+.error, .auth-form-error {
+  display: block;
+  font-size: 0.8em;
+  font-style: italic;
+  font-weight: 700;
+  text-align: center;
+  padding: 1em 3em;
+  // min-height: 4em;
+  // background-color: red;
+  // width: 100%;
+  // display: none;
+}
+
+input, button {
+  outline: 0;
+  height: 2em;
+  display: block;
+  border: 0;
+  margin: 0 auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0.4em 1em;
+}
+
+form label {
+  display: block;
+  margin-top: 1em;
+  // background-color: red;
+}
+
+form button {
+  margin-top: em;
+  margin-bottom: 1.5em;
+  border-radius: 10px;
+  cursor: pointer;
+  opacity: 0.8;
+  // box-shadow: ;
+
+}
+
+form button:hover {
+  opacity: 1;
+}
+
+//? AUTH FORM
+
+// FLEX C
+
+.auth-form,
+#login,
+#register {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.auth-form {
+  flex-direction: column;
+}
+
+// LAYOUT ITEMS
+
+#login,
+#register {
+  background-image: $backImg1;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: calc( 100vh - $splashMargin*2);
+  box-sizing: border-box;
+  // padding: 100px;
+  margin: $splashMargin;
+}
+
+#login label,
+#register label {
+  display: none;
+}
+
+.auth-form input, .auth-form button {
+  width: 70%;
+  text-align: center;
+  margin-top: 1.5em;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.auth-form-error {
+  max-width: 50vh;
+}
+
+.auth-form button {
+  height: 3em;
+}
+
+#login input{
+  background-color: $colourSky;
+}
+
+#login button {
+  background-color: $colourGold;
+}
+
+#register input {
+  background-color: $colourGold50;
+}
+#register button {
+  background-color: $colourSea;
+}
+
+.auth-form img.logo {
+// min-width: 30vh;
+// width: 80vw;
+padding: 1.5em;
+width: 30vw;
+height: 15vh;
+// width:200px;
+margin: 0 auto;
+// background-color: red;
+}
+
+div.login, div.register {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top:0;
+}
+
+div.login {
+  background-color: $colourSea;
+}
+
+div.register {
+  background-color: $colourGold;
+}
+
+.auth-form {
+  background-color: $colourWhiteAlpha9;
+  // background-color: $colourSky;
+  // min-height: 40vh;
+  max-height: 80vh;
+  min-width: 40vw;
+  max-width: 70vw;
+  text-align: center;
+  margin-top: 10vh;
+}

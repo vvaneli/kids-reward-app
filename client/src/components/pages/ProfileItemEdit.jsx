@@ -5,7 +5,7 @@ import axios from 'axios'
 // Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
 
-export default function ProfileItem() {
+export default function ProfileItemEdit() {
   const [profileItem, setProfileItem] = useState()
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -27,7 +27,7 @@ export default function ProfileItem() {
         setErrorMsg(error.message)
       }
     }
-    getProfileItem()
+    ProfileItemEdit()
   }, [profileId])
 
   return (

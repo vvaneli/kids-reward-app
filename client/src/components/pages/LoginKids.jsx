@@ -5,7 +5,7 @@ import { setToken } from '../../lib/auth'
 
 import logoWord from '../../assets/smelly-earnie-logo.svg'
 
-export default function Login() {
+export default function LoginKids() {
 
   const [loginFormData, setLoginFormData] = useState({
     username: '',
@@ -25,7 +25,7 @@ export default function Login() {
       // setSuccessMsg(message)
       setToken(access) // save token to localStorage
       // saveMsgLogin(message)
-      navigate('/', { state: { successMsg: message } })
+      navigate('/kids/dashboard', { state: { successMsg: message } })
     } catch (error) {
       console.log(error)
       // console.log(error.response.data.message)

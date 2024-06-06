@@ -21,11 +21,11 @@ from .models import TaskDefine
 class TaskDefineIndexView_R(ListAPIView):
 	# def get(self,request):
 	# 	return Response('At task definition index view')
-	queryset = TaskDefine.objects.all()
+	# queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
-	# def get_queryset(self):
-	# 	return TaskDefine.objects.filter(Q(self.request.user.ref_head = tasks_define.ref_owner) | Q(id = 4))
+	def get_queryset(self):
+		return TaskDefine.objects.filter(Q(ref_owner__ref_head=self.request.user.ref_head))
 
 #! In TaskDefine, find items that are: Owned by people (who are) Owned by the same Group Head as me
 #! id = 4 (this is a default owner for all starter items you get by default with an account)

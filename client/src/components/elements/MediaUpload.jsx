@@ -10,8 +10,8 @@ import axios from 'axios'
 export default function MediaUpload({ formData, setFormData, fieldName }) {
 
   const [error, setError] = useState('')
-  const uploadPresent = import.meta.env.VITE_CLOUDINARY_URL // <-- TESTED WORKING
-  const uploadUrl = import.meta.env.VITE_UPLOAD_PRESET // <-- TESTED WORKING
+  const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET // <-- TESTED WORKING
+  const uploadUrl = import.meta.env.VITE_CLOUDINARY_URL // <-- TESTED WORKING
 
   async function handleMediaUpload(e) {
     console.dir(e.target)
@@ -19,8 +19,8 @@ export default function MediaUpload({ formData, setFormData, fieldName }) {
 
     const form = new FormData() // create an empty form
     form.append('file', e.target.files[0]) // append key value pair to the form
-    form.append('upload_preset', uploadPresent)
-
+    form.append('upload_preset', uploadPreset)
+console.log(uploadUrl)
     try {
       const { data } = await axios.post(uploadUrl, form) // append the form to the request body
       console.log(data.secure_url)
