@@ -1,3 +1,9 @@
+import django_on_heroku
+import os
+import environ
+env = environ.Env()
+environ.Env.read_env()
+
 """
 Django settings for project project.
 
@@ -21,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-war@-k)*1%_9827hiqim18n_k7&ibm2+k_5loe-m66^sb$28=f'
+SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -65,7 +71,8 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'client')] #Look, we have added the root folder of frontend here
+        ,
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,12 +92,17 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'smelly-earnie',
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
+  'default': {
+    'ENGINE': 'django.db.backends.postgresql',
+    'NAME': env('PGDATABASE'),
+    'USER': env('PGUSER'),
+    'PASSWORD': env('PGPASSWORD'),
+    'HOST': env('PGHOST'),
+    'PORT': env('PGPORT'),
+    'OPTIONS': {
+      'sslmode': 'require',
+    },
+  }
 }
 
 AUTH_USER_MODEL = 'users.User' # appname.ModelName
@@ -140,8 +152,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'client', "dist"),
+)
+
+django_on_heroku.settings(locals())

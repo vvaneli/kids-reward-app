@@ -57,7 +57,7 @@ export default function GoalAddNew() {
   useEffect(() => {
     async function getProfiles() {
       try {
-        const { data } = await axios.get('/api/account/group//', {
+        const { data } = await axios.get('/api/account/group/', {
           headers: {
             Authorization: `Bearer ${getToken()}`
           }

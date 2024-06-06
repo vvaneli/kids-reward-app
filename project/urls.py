@@ -1,3 +1,7 @@
+from django.contrib import admin
+from django.urls import path, include, re_path # <-- added this new import re_path
+from .views import index # <-- also new
+
 """
 URL configuration for project project.
 
@@ -28,4 +32,5 @@ urlpatterns = [
     path('api/goals/', include('goals_log.urls')),
     path('api/stories/', include('stories.urls')),
     path('api/comments/', include('comments.urls')),
+    re_path(r'^.*$', index),
 ]
