@@ -5,7 +5,7 @@ import axios from 'axios'
 // Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
 
-export default function ProfilesListKids() {
+export default function ProfilesGroupList() {
   const [profilesList, setProfilesList] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -33,23 +33,24 @@ export default function ProfilesListKids() {
       <main id='profiles-list'>
         <h1>Profiles List</h1>
         {profilesList.length > 0 ?
-              profilesList.map(profilesList => {
-                return (
-                  <article key={profilesList.id}>
-                    <h2>{profilesList.nickname}</h2>
-                    <img src={profilesList.image_profile} alt={profilesList.title} />
-                    <p>{profilesList.access_level}</p>
-                    <Link to={`/profiles/${profilesList.id}`} className=''>Details</Link>
-                  </article>
-                )
-              })
-              :
-              errorMsg ?
-                <p><em>{errorMsg}</em></p>
-                :
-                <p><em>Downloading&#8230;</em></p>
-            }
+          profilesList.map(profilesList => {
+            return (
+              <article key={profilesList.id}>
+                <h2>{profilesList.nickname}</h2>
+                <img src={profilesList.image_profile} alt={profilesList.title} />
+                <p>{profilesList.access_level}</p>
+                <Link to={`/profiles/${profilesList.id}`} className=''>Details</Link>
+              </article>
+            )
+          })
+          :
+          errorMsg ?
+            <p><em>{errorMsg}</em></p>
+            :
+            <p><em>Downloading&#8230;</em></p>
+        }
       </main>
     </>
   )
+
 }

@@ -5,16 +5,17 @@ import axios from 'axios'
 // Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
 
-export default function DashboardKids() {
+export default function KidsDashboard() {
   const [storyItem, setStoryItem] = useState()
   const [errorMsg, setErrorMsg] = useState('')
 
   let { storyId } = useParams()
 
   useEffect(() => {
-    async function getDashboardKids() {
+    async function getKidsDashboard() {
       try {
-        const { data } = await axios.get(`/api/stories/${storyId}/`, {
+        // const { data } = await axios.get(`/api/stories/${storyId}/`, {
+        const { data } = await axios.get(`/api/stories/1/`, {
           headers: {
             Authorization: `Bearer ${getToken()}`
           }
@@ -26,8 +27,9 @@ export default function DashboardKids() {
         setErrorMsg(error.message)
       }
     }
-    getDashboardKids()
-  }, [storyId])
+    getKidsDashboard()
+  }, [])
+  // }, [storyId])
 
   return (
     <>

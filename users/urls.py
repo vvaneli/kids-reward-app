@@ -9,6 +9,7 @@ urlpatterns = [
     path('register/', RegisterView.as_view()),  # /account/register/
     path('login/', TokenObtainPairView.as_view()),  # /account/login/
     path('<int:pk>/', MyProfileEditView_RUD.as_view()),  # /account/:id/
+    # path('view/<int:pk>/', MyProfileView_R.as_view()),  # /account/view/:id/
     path('group/add/', AddGroupMemberView_C.as_view()),  # /account/group/add/
     path('group/', GroupMembersIndexView_R.as_view()),  # /account/group/
     path('group/view/<int:pk>/', GroupMemberDetailView_R.as_view()),  # /account/group/view/:id/

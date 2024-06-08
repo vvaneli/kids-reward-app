@@ -16,7 +16,7 @@ class IsGroupHead(BasePermission):
 # helpers own user profile
 class IsMyProfile(BasePermission):
   def has_object_permission(self, request, view, obj):
-    print(obj.id, request.user.id)
+    # print(obj.id, request.user.id)
     if obj.id == request.user.id:
       return True
     return False

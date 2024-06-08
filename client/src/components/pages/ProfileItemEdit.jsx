@@ -27,7 +27,7 @@ export default function ProfileItemEdit() {
         setErrorMsg(error.message)
       }
     }
-    ProfileItemEdit()
+    getProfileItem()
   }, [profileId])
 
   return (

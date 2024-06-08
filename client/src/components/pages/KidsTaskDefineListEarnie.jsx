@@ -9,7 +9,7 @@ import { getToken, isLoggedIn } from '../../lib/auth.js'
 import smelly from '../../assets/smelly.svg'
 import earnie from '../../assets/earnie.svg'
 
-export default function TaskDefineListKids() {
+export default function KidsTaskDefineListEarnie() {
   const [taskDefineList, setTaskDefineList] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
 

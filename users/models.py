@@ -5,15 +5,16 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from lib.fallbacks import default_profile_image
 
 class User(AbstractUser):
-  timestamp_created = models.DateTimeField(auto_now_add=True) #! surplus column
-  nickname = models.CharField()
+  timestamp_created = models.DateTimeField(blank=True, null=True) #! surplus column to be deleted
+  # timestamp_updated = models.DateTimeField(auto_now=True)
+  nickname = models.CharField(blank=True, null=True)
+  onboarding_counter = models.IntegerField(default=0)
   legal_agree = models.BooleanField()
   # For youngsters:
   birthday = models.DateField(blank=True, null=True)
   # Access levels: new account = 0; Account owner 'Head' = 1; Editors 'Elders' = 2; Contributors 'Helpers' = 3; Viewers 'Youngsters' = 4.
   access_level = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(4)], default=0)
   image_profile = models.URLField(default=default_profile_image)
-  legal_agree = models.BooleanField()
   # one-to-many foreign key for associated account members only
   ref_head = models.ForeignKey(
     'self',

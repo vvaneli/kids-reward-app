@@ -31,3 +31,11 @@ export function isLoggedIn(){
     return false
   }
 }
+
+export function getMyProfileId(){
+  const token = getToken()
+  if (!token) return ''
+  const payloadSub = token.split('.')[1] // extract token sub (subject portion, encoded)
+  const payloadObj = JSON.parse(atob(payloadSub)) // decode the token sub, convert the JSON into an object
+  return payloadObj.user_id //return the id of the person who's logged in
+}

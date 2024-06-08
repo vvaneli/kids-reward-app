@@ -5,7 +5,7 @@ import axios from 'axios'
 // Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
 
-export default function ProfilesList() {
+export default function KidsProfilesList() {
   const [profilesList, setProfilesList] = useState([])
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -52,5 +52,4 @@ export default function ProfilesList() {
       </main>
     </>
   )
-
 }
