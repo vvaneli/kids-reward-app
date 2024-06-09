@@ -1,0 +1,89 @@
+// https://www.w3schools.com/csS/tryit.asp?filename=trycss_dropdown_navbar
+// https://www.w3schools.com/csS/css_navbar_horizontal.asp
+
+// FLEX C
+
+.dropdown-title,
+.dropdown-items .link-to,
+.dropdown,
+ul {
+  display: flex;
+}
+
+.dropdown {
+  flex-direction: column;
+}
+
+.dropdown-title,
+.dropdown-items .link-to {
+  align-content: center;
+}
+
+// SIZES
+
+.navbar {
+  width: 100vw;
+  img {
+    height: calc($navbarHeight * 0.8);
+  }
+}
+
+.dropdown-title,
+.dropdown-items .link-to,
+.navbar {
+  height: $navbarHeight;
+  display: block;
+}
+
+ul .link-to {
+
+}
+
+.dropdown-title,
+.dropdown-items .link-to {
+  width: 20vw;
+}
+
+// COLOURS
+
+.navbar {
+  background-color: $colourSky;
+}
+
+.dropdown-title {
+  background-color: green;
+}
+.dropdown-items .link-to {
+  background: red;
+  // color: red;
+
+}
+
+.dropdown-title:hover,
+.dropdown-items .link-to:hover {
+  background-color: $colourSea;
+}
+
+//LAYOUT ITEMS
+
+.navbar {
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  // margin: 0;
+  // padding: 0;
+  // overflow: hidden;
+}
+.logout {
+  cursor: pointer;
+}
+
+.dropdown-items {
+  // display: none;
+  // position: absolute;
+  // background-color: #f9f9f9;
+  // box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}

@@ -4,7 +4,8 @@ import axios from 'axios'
 import { getToken, getMyProfileId, isLoggedIn } from '../../lib/auth.js'
 
 // Sub-Components
-import Menu from '../subcomponents/Menu.jsx'
+// import Menu from '../subcomponents/Menu.jsx'
+import NavBar from '../subcomponents/NavBar.jsx'
 
 export default function Dashboard() {
 
@@ -85,7 +86,8 @@ export default function Dashboard() {
   return (
     <>
       <main id='home'>
-        <Menu />
+        <NavBar />
+        {/* <Menu /> */}
         <h1>Home</h1>
         {myAccount
           ? <h1>Hello {myAccount.nickname}</h1>

@@ -22,10 +22,10 @@ export default function Nav() {
       <h3>Define Tasks</h3>
       <Link to={'/tasks-define'} className='link-to'>Task definitions</Link>
       <Link to={'/tasks-define/add'} className='link-to'>Task definition -- form</Link>
-      <h3>Do Goals</h3>
+      <h3>Set Goals</h3>
       <Link to={'/goals'} className='link-to'>List of goals</Link>
       <Link to={'/goals/add'} className='link-to'>Set a goal -- form</Link>
-      <h3>Do Tasks</h3>
+      <h2>Log Tasks</h2>
       <Link to={'/tasks'} className='link-to'>List of tasks done</Link>
       <Link to={'/tasks/add'} className='link-to'>Add a task done -- form</Link>
       <h3>People</h3>
@@ -33,7 +33,7 @@ export default function Nav() {
       {/* <Link to={'/profiles/edit/'} className='link-to'>Edit Profile -- form</Link> */}
       <h3>Stories</h3>
       <Link to={'/stories'} className='link-to'>List of stories</Link>
-      <h2>Log Tasks</h2>
+
       <hr/>
 
       <h3>Authentication</h3>

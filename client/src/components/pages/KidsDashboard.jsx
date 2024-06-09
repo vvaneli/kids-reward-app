@@ -34,7 +34,7 @@ export default function KidsDashboard() {
   return (
     <>
       <main id='story-item'>
-        <h1>Story Item</h1>
+        <h1>Kids Dashboard</h1>
         <Link to={'/stories'}><p className=''>All Stories</p></Link>
         {storyItem ?
           <article>
