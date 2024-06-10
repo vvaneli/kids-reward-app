@@ -32,6 +32,7 @@ export function isLoggedIn(){
   }
 }
 
+// * Get user id
 export function getMyProfileId(){
   const token = getToken()
   if (!token) return ''

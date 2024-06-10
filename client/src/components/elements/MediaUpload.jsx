@@ -37,7 +37,7 @@ console.log(uploadUrl)
 // fieldName needs to resolve to the same name as DB field/column name
   return (
     <>
-      {formData[fieldName] && <img src={formData[fieldName]} className='' alt='Upload media' />}
+      {formData[fieldName] && <img src={formData[fieldName]} className='upload-thumbnail' alt='Upload media' />}
       <label hidden htmlFor={[fieldName]}>Media</label>
       <input type='file' name={[fieldName]} id={[fieldName]} onChange={handleMediaUpload}/>
       {/* {error && errors[fieldName] && <p className='error'>{errors[fieldName]}</p>} */}

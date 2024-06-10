@@ -49,6 +49,7 @@ export default function ProfilesGroupList() {
             :
             <p><em>Downloading&#8230;</em></p>
         }
+        <Link to={'/profiles/group/add'}><p className=''>Add new member</p></Link>
       </main>
     </>
   )

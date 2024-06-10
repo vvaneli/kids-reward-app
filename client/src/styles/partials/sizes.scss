@@ -1,13 +1,35 @@
 
 //! TEMPORARY CSS
-img {
-  width: 100px;
-  height: 100px;
-}
+// img {
+//   width: 100px;
+//   height: 100px;
+// }
 
-$navbarHeight: 3.2em;
 
-// YOUNGSTERS
+// @mixin for-phone {
+//   @media (max-width: 599px) { @content; }
+// }
+// @mixin for-tablet-portrait {
+//   @media (min-width: 600px) { @content; }
+// }
+// @mixin for-tablet-landscape {
+//   @media (min-width: 900px) { @content; }
+// }
+// @mixin for-desktop {
+//   @media (min-width: 1200px) { @content; }
+// }
+// @mixin for-big-desktop-up {
+//   @media (min-width: 1800px) { @content; }
+// }
+
+//? BIG PEOPLE
+
+// NAV
+$navbarHeight: 50px;
+// $navbarHeight: 3.2em;
+
+
+//? YOUNGSTERS
 
 $viewWidthTablet: 1024px;
 $viewHeightTablet: 768px;
@@ -19,4 +41,3 @@ $heroRadius: 50%;
 $audioImgWidth: calc($viewWidthTablet / 4.5);
 $audioImgHeight: calc($viewWidthTablet / 4.5);
 $heroRadius: 50%;
-

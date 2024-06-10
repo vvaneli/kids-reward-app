@@ -6,11 +6,11 @@ import axios from 'axios'
 // In the form page, add this:
 // <ImageUpload formData={formData} setFormData={setFormData} />
 
-export default function ImapeUpload({ errors, formData, setFormData, fieldName }) {
+export default function ImageUpload({ errors, formData, setFormData, fieldName }) {
 
   const [error, setError] = useState('')
-  const uploadPresent = import.meta.env.VITE_CLOUDINARY_URL // <-- TESTED WORKING
-  const uploadUrl = import.meta.env.VITE_UPLOAD_PRESET // <-- TESTED WORKING
+  const uploadPreset = import.meta.env.VITE_UPLOAD_PRESET // <-- TESTED WORKING
+  const uploadUrl = import.meta.env.VITE_CLOUDINARY_URL // <-- TESTED WORKING
 
   async function handleImageUpload(e) {
     console.dir(e.target)
@@ -18,7 +18,7 @@ export default function ImapeUpload({ errors, formData, setFormData, fieldName }
 
     const form = new FormData() // create an empty form
     form.append('file', e.target.files[0]) // append key value pair to the form
-    form.append('upload preset', uploadPresent)
+    form.append('upload_preset', uploadPreset)
 
     try {
       const { data } = await axios.post(uploadUrl, form) // append the form to the request body
@@ -33,12 +33,11 @@ export default function ImapeUpload({ errors, formData, setFormData, fieldName }
 
   return (
     <>
-      {formData.image && <img src={formData.image} className="upload-thumbnail" alt="Upload image" />}
-      <label hidden htmlFor="image">Image</label>
-      <input type="file" name="image" id="image" />
-      {error && errors.image && <p className='error'>{errors.image}</p>}
-      {/* { error && <p className='error'>{errors }</p>} */}
+      {formData[fieldName] && <img src={formData[fieldName]} className='upload-thumbnail' alt='Upload image' />}
+      <label hidden htmlFor={[fieldName]}>Media</label>
+      <input type='file' name={[fieldName]} id={[fieldName]} onChange={handleImageUpload}/>
+      {/* {error && errors[fieldName] && <p className='error'>{errors[fieldName]}</p>} */}
+      { error && <p className='error'>{error}</p>}
     </>
   )
-
 }

@@ -36,6 +36,7 @@ export default function ProfileItem() {
         <h1>Profile Item</h1>
         {/* <Link to={'/profiles'}><p className=''>All Profiles</p></Link> */}
         {profileItem ?
+        <>
           <article>
             <h2>{profileItem.nickname}</h2>
             <img src={profileItem.image_profile} alt='profile image' />
@@ -47,6 +48,10 @@ export default function ProfileItem() {
             <p>Birthday: {profileItem.birthday}</p>
             <p>Access level: {profileItem.access_level}</p>
           </article>
+          <aside>
+          <Link to={`/profiles/edit/${profileItem.id}`}>Edit</Link>
+          </aside>
+          </>
           :
           errorMsg ?
             <p><em>{errorMsg}</em></p>

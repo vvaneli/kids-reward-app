@@ -5,11 +5,19 @@ import { removeToken } from '../../lib/auth'
 import logoWord from '../../assets/smelly-earnie-logo.svg'
 import profile from '../../assets/default_profile.svg'
 import logout from '../../assets/logout_24dp_FILL0_wght400_GRAD0_opsz24.svg'
+import menuOpen from '../../assets/menu_24dp_FILL0_wght400_GRAD0_opsz24_000.svg'
+import menuClose from '../../assets/close_24dp_FILL0_wght400_GRAD0_opsz24_000.svg'
 
 export default function NavBar() {
 
   const navigate = useNavigate()
 
+  function handleMenuOpen() {
+
+  }
+  function handleMenuClose() {
+
+  }
   function handleLogOut() {
     removeToken()
     navigate('/login')
@@ -17,40 +25,50 @@ export default function NavBar() {
 
   return (
     <>
+    {/* <img className='nav-icon menu-open' src={menuOpen} alt='open menu' onClick={handleMenuOpen} /> */}
+    {/* <img className='nav-icon menu-close' src={menuClose} alt='close menu' onClick={handleMenuClose} /> */}
       <nav className="navbar" role="navigation" aria-label="main navigation">
         <ul>
-          <Link to={'/dashboard'} className='link-to'><li><img src={logoWord} alt='home' /></li></Link>
+          <li className='link-to'><Link to={'/dashboard'}><img className='nav-logo' src={logoWord} alt='home' /></Link></li>
 
-
-          <li className="dropdown">
-            <a href="javascript:void(0)" className="dropdown-title">Set</a>
+          <ul className="dropdown">
+            <p className="dropdown-title">Set</p>
             <div className="dropdown-items">
-              <Link to={'/rewards-define/add'} className='link-to'><li>Define a reward</li></Link>
-              <Link to={'/tasks-define/add'} className='link-to'><li>Define a task</li></Link>
-              <Link to={'/goals/add'} className='link-to'><li>Set a goal</li></Link>
+              <li><Link to={'/rewards-define/add'} className='link-to'>Define a reward</Link></li>
+              <li><Link to={'/tasks-define/add'} className='link-to'>Define a task</Link></li>
+              <li><Link to={'/goals/add'} className='link-to'>Set a goal</Link></li>
             </div>
-          </li>
+          </ul>
 
-          <li className="dropdown">
-            <a href="javascript:void(0)" className="dropdown-title">Ready</a>
+          <ul className="dropdown">
+            <p className="dropdown-title">Ready</p>
             <div className="dropdown-items">
-              <Link to={'/rewards-define'} className='link-to'><li>Rewards defined</li></Link>
-              <Link to={'/tasks-define'} className='link-to'><li>Tasks defined</li></Link>
-              <Link to={'/stories'} className='link-to'><li>Stories</li></Link>
+              <li><Link to={'/rewards-define'} className='link-to'>Rewards defined</Link></li>
+              <li><Link to={'/tasks-define'} className='link-to'>Tasks defined</Link></li>
+              <li><Link to={'/stories'} className='link-to'>Stories</Link></li>
             </div>
-          </li>
+          </ul>
 
-          <li className="dropdown">
-            <a href="javascript:void(0)" className="dropdown-title">Action</a>
+          <ul className="dropdown">
+            <p className="dropdown-title">Action</p>
             <div className="dropdown-items">
-              <Link to={'/tasks/add'} className='link-to'><li>Log a task</li></Link>
-              <Link to={'/tasks'} className='link-to'><li>Tasks done</li></Link>
-              <Link to={'/goals'} className='link-to'><li>Goal progress</li></Link>
+              <li><Link to={'/tasks/add'} className='link-to'>Log a task</Link></li>
+              <li><Link to={'/tasks'} className='link-to'>Tasks done</Link></li>
+              <li><Link to={'/goals'} className='link-to'>Goal progress</Link></li>
             </div>
-          </li>
-          <Link to={'/profiles'} className='link-to'><li><img src={profile} alt='profiles' /></li></Link>
-          <li className='link-to logout'><img src={logout} alt='logout' onClick={handleLogOut} /></li>
+          </ul>
 
+          <div className='spacer'></div>
+
+          {/* <div> */}
+          <li className='link-to profiles-icon'><Link to={'/profiles/group'}><img className='nav-icon' src={profile} alt='profiles' /></Link></li>
+          <li className='link-to profiles-text'><Link to={'/profiles/group'}>Profiles</Link></li>
+          {/* </div> */}
+          {/* <div> */}
+          <li className='link-to logout-icon'><img className='nav-icon logout' src={logout} alt='logout' onClick={handleLogOut} /></li>
+          <li className='link-to logout-text' onClick={handleLogOut}>Log out</li>
+
+          {/* </div> */}
         </ul>
       </nav >
     </>

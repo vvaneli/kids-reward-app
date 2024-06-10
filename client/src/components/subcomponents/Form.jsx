@@ -58,7 +58,7 @@ export default function Form({ request, fields, submit, onLoad }){
             }
 
             {/* Multi */}
-            {/* { fieldType === 'multi' &&
+            { fieldType === 'multi' &&
               <Creatable 
                 onCreateOption={(value) => {
                   setFormData({ ...formData, [fieldName]: [ ...formData[fieldName], value ]})
@@ -71,7 +71,7 @@ export default function Form({ request, fields, submit, onLoad }){
                 })}
                 isMulti={true}
               />
-            } */}
+            }
 
             {error && error[fieldName] && <p className='error'>{error[fieldName]}</p>}
           </Fragment>

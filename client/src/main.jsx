@@ -11,12 +11,13 @@ import './styles/main.scss'
 import Admin from './components/pages/Admin.jsx'  //* For AdminOnly
 import Register from './components/pages/Register.jsx'
 import Login from './components/pages/Login.jsx'
-import LoginKids from './components/pages/LoginKids.jsx' //! TO DELETE
+// import LoginKids from './components/pages/LoginKids.jsx' //! TO DELETE
 import Onboard from './components/pages/Onboard.jsx'
+import OnboardAddProfile from './components/pages/OnboardAddProfile.jsx'
 import Dashboard from './components/pages/Dashboard.jsx'
 import ProfileItem from './components/pages/ProfileItem.jsx'
 import ProfileItemEdit from './components/pages/ProfileItemEdit.jsx'
-// import ProfileGroupAdd from './components/pages/ProfileGroupAdd.jsx'
+import ProfileGroupAdd from './components/pages/ProfileGroupAdd.jsx'
 import ProfilesGroupList from './components/pages/ProfilesGroupList.jsx'
 // import ProfileGroupItem from './components/pages/ProfileGroupItem.jsx'
 // import ProfileGroupItemEdit from './components/pages/ProfileGroupItemEdit.jsx'
@@ -70,13 +71,17 @@ const router = createBrowserRouter([
         path: 'login',
         element: <Login />
       },
-      {
-        path: 'kids/login', //! TO DELETE
-        element: <LoginKids />
-      },
+      // {
+      //   path: 'kids/login', //! TO DELETE
+      //   element: <LoginKids />
+      // },
       {
         path: 'welcome',
         element: <Onboard />
+      },
+      {
+        path: 'welcome/add',
+        element: <OnboardAddProfile />
       },
       {
         path: 'dashboard/',
@@ -90,10 +95,10 @@ const router = createBrowserRouter([
         path: 'profiles/edit/:profileId',
         element: <ProfileItemEdit />
       },
-      // {
-      //   path: 'profiles/group/add',
-      //   element: <ProfileGroupAdd />
-      // },
+      {
+        path: 'profiles/group/add',
+        element: <ProfileGroupAdd />
+      },
       {
         path: 'profiles/group',
         element: <ProfilesGroupList />

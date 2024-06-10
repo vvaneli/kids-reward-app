@@ -10,10 +10,11 @@ import logoWord from '../../assets/smelly-earnie-logo.svg'
 
 export default function Login() {
 
-  const [loginFormData, setLoginFormData] = useState({
+  const [formData, setFormData] = useState({
     username: '',
     password: ''
   })
+
   const [myAccount, setMyAccount] = useState()
   const [formError, setFormError] = useState([])
   const [error, setError] = useState()
@@ -21,10 +22,10 @@ export default function Login() {
 
   const navigate = useNavigate()
 
-  async function handleLoginSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
     try {
-      const { data: { access } } = await axios.post('/api/account/login/', loginFormData)
+      const { data: { access } } = await axios.post('/api/account/login/', formData)
       // If successful:
       setToken(access) // save token to localStorage
       // navigate('/dashboard')
@@ -82,15 +83,15 @@ export default function Login() {
         return navigate('/welcome') // go to onboarding
       }
     } catch (error) {
-      console.log(error.message)
-      setError(error.message)
+      console.log(error.response)
+      setError(error.response)
     }
   }
 
   function handleChange(e) {
-    setLoginFormData({ ...loginFormData, [e.target.name]: e.target.value })
+    setFormData({ ...formData, [e.target.name]: e.target.value })
     setFormError('') // resets the error when typing into a form field
-    console.log(loginFormData, formError)
+    console.log(formData, formError)
   }
 
   return (
@@ -100,20 +101,20 @@ export default function Login() {
           <section className='auth-form'>
             <img className='logo' src={logoWord} alt='Smelly Earnie logo' />
             <h1>Log in</h1>
-            <form onSubmit={handleLoginSubmit}>
+            <form onSubmit={handleSubmit}>
               <label className='label-text' htmlFor='text'>Username</label>
-              <input className='input-text' type='text' placeholder='username' name='username' id='username' value={loginFormData.username} onChange={handleChange} required />
+              <input className='input-text' type='text' placeholder='username' name='username' id='username' value={formData.username} onChange={handleChange} required />
               {/* <label htmlFor='email'>E-mail</label>
-            <input type='email' placeholder='email' name='email' id='email' value={loginFormData.email} onChange={handleChange} required /> */}
+            <input type='email' placeholder='email' name='email' id='email' value={formData.email} onChange={handleChange} required /> */}
               <label className='label-password' htmlFor='password'>Password</label>
-              <input className='input-password' type='password' placeholder='password' name='password' id='password' value={loginFormData.password} onChange={handleChange} required />
+              <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
               <div className='auth-form-errors'>
                 {/* <FormErrors /> */}
                 {
                   formError.length > 0 ?
-                    formError.map(formError => {
+                    formError.map(formErrorItem => {
                       return (
-                        <p className='error'>{formError}</p>
+                        <p className='error'>{formErrorItem}</p>
                       )
                     })
                     :
