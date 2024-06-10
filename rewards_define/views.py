@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListCreateAPIView, ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
 # from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from .serializers.common import RewardDefineSerializer
@@ -16,7 +16,7 @@ from lib.views import ObjectOwnerView
 
 #? L1 to L4 (list: view)
 # GET (list)
-# /rewards-define
+# /api/rewards-define
 class RewardDefineIndexView_R(ListAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
@@ -30,7 +30,7 @@ class RewardDefineIndexView_R(ListAPIView):
 
 #? L1 to L4 (item: view)
 # GET (item)
-# /rewards-define/<int:pk>
+# /api/rewards-define/<int:pk>
 class RewardDefineDetailView_R(RetrieveAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
@@ -38,7 +38,7 @@ class RewardDefineDetailView_R(RetrieveAPIView):
 
 #? L1 to L2 (item: create)
 # POST
-# /rewards-define/
+# /api/rewards-define/
 class RewardDefineCreateView_C(ObjectOwnerView, CreateAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
@@ -46,8 +46,17 @@ class RewardDefineCreateView_C(ObjectOwnerView, CreateAPIView):
 
 #? L1 to L2 (item: view, update, delete)
 # GET/UPDATE/DELETE (item)
-# /rewards-define/<int:pk>
+# /api/rewards-define/<int:pk>
 class RewardDefineEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = RewardDefine.objects.all()
 	serializer_class = RewardDefineSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL2]	
+	permission_classes = [IsAuthenticated, IsUpToAccessL2]
+	
+#? New Account -- copy starter items
+# POST
+# /api/rewards-define/add-list
+class RewardDefineNewAccountListView_C(ListCreateAPIView):
+	queryset = RewardDefine.objects.all()
+	serializer_class = RewardDefineSerializer
+	permission_classes = [IsAuthenticated]
+	# permission_classes = [IsAuthenticated, IsGroupHead]

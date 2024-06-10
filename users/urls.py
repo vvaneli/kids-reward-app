@@ -3,7 +3,7 @@ from .views import RegisterView, AddGroupMemberView_C, GroupMemberDetailView_RUD
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 # This route starts with:
-#? /account/
+# /api/account/
 
 urlpatterns = [
     path('register/', RegisterView.as_view()),  # /account/register/

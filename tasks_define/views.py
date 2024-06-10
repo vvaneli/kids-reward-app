@@ -32,7 +32,7 @@ class TaskDefineIndexView_R(ListAPIView):
 
 #? L1 to L4 (item: view)
 # GET (item)
-# /tasks-define/<int:pk>
+# /api/tasks-define/<int:pk>
 class TaskDefineDetailView_R(RetrieveAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
@@ -40,7 +40,7 @@ class TaskDefineDetailView_R(RetrieveAPIView):
 
 #? L1 to L2 (item: create)
 # POST
-# /tasks-define/add/
+# /api/tasks-define/add/
 class TaskDefineCreateView_C(ObjectOwnerView, ListCreateAPIView):
   queryset = TaskDefine.objects.all()
   serializer_class = TaskDefineSerializer
@@ -49,8 +49,17 @@ class TaskDefineCreateView_C(ObjectOwnerView, ListCreateAPIView):
 
 #? L1 to L2 (item: view, update, delete)
 # GET/UPDATE/DELETE (item)
-# /tasks-define/<int:pk>
+# /api/tasks-define/<int:pk>
 class TaskDefineEditView_RUD(RetrieveUpdateDestroyAPIView):
 	queryset = TaskDefine.objects.all()
 	serializer_class = TaskDefineSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL2]
+	
+#? New Account -- copy starter items
+# POST
+# /api/tasks-define/add-list
+class TaskDefineNewAccountListView_C(ListCreateAPIView):
+	queryset = TaskDefine.objects.all()
+	serializer_class = TaskDefineSerializer
+	permission_classes = [IsAuthenticated]
+	# permission_classes = [IsAuthenticated, IsGroupHead]

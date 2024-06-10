@@ -5,9 +5,12 @@ import { getToken, getMyProfileId } from '../../lib/auth'
 
 // import Form2 from '../subcomponents/Form2'
 import profile from '../../assets/default_profile.svg'
-import arrowLeft from '../../assets/arrow_left_alt_24dp_FILL0_wght400_GRAD0_opsz24.svg'
+// import arrowLeft from '../../assets/arrow_left_alt_24dp_FILL0_wght400_GRAD0_opsz24.svg'
 import arrowRight from '../../assets/arrow_right_alt_24dp_FILL0_wght400_GRAD0_opsz24.svg'
 import ImageUpload from '../elements/ImageUpload'
+
+import { getRewardDefine1, getRewardDefine2, getRewardDefine3, getTaskDefine1, getTaskDefine2, getStory1, getStory2, getStory3} from '../elements/OnboardItems'
+// import { getRewardDefine1, getRewardDefine2, getRewardDefine3 } from '../elements/OnboardItems'
 
 export default function Onboard() {
 
@@ -19,6 +22,7 @@ export default function Onboard() {
     nickname: '',
     // username: '',
     email: '',
+    access_level: 1,
     // birthday: Date(),
     ref_head: Number(myId),
   })
@@ -29,6 +33,51 @@ export default function Onboard() {
 
   const navigate = useNavigate()
 
+  async function handleAddRewardDefItems(e) {
+    e.preventDefault()
+    try {
+      await axios.post(`/api/rewards-define/add-list/`, (getRewardDefine1, getRewardDefine2, getRewardDefine3), {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      // navigate('/welcome/add')
+    } catch (error) {
+      console.log(error.response.data.detail)
+      setFormError(error.response.data.detail)
+    }
+  }
+
+  async function handleAddTaskDefItems(e) {
+    e.preventDefault()
+    try {
+      await axios.post(`/api/tasks-define/add-list/`, (getTaskDefine1, getTaskDefine2), {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      // navigate('/welcome/add')
+    } catch (error) {
+      console.log(error.response.data.detail)
+      setFormError(error.response.data.detail)
+    }
+  }
+
+  async function handleAddStoryItems(e) {
+    e.preventDefault()
+    try {
+      await axios.post(`/api/stories/add-list/`, (getStory1, getStory2, getStory3), {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      // navigate('/welcome/add')
+    } catch (error) {
+      console.log(error.response.data.detail)
+      setFormError(error.response.data.detail)
+    }
+  }
+
   async function handleSubmit(e) {
     e.preventDefault()
     try {
@@ -37,7 +86,7 @@ export default function Onboard() {
           Authorization: `Bearer ${getToken()}`
         }
       })
-      // navigate('/dashboard')
+      navigate('/welcome/add')
     } catch (error) {
       console.log(error.response.data)
       setFormError(error.response.data)
@@ -56,6 +105,10 @@ export default function Onboard() {
     setFormError('') // resets the error when typing into a form field
     console.log(formData, formError)
   }
+
+  // function addNewAccountItems(){
+
+  // }
 
   return (
     <>
@@ -76,11 +129,11 @@ export default function Onboard() {
                   <li>Define rewards when positive tasks accumulate.</li>
                   <li>Set goals for little people to follow.</li>
                 </ul>
-                {/* <div className='onboard-nav'>
-                  <button><img src={arrowRight} alt='next' /></button>
+                <div className='onboard-nav'>
                   <div className='spacer'></div>
-                  <button><img src={arrowLeft} alt='back' /></button>
-                </div> */}
+                  <button onClick={handleAddRewardDefItems}><img src={arrowRight} alt='next' />REWARDS</button>
+                  {/* <button><img src={arrowLeft} alt='back' /></button> */}
+                </div>
               </div>
 
               <div>
@@ -91,11 +144,11 @@ export default function Onboard() {
                   <li>See a visual &lsquo;story&rsquo; that reflects their progress.</li>
                   <li>Learn to correlate their actions with outcomes.</li>
                 </ul>
-                {/* <div className='onboard-nav'>
-                  <button><img src={arrowRight} alt='next' /></button>
+                <div className='onboard-nav'>
                   <div className='spacer'></div>
-                  <button><img src={arrowLeft} alt='back' /></button>
-                </div> */}
+                  <button onClick={handleAddTaskDefItems}><img src={arrowRight} alt='next' />TASKS</button>
+                  {/* <button><img src={arrowLeft} alt='back' /></button> */}
+                </div>
               </div>
 
               <div>
@@ -107,10 +160,10 @@ export default function Onboard() {
               </div>
 
               <div className='onboard-nav'>
-                <button><img src={arrowRight} alt='next' /></button>
-                <div className='spacer'></div>
-                <button><img src={arrowLeft} alt='back' /></button>
-              </div>
+                  <div className='spacer'></div>
+                  <button onClick={handleAddStoryItems}><img src={arrowRight} alt='next' />STORIES</button>
+                  {/* <button><img src={arrowLeft} alt='back' /></button> */}
+                </div>
 
             </section>
 
@@ -138,9 +191,9 @@ export default function Onboard() {
 
                 <p><small><span className='required'>*</span> indicates a required field. You can edit these details later.</small></p>
                 <div className='onboard-nav'>
-                  <button type='submit'>Save</button>
                   <div className='spacer'></div>
-                  <button><img src={arrowLeft} alt='back' /></button>
+                  <button type='submit'>Save</button>
+                  {/* <button><img src={arrowLeft} alt='back' /></button> */}
                 </div>
               </form>
             </section>

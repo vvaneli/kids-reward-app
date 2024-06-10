@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 // Sub-Components
-import { getToken, isLoggedIn } from '../../lib/auth.js'
+import { getToken, removeToken } from '../../lib/auth.js'
 
 export default function ProfileItem() {
   const [profileItem, setProfileItem] = useState()
   const [errorMsg, setErrorMsg] = useState('')
 
   let { profileId } = useParams()
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     async function getProfileItem() {
@@ -24,11 +26,28 @@ export default function ProfileItem() {
         setProfileItem(data)
       } catch (error) {
         console.log(error.message)
-        setErrorMsg(error.message)
+        setErrorMsg(error.message) // outputs: 'Request failed with status code ...'
       }
     }
     getProfileItem()
   }, [profileId])
+
+  // Delete account
+  async function deleteAccount(e) {
+    e.preventDefault()
+    try {
+      await axios.delete(`/api/account/${profileId}/`, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      removeToken()
+      navigate('/')
+    } catch (error) {
+      console.log(error.message)
+      setErrorMsg(error.message)
+    }
+  }
 
   return (
     <>
@@ -36,21 +55,21 @@ export default function ProfileItem() {
         <h1>Profile Item</h1>
         {/* <Link to={'/profiles'}><p className=''>All Profiles</p></Link> */}
         {profileItem ?
-        <>
-          <article>
-            <h2>{profileItem.nickname}</h2>
-            <img src={profileItem.image_profile} alt='profile image' />
-            <p>Nickname: {profileItem.nickname}</p>
-            <p>Username: {profileItem.username}</p>
-            <p>Email: {profileItem.email}</p>
-            <p>First name: {profileItem.first_name}</p>
-            <p>Last name:{profileItem.last_name}</p>
-            <p>Birthday: {profileItem.birthday}</p>
-            <p>Access level: {profileItem.access_level}</p>
-          </article>
-          <aside>
-          <Link to={`/profiles/edit/${profileItem.id}`}>Edit</Link>
-          </aside>
+          <>
+            <article>
+              <h2>{profileItem.nickname}</h2>
+              <img src={profileItem.image_profile} alt='profile image' />
+              <p>Nickname: {profileItem.nickname}</p>
+              <p>Username: {profileItem.username}</p>
+              <p>Email: {profileItem.email}</p>
+              <p>First name: {profileItem.first_name}</p>
+              <p>Last name:{profileItem.last_name}</p>
+              <p>Birthday: {profileItem.birthday}</p>
+              <p>Access level: {profileItem.access_level}</p>
+            </article>
+            <aside>
+              <Link to={`/profiles/edit/${profileItem.id}`}>Edit</Link>
+            </aside>
           </>
           :
           errorMsg ?
@@ -59,6 +78,9 @@ export default function ProfileItem() {
             <p><em>Downloading&#8230;</em></p>
         }
       </main>
+      <section className='account-delete'>
+        <button type='button' onClick={deleteAccount}>Delete Account</button>
+      </section>
     </>
   )
 

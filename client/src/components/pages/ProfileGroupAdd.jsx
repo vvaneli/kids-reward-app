@@ -49,7 +49,7 @@ export default function ProfileGroupAdd() {
       }
     } catch (error) {
       console.log(error)
-      console.log(error.response.data)
+      console.log(error.response)
       if (error.response) {
         const addError = []
         if (error.response.data.username !== undefined) { addError.push(error.response.data.username[0]) }
