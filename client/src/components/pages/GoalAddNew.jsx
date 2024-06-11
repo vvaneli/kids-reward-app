@@ -18,7 +18,7 @@ export default function GoalAddNew() {
     image1: '',
     notes: '',
     refs_assignees: [],
-    ref_rewards_define: '',
+    ref_reward_define: '',
     ref_story: '',
   })
 

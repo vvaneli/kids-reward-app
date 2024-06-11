@@ -34,8 +34,8 @@ export default function NavBar() {
           <ul className="dropdown">
             <p className="dropdown-title">Set</p>
             <div className="dropdown-items">
-              <li><Link to={'/rewards-define/add'} className='link-to'>Define a reward</Link></li>
-              <li><Link to={'/tasks-define/add'} className='link-to'>Define a task</Link></li>
+              {/* <li><Link to={'/rewards-define/add'} className='link-to'>Define a reward</Link></li> */}
+              {/* <li><Link to={'/tasks-define/add'} className='link-to'>Define a task</Link></li> */}
               <li><Link to={'/goals/add'} className='link-to'>Set a goal</Link></li>
             </div>
           </ul>
@@ -62,7 +62,7 @@ export default function NavBar() {
 
           {/* <div> */}
           <li className='link-to profiles-icon'><Link to={'/profiles/group'}><img className='nav-icon' src={profile} alt='profiles' /></Link></li>
-          <li className='link-to profiles-text'><Link to={'/profiles/group'}>Profiles</Link></li>
+          <li className='link-to profiles-text'><Link to={'/profiles/group'}>People</Link></li>
           {/* </div> */}
           {/* <div> */}
           <li className='link-to logout-icon'><img className='nav-icon logout' src={logout} alt='logout' onClick={handleLogOut} /></li>

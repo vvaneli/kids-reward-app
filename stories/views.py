@@ -1,8 +1,10 @@
 # from django.shortcuts import render
-from rest_framework.generics import ListAPIView, RetrieveAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from django.db.models import Q
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .serializers.common import StorySerializer
-from lib.permissions import IsUpToAccessL4_ViewOnly, IsGroupHead
+from lib.permissions import IsUpToAccessL4_ViewOnly, IsUpToAccessL3, IsGroupHead, IsAccessL0
+from lib.views import ObjectOwnerView
 from .models import Story
 
 # PERMISSIONS:
@@ -19,42 +21,43 @@ from .models import Story
 # GET (list)
 # /api/stories
 class StoryIndexView_R(ListAPIView):
-	queryset = Story.objects.all()
-	serializer_class = StorySerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	# queryset = Story.objects.all()
+	serializer_class = StorySerializer
+	def get_queryset(self):
+		return Story.objects.filter(Q(ref_owner__ref_head=self.request.user.ref_head))
 
 #? L1 to L4 -- Get single story
 # GET (single)
 # /api/stories/<int:pk>
 class StoryDetailView_R(RetrieveAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	queryset = Story.objects.all()
 	# queryset = Story.objects.filter()
 	# queryset = GoalLog.objects.filter()
 	serializer_class = StorySerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	
 #? New Account -- copy starter items
 # POST
-# /api/stories/add-list
-class StoryNewAccountListView_C(ListCreateAPIView):
+# /api/stories/add
+class StoryNewAccountListView_C(ObjectOwnerView, CreateAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL3]
 	queryset = Story.objects.all()
 	serializer_class = StorySerializer
-	permission_classes = [IsAuthenticated]
 	# permission_classes = [IsAuthenticated, IsGroupHead]
 	
 #? Admin -- post stories
 # POST
 # /api/stories/admin
 class StoryAdminListView_C(ListCreateAPIView):
+	permission_classes = [IsAdminUser]
 	queryset = Story.objects.all()
 	serializer_class = StorySerializer
-	permission_classes = [IsAdminUser]
 
 #? Admin -- post stories
 # POST
 # /api/stories/admin/<int:pk>
 class StoryAdminDetailView_RUD(RetrieveUpdateDestroyAPIView):
+	permission_classes = [IsAdminUser]
 	queryset = Story.objects.all()
 	serializer_class = StorySerializer
-	permission_classes = [IsAdminUser]
-	# permission_classes = [IsAuthenticated, IsAdminUser]

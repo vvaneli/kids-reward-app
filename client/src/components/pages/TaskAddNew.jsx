@@ -1,21 +1,21 @@
 import axios from 'axios'
 // import Form from '../subcomponents/Form'
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { getToken } from '../../lib/auth'
+import MediaUpload from '../elements/MediaUpload'
 
 export default function TaskAddNew() {
 
+  const today = new Date().toISOString().slice(0, 10);
+
   const [formData, setFormData] = useState({
-    title: '',
-    title_audio_url: '',
-    date_start: new Date(),
-    date_end: Date(),
     image1: '',
+    image2: '',
     notes: '',
     refs_assignees: [],
-    ref_rewards_define: Number(),
-    ref_story: Number(),
+    ref_task_define: Number(),
+    ref_goal_log: Number(),
   })
   // const [rewardDefineList, setRewardDefineList] = useState([])
   const [errorMsg, setErrorMsg] = useState('')

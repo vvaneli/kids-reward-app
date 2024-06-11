@@ -36,7 +36,17 @@ export default function Onboard() {
   async function handleAddRewardDefItems(e) {
     e.preventDefault()
     try {
-      await axios.post(`/api/rewards-define/add-list/`, (getRewardDefine1, getRewardDefine2, getRewardDefine3), {
+      await axios.post(`/api/rewards-define/add-list/`, getRewardDefine1, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      await axios.post(`/api/rewards-define/add-list/`, getRewardDefine2, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      await axios.post(`/api/rewards-define/add-list/`, getRewardDefine3, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }
@@ -51,7 +61,12 @@ export default function Onboard() {
   async function handleAddTaskDefItems(e) {
     e.preventDefault()
     try {
-      await axios.post(`/api/tasks-define/add-list/`, (getTaskDefine1, getTaskDefine2), {
+      await axios.post(`/api/tasks-define/add/`, getTaskDefine1, {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      await axios.post(`/api/tasks-define/add/`, getTaskDefine2, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }
@@ -66,7 +81,17 @@ export default function Onboard() {
   async function handleAddStoryItems(e) {
     e.preventDefault()
     try {
-      await axios.post(`/api/stories/add-list/`, (getStory1, getStory2, getStory3), {
+      await axios.post(`/api/stories/add/`, (getStory1), {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      await axios.post(`/api/stories/add/`, (getStory2), {
+        headers: {
+          Authorization: `Bearer ${getToken()}`
+        }
+      })
+      await axios.post(`/api/stories/add/`, (getStory3), {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }
@@ -97,7 +122,7 @@ export default function Onboard() {
     console.log(e.target.value)
     e.preventDefault()
     let value = e.target.value
-    if (e.target.name.includes('birthday' || 'date_')) {
+    if (e.target.name.includes('birthday')) {
       value = new Date(value).toISOString().slice(0, 10)
     }
     setFormData({ ...formData, [e.target.name]: value })

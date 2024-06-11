@@ -4,7 +4,7 @@ export default function OnboardAddProfile() {
 
   const AddL4a = {
     'h2': 'Add a youngster',
-    'p1': 'Your profile is all set up.',
+    'p1': 'Your profile is saved.',
     'p2': 'It\'s unusually quiet around here. Let\'s add a youngster...',
     // 'img1': ''
   }
@@ -42,10 +42,11 @@ export default function OnboardAddProfile() {
           <p>{AddL4a.p1}</p>
           <p>{AddL4a.p2}</p>
           {/* <img src='' alt='' /> */}
-          <div className='onboard-nav'>
-            <button>Next</button>
             <button onClick={goToProfileGroupAdd}>Add</button>
+          <div className='onboard-nav'>
+            {/* <button>Next</button> */}
             {/* <Link to={`/profiles/group/add`} className='' onClick={goToProfileGroupAdd}>Add</Link> */}
+            <Link to={`/dashboard`} className=''>Done</Link>
             <div className='spacer'></div>
             <button>Later</button>
           </div>

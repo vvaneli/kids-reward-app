@@ -44,27 +44,27 @@ class RegisterView(CreateAPIView):
 # GET/UPDATE/DELETE (my item)
 # /api/account/<int:pk>
 class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL3, IsMyProfile]
 	queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL3, IsMyProfile]
 	# permission_classes = [IsAuthenticated, IsUpToAccessL3]
 
 #? L1 to L2 Register another member view:
 # POST (item)
 # /api/account/add
 class AddGroupMemberView_C(GroupHeadView, CreateAPIView):
+  permission_classes = [IsAuthenticated, IsUpToAccessL2]
   queryset = User.objects.all()
   serializer_class = RegisterSerializer
   # serializer_class = UpdateProfileSerializer
-  permission_classes = [IsAuthenticated, IsUpToAccessL2]
 
 #? L1 to L4 Profile view (list: view only)
 # GET (list)
 # /api/account/group/
 class GroupMembersIndexView_R(ListAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	# Only see members from my own group
 	def get_queryset(self):
 		return User.objects.filter(Q(ref_head=self.request.user.ref_head) | Q(ref_head=self.request.user.id))
@@ -73,9 +73,9 @@ class GroupMembersIndexView_R(ListAPIView):
 # GET (item)
 # /api/account/group/view/<int:pk>
 class GroupMemberDetailView_R(RetrieveAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	# Only see members from my own group
 	def get_queryset(self):
 		return User.objects.filter(Q(ref_head=self.request.user.ref_head) | Q(ref_head=self.request.user.id))
@@ -84,9 +84,9 @@ class GroupMemberDetailView_R(RetrieveAPIView):
 # GET/UPDATE/DELETE (member item)
 # /api/account/group/edit/<int:pk>
 class GroupMemberDetailView_RUD(RetrieveUpdateDestroyAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL2]
 	# queryset = User.objects.all()
 	serializer_class = UserSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL2]
 	# Only see members from my own group
 	def get_queryset(self):
 		return User.objects.filter(Q(ref_head=self.request.user.ref_head) | Q(ref_head=self.request.user.id))

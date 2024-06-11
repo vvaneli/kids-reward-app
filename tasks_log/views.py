@@ -1,4 +1,5 @@
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView, RetrieveUpdateDestroyAPIView
+from django.db.models import Q
 from rest_framework.permissions import IsAuthenticated
 from lib.views import ObjectOwnerView
 from .serializers.common import TaskLogSerializer
@@ -26,9 +27,11 @@ from lib.permissions import IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 # GET (list)
 # /tasks
 class TaskLogIndexView_R(ListAPIView):
-	queryset = TaskLog.objects.all()
+	# queryset = TaskLog.objects.all()
 	# serializer_class = TaskLogSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	def get_queryset(self):
+		return TaskLog.objects.filter(Q(ref_owner__ref_head=self.request.user.ref_head))
 	def get_serializer_class(self):
 		if self.request.method == 'GET':
 			return  PopulatedTaskLogSerializer
@@ -38,9 +41,9 @@ class TaskLogIndexView_R(ListAPIView):
 # GET (item)
 # /tasks/view/<int:pk>
 class TaskLogDetailView_R(RetrieveAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	queryset = TaskLog.objects.all()
 	# serializer_class = TaskLogSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
 	def get_serializer_class(self):
 		if self.request.method == 'GET':
 			return  PopulatedTaskLogSerializer
@@ -50,17 +53,17 @@ class TaskLogDetailView_R(RetrieveAPIView):
 # POST (item)
 # /tasks/add
 class TaskLogCreateView_C(ObjectOwnerView, CreateAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL3]
 	queryset = TaskLog.objects.all()
 	serializer_class = TaskLogSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL3]
 
 #? L1 to L3: (item: get, edit, delete)
 # GET/UPDATE/DELETE (item)
 # /tasks/<int:pk>
 class TaskLogEditlView_RUD(RetrieveUpdateDestroyAPIView):
+	permission_classes = [IsAuthenticated, IsUpToAccessL3]
 	queryset = TaskLog.objects.all()
 	# serializer_class = TaskLogSerializer
-	permission_classes = [IsAuthenticated, IsUpToAccessL3]
 	def get_serializer_class(self):
 		if self.request.method == 'GET':
 			return  PopulatedTaskLogSerializer
