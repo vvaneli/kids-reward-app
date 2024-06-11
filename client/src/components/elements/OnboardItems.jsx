@@ -40,18 +40,21 @@ export const getTaskDefine3 = {
 // STORIES
 
 export const getStory1 = {
+  "sku": 1,
   "title": "Aquarium",
   "about": "To get this reward, prepare this aquarium for animals. Earn stars to do it.",
   "steps": 11,
   "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress11.png\"]",
 }
 export const getStory2 = {
+  "sku": 2,
   "title": "Stickers",
   "about": "To get this reward, fill in this sheet of stickers. Earn stars to do it.",
   "steps": 11,
   "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress11.png\"]",
 }
 export const getStory3 = {
+  "sku": 3,
   "title": "Dinosaurs",
   "about": "To get this reward, collect all the dinosaur cards. Earn stars to do it.",
   "steps": 11,

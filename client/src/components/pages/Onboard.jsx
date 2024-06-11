@@ -3,14 +3,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, getMyProfileId } from '../../lib/auth'
 
-// import Form2 from '../subcomponents/Form2'
 import profile from '../../assets/default_profile.svg'
 // import arrowLeft from '../../assets/arrow_left_alt_24dp_FILL0_wght400_GRAD0_opsz24.svg'
 import arrowRight from '../../assets/arrow_right_alt_24dp_FILL0_wght400_GRAD0_opsz24.svg'
 import ImageUpload from '../elements/ImageUpload'
 
 import { getRewardDefine1, getRewardDefine2, getRewardDefine3, getTaskDefine1, getTaskDefine2, getStory1, getStory2, getStory3} from '../elements/OnboardItems'
-// import { getRewardDefine1, getRewardDefine2, getRewardDefine3 } from '../elements/OnboardItems'
+
+//! NEED TO ADD OWNER TO STORY MODEL, THEN FILTER BY OWNER
 
 export default function Onboard() {
 

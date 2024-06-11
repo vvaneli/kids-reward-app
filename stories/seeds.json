@@ -3,85 +3,95 @@
     "model": "stories.story",
     "pk": 1,
     "fields": {
+      "sku": 1,
       "title": "Aquarium",
-      "title_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627748/smelly-earnie/example/audio/aquarium.wav\"]",
+      "title_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627748/smelly-earnie/example/audio/aquarium.wav",
       "about": "To get this reward, prepare this aquarium for animals. Earn stars to do it.",
-      "about_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627748/smelly-earnie/example/audio/aquarium-2.wav\"]",
+      "about_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627748/smelly-earnie/example/audio/aquarium-2.wav",
       "steps": 11,
       "scenes_narrative": "[]",
       "scenes_narrative_audio": null,
       "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story1_progress11.png\"]",
       "items_artwork": "[]",
       "is_archived": false,
-      "is_hidden": false
+      "is_hidden": false,
+      "ref_owner": 1
     }
   },
   {
     "model": "stories.story",
     "pk": 2,
     "fields": {
+      "sku": 2,
       "title": "Stickers",
-      "title_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627766/smelly-earnie/example/audio/stickers.wav\"]",
+      "title_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627766/smelly-earnie/example/audio/stickers.wav",
       "about": "To get this reward, fill in this sheet of stickers. Earn stars to do it.",
-      "about_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627766/smelly-earnie/example/audio/stickers-2.wav\"]",
+      "about_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627766/smelly-earnie/example/audio/stickers-2.wav",
       "steps": 11,
       "scenes_narrative": "[]",
       "scenes_narrative_audio": null,
       "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story2_progress11.png\"]",
       "items_artwork": "[]",
       "is_archived": false,
-      "is_hidden": false
+      "is_hidden": false,
+      "ref_owner": 1
     }
   },
   {
     "model": "stories.story",
     "pk": 3,
     "fields": {
-      "title": "Dress for school",
-      "title_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627753/smelly-earnie/example/audio/dress-for-school.wav\"]",
-      "about": "To get this reward, help me get dressed for school. Earn stars to do it.",
-      "about_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627753/smelly-earnie/example/audio/dress-for-school-2.wav\"]",
-      "steps": 11,
-      "scenes_narrative": "[]",
-      "scenes_narrative_audio": null,
-      "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress11.png\"]",
-      "items_artwork": "[]",
-      "is_archived": false,
-      "is_hidden": false
-    }
-  },
-  {
-    "model": "stories.story",
-    "pk": 4,
-    "fields": {
-      "title": "Shy animals",
-      "title_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627763/smelly-earnie/example/audio/shy-animals.wav\"]",
-      "about": "To get this reward, find all the animals hiding in this picture. Earn stars to do it.",
-      "about_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627763/smelly-earnie/example/audio/shy-animals-2.wav\"]",
-      "steps": 11,
-      "scenes_narrative": "[]",
-      "scenes_narrative_audio": null,
-      "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress11.png\"]",
-      "items_artwork": "[]",
-      "is_archived": false,
-      "is_hidden": false
-    }
-  },
-  {
-    "model": "stories.story",
-    "pk": 5,
-    "fields": {
+      "sku": 3,
       "title": "Dinosaurs",
-      "title_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627751/smelly-earnie/example/audio/dinosaurs.wav\"]",
+      "title_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627751/smelly-earnie/example/audio/dinosaurs.wav",
       "about": "To get this reward, collect all the dinosaur cards. Earn stars to do it.",
-      "about_audio_url": "[\"https://res.cloudinary.com/vli/video/upload/v1717627751/smelly-earnie/example/audio/dinosaurs-2.wav\"]",
+      "about_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627751/smelly-earnie/example/audio/dinosaurs-2.wav",
       "steps": 11,
       "scenes_narrative": "[]",
       "scenes_narrative_audio": null,
       "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story5_progress11.png\"]",
       "items_artwork": "[]",
       "is_archived": false,
-      "is_hidden": false
+      "is_hidden": false,
+      "ref_owner": 1
+    }
+  },
+  {
+    "model": "stories.story",
+    "pk": 4,
+    "fields": {
+      "sku": 4,
+      "title": "Dress for school",
+      "title_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627753/smelly-earnie/example/audio/dress-for-school.wav",
+      "about": "To get this reward, help me get dressed for school. Earn stars to do it.",
+      "about_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627753/smelly-earnie/example/audio/dress-for-school-2.wav",
+      "steps": 11,
+      "scenes_narrative": "[]",
+      "scenes_narrative_audio": null,
+      "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story3_progress11.png\"]",
+      "items_artwork": "[]",
+      "is_archived": false,
+      "is_hidden": false,
+      "ref_owner": 1
+    }
+  },
+  {
+    "model": "stories.story",
+    "pk": 5,
+    "fields": {
+      "sku": 5,
+      "title": "Shy animals",
+      "title_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627763/smelly-earnie/example/audio/shy-animals.wav",
+      "about": "To get this reward, find all the animals hiding in this picture. Earn stars to do it.",
+      "about_audio_url": "https://res.cloudinary.com/vli/video/upload/v1717627763/smelly-earnie/example/audio/shy-animals-2.wav",
+      "steps": 11,
+      "scenes_narrative": "[]",
+      "scenes_narrative_audio": null,
+      "scenes_artwork": "[\"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress-1.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress00.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress01.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress02.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress03.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress04.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress05.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress06.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress07.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress08.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress09.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress10.png\", \"https://res.cloudinary.com/vli/image/upload/v1717424097/smelly-earnie/stories/story4_progress11.png\"]",
+      "items_artwork": "[]",
+      "is_archived": false,
+      "is_hidden": false,
+      "ref_owner": 1
     }
   }
 ]
