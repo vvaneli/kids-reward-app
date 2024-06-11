@@ -16,10 +16,12 @@ class Story(models.Model):
   items_artwork = ArrayField(models.TextField(blank=True, null=True),  null=True, blank=True)
   is_archived = models.BooleanField(default=False)
   is_hidden = models.BooleanField(default=False)
-  ref_owner = models.ManyToManyField(
+  ref_owner = models.ForeignKey(
     to='users.User',
     related_name='stories',
-  )
+    on_delete=models.SET_NULL,
+    blank=True, null=True
+    )
 
   def __str__(self):
     return f'{self.title}, steps: {self.steps}'
