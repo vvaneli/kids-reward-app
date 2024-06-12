@@ -14,8 +14,8 @@ export default function GoalAddNew() {
     title: '',
     title_audio_url: '',
     date_start: today,
-    date_end: undefined,
-    image1: '',
+    date_end: undefined, // so an end date is not compulsory
+    image1: undefined, // so when image is not povided, DB default will be used
     notes: '',
     refs_assignees: [],
     ref_reward_define: '',
@@ -135,7 +135,7 @@ export default function GoalAddNew() {
           {/* title_audio_url */}
           {/* <label htmlFor='title_audio_url'>Audio file of spoken title</label>
           <input type='text' id='title_audio_url' name='title_audio_url' value={formData.title_audio_url} onChange={handleChange} /> */}
-          <MediaUpload formData={formData} setFormData={setFormData} fieldName={'title_audio_url'} />
+          {/* <MediaUpload formData={formData} setFormData={setFormData} fieldName={'title_audio_url'} /> */}
 
           {/* date_start */}
           <label htmlFor='date_start'>Goal start date<span className='required'>*</span></label>
@@ -147,6 +147,7 @@ export default function GoalAddNew() {
           {/* image1 */}
           {/* <label htmlFor='image1'>Image</label>
           <input type='text' id='image1' name='image1' value={formData.image1} onChange={handleChange} /> */}
+          <p>Add an image:</p>
           <MediaUpload formData={formData} setFormData={setFormData} fieldName={'image1'} />
 
           {/* notes */}
@@ -156,11 +157,14 @@ export default function GoalAddNew() {
           {/* refs_assignees */}
           <label htmlFor='refs_assignees'>Set goal for</label>
           {profilesList.length > 0 ?
-            <select multiple value={formData.refs_assignees} name='refs_assignees' id='refs_assignees' onChange={handleChange}>
+            <select multiple value={formData.refs_assignees} name='refs_assignees' id='refs_assignees' onChange={handleChange} required>
               <option value='' disabled>Pick a person</option>
               {profilesList.map(profileItem => {
                 return (
+                  profileItem.access_level === 4 ?
                   <option key={profileItem.id} value={profileItem.id}>{profileItem.nickname}</option>
+                  :
+                  <option disabled >No youngsters found</option>
                 )
               })}
             </select>
@@ -171,10 +175,10 @@ export default function GoalAddNew() {
               <option>Getting list of people&#8230;</option>
           }
 
-          {/* ref_rewards_define */}
-          <label htmlFor='ref_rewards_define'>Reward if goal is achieved</label>
+          {/* ref_reward_define */}
+          <label htmlFor='ref_reward_define'>Reward if goal is achieved</label>
           {rewardDefineList.length > 0 ?
-            <select value={formData.ref_rewards_define} name='ref_rewards_define' id='ref_rewards_define' onChange={handleChange}>
+            <select value={formData.ref_reward_define} name='ref_reward_define' id='ref_reward_define' onChange={handleChange} required>
               <option value='' disabled>Pick a reward</option>
               {rewardDefineList.map(rewardDefineItem => {
                 return (
@@ -192,8 +196,8 @@ export default function GoalAddNew() {
           {/* ref_story */}
           <label htmlFor='ref_story'>Story</label>
           {storiesList.length > 0 ?
-            <select value={formData.ref_story} name='ref_story' id='ref_story' onChange={handleChange}>
-              <option value='' disabled>Pick an story</option>
+            <select value={formData.ref_story} name='ref_story' id='ref_story' onChange={handleChange} required>
+              <option value='' disabled>Pick a story</option>
               {storiesList.map(storyItem => {
                 return (
                   <option key={storyItem.id} value={storyItem.id}>{storyItem.title}</option>

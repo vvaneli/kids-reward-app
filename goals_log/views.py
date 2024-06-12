@@ -64,7 +64,11 @@ class GoalLogCreateView_C(ObjectOwnerView, CreateAPIView):
 class GoalLogDetailView_RUD(RetrieveUpdateDestroyAPIView):
 	permission_classes = [IsAuthenticated, IsUpToAccessL2]
 	queryset = GoalLog.objects.all()
-	serializer_class = GoalLogSerializer
+	# serializer_class = GoalLogSerializer
+	def get_serializer_class(self):
+		if self.request.method == 'GET':
+			return  PopulatedGoalLogSerializer
+		return GoalLogSerializer
 	# def get_serializer_class(self):
   #   if self.request.method == 'GET' or 'POST' or 'PUT' or 'PATCH':
   #     return  PopulatedGoalLogSerializer

@@ -19,7 +19,7 @@ export default function ProfileGroupAdd() {
     image_profile: undefined, // so when image is not povided, DB default will be used
     first_name: '',
     last_name: '',
-    birthday: undefined,
+    birthday: Date(),
     access_level: Number(),
     legal_agree: Boolean(),
   })
@@ -194,7 +194,7 @@ export default function ProfileGroupAdd() {
               <div className='form-field-group'>
                 {/* <p>Access level: {profileItem.access_level}</p> */}
                 <p>Account type:</p>
-                {/* {profileItem.access_level === 1 ?
+                {profileItem.access_level === 1 ?
                   <>
                     <p><strong>You are the head owner of this group.</strong></p>
                     <ul>
@@ -204,16 +204,16 @@ export default function ProfileGroupAdd() {
                     </ul>
                   </>
                   :
-                  <> */}
+                  <>
                     <label htmlFor='access_level' hidden></label>
-                    <select value={formData.access_level} name='access_level' id='access_level' onChange={handleChange} required>
-                      <option value='' >Pick an account type</option>
+                    <select value={profileItem.access_level} name='access_level' id='access_level' onChange={handleChange}>
+                      <option value={profileItem.access_level} >Pick an account type</option>
                       <option key='2' value='2' disabled>Elder</option>
                       <option key='3' value='3' disabled>Helper</option>
-                      <option key='4' value='4'>Youngster</option>
+                      {/* <option key='4' value='4'>Youngster</option> */}
                     </select>
-                  {/* </>
-                } */}
+                  </>
+                }
               </div>
             </>
           }

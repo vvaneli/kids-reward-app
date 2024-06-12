@@ -3,9 +3,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, getMyProfileId, isLoggedIn } from '../../lib/auth.js'
 
-// Sub-Components
-// import Menu from '../subcomponents/Menu.jsx'
-import NavBar from '../subcomponents/NavBar.jsx'
+import smelly from '../../assets/smelly.svg'
+import earnie_blink from '../../assets/earnie.svg'
+import earnie from '../../assets/earnie2.svg'
+
 
 export default function Dashboard() {
 
@@ -19,7 +20,7 @@ export default function Dashboard() {
     const myId = getMyProfileId()
     async function getAccount() {
       try {
-        const { data: { id, username, nickname, first_name, last_name, email, access_level, image_profile, birthday, ref_head, onboarding_counter  } } = await axios.get(`/api/account/group/view/${myId}/`, {
+        const { data: { id, username, nickname, first_name, last_name, email, access_level, image_profile, birthday, ref_head, onboarding_counter } } = await axios.get(`/api/account/group/view/${myId}/`, {
           headers: {
             Authorization: `Bearer ${getToken()}`
           }
@@ -47,9 +48,9 @@ export default function Dashboard() {
     getAccount()
   }, [])
 
-  function goToNextPage(){
+  function goToNextPage() {
 
-    console.log('access_level: ', myAccount.access_level , '| onboarding_counter: ', myAccount.onboarding_counter)
+    console.log('access_level: ', myAccount.access_level, '| onboarding_counter: ', myAccount.onboarding_counter)
     // Go to which page...
     if (myAccount.access_level === 4) {
       console.log('hit L4')
@@ -59,11 +60,11 @@ export default function Dashboard() {
       console.log('smelly')
       navigate('/kids/tasks-define-smelly')
     }
-    if ((myAccount.access_level === 3|2|1) & (myAccount.onboarding_counter <= 0)) {
+    if ((myAccount.access_level === 3 | 2 | 1) & (myAccount.onboarding_counter <= 0)) {
       console.log('fallback to onboarding')
       navigate('/welcome') // go to onboarding
     }
-  
+
   }
 
   // async function nextPageRouting() {
@@ -85,16 +86,31 @@ export default function Dashboard() {
 
   return (
     <>
-      <main id='home'>
-        <NavBar />
-        {/* <Menu /> */}
-        <h1>Home</h1>
-        {myAccount
-          ? <h1>Hello {myAccount.nickname}</h1>
-          : <p>{error}</p>
-        }
-        {error && <p>{error}</p>}
-      </main>
+      <div className='wrapper'>
+        <header>
+          <h1>Home</h1>
+          {myAccount
+            ? <h1>Hello, {myAccount.nickname}</h1>
+            : <p>{error}</p>
+          }
+          {error && <p>{error}</p>}
+        </header>
+        <main id='home'>
+          <div>
+            <h2>Log a task done</h2>
+            <button><Link to={`/tasks/add`} className=''><img src={smelly} alt='smelly' />+ Smelly</Link></button>
+            <button><Link to={`/tasks/add`} className=''>
+              {/* <img className='no-hover' src={earnie} alt='earnie' /> */}
+              <img className='hover' src={earnie_blink} alt='earnie' />
+              + Earnie</Link>
+            </button>
+          </div>
+          <div>
+            <h2>Goal progress</h2>
+
+          </div>
+        </main>
+      </div>
     </>
   )
 

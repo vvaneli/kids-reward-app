@@ -33,30 +33,30 @@ export default function TasksList() {
       <main id='tasks-list'>
         <h1>Tasks</h1>
         {tasksList.length > 0 ?
-              tasksList.map(tasksList => {
+              tasksList.map(taskItem => {
                 return (
-                  <article key={tasksList.id}>
-                    <h2>{tasksList.ref_task_define.title}</h2>
-                    <p>{tasksList.ref_task_define.title_audio_url}</p>
-                    <img src={tasksList.image1} alt={tasksList.title} />
-                    <img src={tasksList.ref_task_define.image1} alt={tasksList.ref_task_definetitle} />
-                    <img src={tasksList.image2} alt={tasksList.title} />
-                    <p>{tasksList.timestamp_created}</p>
-                    <p>{tasksList.notes}</p>
-                    <p>{tasksList.ref_task_define.description}</p>
-                    <p>{tasksList.ref_task_define.description_audio_url}</p>
-                    <p>{tasksList.ref_task_define.value}</p>
-                    <h3>{tasksList.ref_goal_log.title}</h3>
-                    <p>{tasksList.ref_goal_log.title_audio_url}</p>
-                    <img src={tasksList.ref_goal_log.image1} alt={tasksList.ref_goal_log.title} />
-                    <p>{tasksList.ref_goal_log.date_start}</p>
-                    <p>{tasksList.ref_goal_log.date_end}</p>
-                    <p>{tasksList.ref_goal_log.notes}</p>
-                    <p>{tasksList.ref_goal_log.reward_is_claimed}</p>
-                    <p>{tasksList.ref_goal_log.timestamp_reward_claimed}</p>
-                    <p>{TasksList.refs_assignees[0].nickname}</p>
-                    <img src={TasksList.refs_assignees[0].image_profile} alt='' />
-                    <Link to={`/tasks/${tasksList.id}`} className=''>Details</Link>
+                  <article key={taskItem.id}>
+                    <h2>{taskItem.ref_task_define.title}</h2>
+                    <p>{taskItem.ref_task_define.title_audio_url}</p>
+                    <img src={taskItem.image1} alt={taskItem.title} />
+                    <img src={taskItem.ref_task_define.image1} alt={taskItem.ref_task_define.title} />
+                    <img src={taskItem.image2} alt={taskItem.title} />
+                    <p>{taskItem.timestamp_created}</p>
+                    <p>{taskItem.notes}</p>
+                    <p>{taskItem.ref_task_define.description}</p>
+                    <p>{taskItem.ref_task_define.description_audio_url}</p>
+                    <p>{taskItem.ref_task_define.value}</p>
+                    {/* <h3>{taskItem.ref_goal_log.title}</h3>
+                    <p>{taskItem.ref_goal_log.title_audio_url}</p>
+                    <img src={taskItem.ref_goal_log.image1} alt={taskItem.ref_goal_log.title} />
+                    <p>{taskItem.ref_goal_log.date_start}</p>
+                    <p>{taskItem.ref_goal_log.date_end}</p>
+                    <p>{taskItem.ref_goal_log.notes}</p>
+                    <p>{taskItem.ref_goal_log.reward_is_claimed}</p>
+                    <p>{taskItem.ref_goal_log.timestamp_reward_claimed}</p> */}
+                    <p>{taskItem.refs_assignees.nickname}</p>
+                    <img src={taskItem.refs_assignees.image_profile} alt='' />
+                    <Link to={`/tasks/${taskItem.id}`} className=''>Details</Link>
                   </article>
                 )
               })

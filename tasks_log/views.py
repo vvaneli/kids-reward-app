@@ -27,11 +27,11 @@ from lib.permissions import IsUpToAccessL3, IsUpToAccessL4_ViewOnly
 # GET (list)
 # /tasks
 class TaskLogIndexView_R(ListAPIView):
-	# queryset = TaskLog.objects.all()
-	# serializer_class = TaskLogSerializer
 	permission_classes = [IsAuthenticated, IsUpToAccessL4_ViewOnly]
+	# queryset = TaskLog.objects.all()
 	def get_queryset(self):
 		return TaskLog.objects.filter(Q(ref_owner__ref_head=self.request.user.ref_head))
+	# serializer_class = TaskLogSerializer
 	def get_serializer_class(self):
 		if self.request.method == 'GET':
 			return  PopulatedTaskLogSerializer
