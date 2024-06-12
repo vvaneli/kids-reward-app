@@ -20,7 +20,7 @@
   color: $colourPink;
   display: block;
   font-size: 1.1em;
-  font-style: italic;
+  // font-style: italic;
   font-weight: 700;
   text-align: center;
 }
@@ -31,6 +31,10 @@ button {
   border: 0;
   display: block;
   margin: 0 auto;
+}
+
+input {
+  padding: 0.6em;
 }
 
 button {
@@ -48,21 +52,77 @@ button:hover {
   opacity: 1;
 }
 
+
+//? CLOUDINARY UPLOAD
+
+//! MOVE
+$imgUploadPreviewSize: 100px;
+$imgUploadFieldWidth: 300px;
+$imgUploadFieldHeight: 200px;
+
+.upload-field {
+  text-align: center;
+  border-top: 2px dotted $colourWhiteAlpha5;
+  border-bottom: 2px dotted $colourWhiteAlpha5;
+  position: relative;
+  width: $imgUploadFieldWidth;
+  height: $imgUploadFieldHeight;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 0.5em;
+  overflow: visible;
+
+  input {
+    margin: 0;
+    padding: 0;
+
+  }
+
+  p {
+    align-self: flex-start;
+  }
+
+  img {
+    display: block;
+    // margin: 0 auto;
+    background-color: white;
+    position: absolute;
+    // width: 100%;
+    width: $imgUploadPreviewSize;
+    top: 2.5em;
+    // left: calc(($imgUploadFieldWidth - $imgUploadPreviewSize) / 2)
+    left: 1.2em;
+    // margin-top: 2em;
+    // width: $imgUploadPreview;
+  }
+
+  .upload-preview-img {
+    opacity: 0.5;
+    background-color: transparent;
+    border: 6px solid $colourBlackAlpha8;
+    box-sizing: border-box;
+    // z-index: 0;
+  }
+
+}
+
 //? AUTH FORM -- COMMON
 
 // FLEX C
 
-// .auth-form,
+#login form,
+#register form,
 #login,
 #register {
   display: flex;
-  // flex-direction: column;
-  // justify-content: center;
+  justify-content: center;
   align-content: center;
-  
+
 }
 
-.auth-form {
+#login form,
+#register form {
   flex-direction: column;
 }
 
@@ -70,7 +130,13 @@ button:hover {
 
 .register.wrapper,
 .login.wrapper {
-  margin-top: 0;
+  // margin: 0;
+  padding: 0;
+  height: 100vh;
+  position: absolute;
+  min-width: 100vw;
+  // top:0;
+  //   left:0;
 }
 
 #login,
@@ -91,7 +157,7 @@ button:hover {
   }
 }
 
-.auth-form {
+.auth-form-container {
   background-color: $colourWhiteAlpha9;
   // background-color: $colourSky;
   // min-height: 40vh;
@@ -99,7 +165,7 @@ button:hover {
   min-width: 40vw;
   max-width: 70vw;
   text-align: center;
-  // margin-top: 10vh;
+  margin-top: 10vh;
 
   img.logo {
     // min-width: 30vh;
@@ -114,7 +180,6 @@ button:hover {
 
   button,
   input {
-
     text-align: center;
     margin-top: 1.5em;
     font-size: 1em;
@@ -132,19 +197,22 @@ button:hover {
   .input-password,
   .input-text {
     width: 70%;
-    height: 2.5em;
-    // margin-top: 2em;
-    // margin-bottom: 0.5em;
+  }
+
+  aside {
+    margin: 2em 1em;
+    padding-top: 1em;
+    border-top: 1px solid $colourBlackAlpha2;
   }
 
 }
 
 .auth-form-errors {
+  padding: 2em;
   max-width: 50vh;
-  text-align: center;
   min-height: 3em;
+  text-align: center;
 }
-
 
 //? AUTH FORM -- LOGIN
 
@@ -186,3 +254,77 @@ div.register {
   // height: 2.5em;
 }
 
+//? GOAL ADD
+
+#profile-group-item-edit,
+#profile-item-edit,
+#profile-edit,
+#profile-group-add,
+#task-add-new,
+#goal-add-new {
+  // background-color: $colourGold50;
+
+  margin-bottom: 3em;
+
+  label,
+  input {
+    display: block;
+  }
+
+  label {
+    width: 30%;
+    display: inlineblock;
+  }
+
+  select {
+    outline: none;
+    border: 0;
+    padding: 1em;
+    // margin: 1em;
+  }
+
+  select,
+  input {
+    margin-left: 30%;
+    display: block;
+    // background-color: red;
+    min-width: 30%;
+
+  }
+
+  .form-field-group {
+    margin-bottom: 2em;
+  }
+
+  .upload-field {
+    margin-left: 30%;
+
+    input {
+      border: 0;
+
+    }
+  }
+
+}
+
+#task-add-new {
+  select,
+  input {
+    border: 3px solid $colourGold50;
+  }
+}
+
+#goal-add-new {
+  select,
+  input {
+  border: 3px solid $colourSky;
+}
+}
+
+#profile-group-add {
+  select,
+  input {
+  border: 3px solid $colourPink50;
+
+}
+}

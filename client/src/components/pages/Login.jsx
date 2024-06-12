@@ -51,7 +51,7 @@ export default function Login() {
     const myId = getMyProfileId()
     try {
       const { data: { access_level, onboarding_counter } } = await axios.get(`/api/account/group/view/${myId}/`, {
-      // const { data: { id, username, nickname, first_name, last_name, email, access_level, image_profile, birthday, ref_head, onboarding_counter } } = await axios.get(`/api/account/group/view/${myId}/`, {
+        // const { data: { id, username, nickname, first_name, last_name, email, access_level, image_profile, birthday, ref_head, onboarding_counter } } = await axios.get(`/api/account/group/view/${myId}/`, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }
@@ -70,13 +70,15 @@ export default function Login() {
       //   onboarding_counter
       // }
       // setMyAccount(myData)
-      console.log('access_level: ', access_level , '| onboarding_counter: ', onboarding_counter)
+      console.log('access_level: ', access_level, '| onboarding_counter: ', onboarding_counter)
       // Go to which page...
       if (access_level === 4) {
         console.log('hit L4')
         return navigate('/kids/dashboard') // go to small people's dashboard
       }
-      if ((access_level === (3||2||1)) && (onboarding_counter > 0)) {
+      //! NEED TO FIX LEVELS
+      if ((access_level === 1) && (onboarding_counter > 0)) {
+      // if ((access_level === (3 || 2 || 1)) && (onboarding_counter > 0)) {
         return navigate('/dashboard') // go to big people's dashboard
       }
       else {
@@ -98,35 +100,39 @@ export default function Login() {
     <>
       <div className='login wrapper'>
         <main id='login'>
-          <section className='auth-form'>
-            <img className='logo' src={logoWord} alt='Smelly Earnie logo' />
-            <h1>Log in</h1>
-            <form onSubmit={handleSubmit}>
-              <label className='label-text' htmlFor='text'>Username</label>
-              <input className='input-text' type='text' placeholder='username' name='username' id='username' value={formData.username} onChange={handleChange} required />
-              {/* <label htmlFor='email'>E-mail</label>
+          <div className='auth-form-container'>
+            <article>
+              <img className='logo' src={logoWord} alt='Smelly Earnie logo' />
+              <h1>Log in</h1>
+              <form onSubmit={handleSubmit}>
+                <label className='label-text' htmlFor='text'>Username</label>
+                <input className='input-text' type='text' placeholder='username' name='username' id='username' value={formData.username} onChange={handleChange} required />
+                {/* <label htmlFor='email'>E-mail</label>
             <input type='email' placeholder='email' name='email' id='email' value={formData.email} onChange={handleChange} required /> */}
-              <label className='label-password' htmlFor='password'>Password</label>
-              <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
-              <div className='auth-form-errors'>
-                {/* <FormErrors /> */}
-                {
-                  formError.length > 0 ?
-                    formError.map(formErrorItem => {
-                      return (
-                        <p className='error'>{formErrorItem}</p>
-                      )
-                    })
-                    :
-                    <p className='error'></p>
-                }
-              </div>
-              {/* <p className='auth-form-error'>{formError}error unexpected stuff happens! error unexpected stuff happens! error unexpected stuff happens! error unexpected stuff happens!</p> */}
-              <button type='submit'>Log in</button>
-            </form>
-            <p className='link-to'><a href='#'>Reset Password</a></p>
-            <Link to={'/register'} className='link-to'>Don&apos;t have an account? Sign Up</Link>
-          </section>
+                <label className='label-password' htmlFor='password'>Password</label>
+                <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
+                <div className='auth-form-errors'>
+                  {/* <FormErrors /> */}
+                  {
+                    formError.length > 0 ?
+                      formError.map(formErrorItem => {
+                        return (
+                          <p className='error'>{formErrorItem}</p>
+                        )
+                      })
+                      :
+                      <p className='error'></p>
+                  }
+                </div>
+                {/* <p className='auth-form-error'>{formError}error unexpected stuff happens! error unexpected stuff happens! error unexpected stuff happens! error unexpected stuff happens!</p> */}
+                <button type='submit'>Log in</button>
+              </form>
+              <p className='link-to'><a href='#'>Reset Password</a></p>
+            </article>
+            <aside>
+              <Link to={'/register'} className='link-to'>Don&apos;t have an account? Sign Up</Link>
+            </aside>
+          </div>
         </main>
       </div>
     </>

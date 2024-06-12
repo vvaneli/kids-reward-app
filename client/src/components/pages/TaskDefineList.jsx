@@ -42,13 +42,24 @@ export default function TaskDefineList() {
             taskDefineList.map(taskDefineList => {
               return (
                 <article key={taskDefineList.id}>
-                  <h2>{taskDefineList.title}</h2>
-                  <img src={taskDefineList.image1} alt={taskDefineList.title} />
-                  <p>{taskDefineList.title_audio_url}</p>
-                  <p>{taskDefineList.value}</p>
-                  <p>{taskDefineList.description}</p>
-                  <p>{taskDefineList.description_audio_url}</p>
-                  <Link to={`/tasks-define/${taskDefineList.id}`} className=''>Details</Link>
+                  <div>
+                    <h2>{taskDefineList.title}</h2>
+                    <img src={taskDefineList.image1} alt={taskDefineList.title} />
+                    <p>{taskDefineList.title_audio_url}</p>
+                  </div>
+                  <div>
+                    <p>Points: {taskDefineList.value}</p>
+                    {taskDefineList.description ?
+                      <>
+                        <p>Description: {taskDefineList.description}</p>
+                        <p>{taskDefineList.description_audio_url}</p>
+                      </>
+                      :
+                      <></>
+                    }
+                    <div className='spacer'></div>
+                    {/* <Link to={`/tasks-define/${taskDefineList.id}`} className='item-detail-link'>Details</Link> */}
+                  </div>
                 </article>
               )
             })

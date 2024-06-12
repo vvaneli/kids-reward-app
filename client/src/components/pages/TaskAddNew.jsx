@@ -7,6 +7,8 @@ import { getToken } from '../../lib/auth'
 import ImageUpload from '../elements/ImageUpload.jsx'
 import NavBar from '../subcomponents/NavBar.jsx'
 
+import default_task_def_img from '../../assets/default_task_definition.svg'
+
 export default function TaskAddNew() {
 
   // const today = new Date().toISOString().slice(0, 10);
@@ -132,78 +134,89 @@ export default function TaskAddNew() {
           <form onSubmit={handleSubmit}>
 
             {/* ref_task_define */}
-            <label htmlFor='ref_task_define'>Task done</label>
-            {taskDefineList.length > 0 ?
-              <select value={formData.ref_task_define} name='ref_task_define' id='ref_task_define' onChange={handleChange}>
-                <option value='' disabled>Pick a task</option>
-                {taskDefineList.map(taskDefineItem => {
-                  return (
-                    <option key={taskDefineItem.id} value={taskDefineItem.id}>{taskDefineItem.title} (points: {taskDefineItem.value})</option>
-                  )
-                })}
-              </select>
-              :
-              errorMsg ?
-                <p>{errorMsg}</p>
+            <div className='form-field-group'>
+              <label htmlFor='ref_task_define'>Task done</label>
+              {taskDefineList.length > 0 ?
+                <select value={formData.ref_task_define} name='ref_task_define' id='ref_task_define' onChange={handleChange}>
+                  <option value='' disabled>Pick a task</option>
+                  {taskDefineList.map(taskDefineItem => {
+                    return (
+                      <option key={taskDefineItem.id} value={taskDefineItem.id}>{taskDefineItem.title} (points: {taskDefineItem.value})</option>
+                    )
+                  })}
+                </select>
                 :
-                <p>Getting task list&#8230;</p>
-            }
+                errorMsg ?
+                  <p>{errorMsg}</p>
+                  :
+                  <p>Getting task list&#8230;</p>
+              }
+            </div>
 
             {/* refs_assignees */}
-            <label htmlFor='refs_assignees'>By</label>
-            {profilesList.length > 0 ?
-              <select multiple value={formData.refs_assignees} name='refs_assignees' id='refs_assignees' onChange={handleChange} required>
-                <option value='' disabled>Pick a person</option>
-                {profilesList.map(profileItem => {
-                  return (
-                    profileItem.access_level === 4 ?
-                      <option key={profileItem.id} value={profileItem.id}>{profileItem.nickname}</option>
-                      :
-                      <option disabled >No youngsters found</option>
-                  )
-                })}
-              </select>
-              :
-              errorMsg ?
-                <option>{errorMsg}</option>
+            <div className='form-field-group'>
+              <label htmlFor='refs_assignees'>By</label>
+              {profilesList.length > 0 ?
+                <select multiple value={formData.refs_assignees} name='refs_assignees' id='refs_assignees' onChange={handleChange} required>
+                  <option value='' disabled>Pick a person</option>
+                  {profilesList.map(profileItem => {
+                    return (
+                      profileItem.access_level === 4 ?
+                        <option key={profileItem.id} value={profileItem.id}>{profileItem.nickname}</option>
+                        :
+                        <></>
+                    )
+                  })}
+                </select>
                 :
-                <option>Getting list of people&#8230;</option>
-            }
+                errorMsg ?
+                  <option>{errorMsg}</option>
+                  :
+                  <option>Getting list of people&#8230;</option>
+              }
+            </div>
 
             {/* ref_goal_log */}
-            <label htmlFor='ref_goal_log'>Towards reward goal</label>
-            {setGoalsList.length > 0 ?
-              <select value={formData.ref_goal_log} name='ref_goal_log' id='ref_goal_log' onChange={handleChange}>
-                <option value='' disabled>Pick a goal</option>
-                {goalsList.map(goalItem => {
-                  return (
-                    <option key={goalItem.id} value={goalItem.id}>{goalItem.title} (target points: {goalItem.ref_reward_define.value})</option>
-                  )
-                })}
-              </select>
-              :
-              errorMsg ?
-                <p>{errorMsg}</p>
+            <div className='form-field-group'>
+              <label htmlFor='ref_goal_log'>Towards reward goal</label>
+              {setGoalsList.length > 0 ?
+                <select value={formData.ref_goal_log} name='ref_goal_log' id='ref_goal_log' onChange={handleChange}>
+                  <option value='' disabled>Pick a goal</option>
+                  {goalsList.map(goalItem => {
+                    return (
+                      <option key={goalItem.id} value={goalItem.id}>{goalItem.title} (target points: {goalItem.ref_reward_define.value})</option>
+                    )
+                  })}
+                </select>
                 :
-                <p>Getting goal list&#8230;</p>
-            }
+                errorMsg ?
+                  <p>{errorMsg}</p>
+                  :
+                  <p>Getting goal list&#8230;</p>
+              }
+            </div>
 
             {/* image1 */}
-            <p>Add images</p>
-            {/* <label htmlFor=''></label>
-          <input type='url' id='' name=''  value='{formData.image1}' onChange={handleChange} placeholder=''/> */}
-            <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image1'} />
+            {/* <p>Add images</p> */}
+            <p>Add an image:</p>
+            <div className='form-field-group upload-field'>
+              <img className='upload-preview-img' src={default_task_def_img} alt='task image' />
+              <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image1'} />
+            </div>
 
             {/* image2 */}
             {/* <label htmlFor=''></label>
           <input type='url' id='' name=''  value='{formData.image1}' onChange={handleChange} placeholder=''/> */}
-            <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image2'} />
+            {/* <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image2'} /> */}
 
             {/* notes */}
-            <label htmlFor='notes'>Notes</label>
-            <input type='text' id='notes' name='notes' value={formData.notes} onChange={handleChange} placeholder='Notes' />
+            <div className='form-field-group'>
+              <label htmlFor='notes'>Notes</label>
+              <input type='text' id='notes' name='notes' value={formData.notes} onChange={handleChange} placeholder='Notes' />
+            </div>
 
             {formError && <p><em>{formError}</em></p>}
+
             <button type='submit'>Save</button>
 
           </form>

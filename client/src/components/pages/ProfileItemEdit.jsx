@@ -35,7 +35,7 @@ export default function ProfileItemEdit() {
   useEffect(() => {
     async function getProfileItem() {
       try {
-        const { data } = await axios.get(`/api/account/${profileId}/`, {
+        const { data } = await axios.get(`/api/account/group/edit/${profileId}/`, {
           headers: {
             Authorization: `Bearer ${getToken()}`
           }
@@ -65,7 +65,7 @@ export default function ProfileItemEdit() {
       formData.nickname = profileItem.nickname
     }
     try {
-      await axios.patch(`/api/account/${profileId}/`, formData, {
+      await axios.patch(`/api/account/group/edit/${profileId}/`, formData, {
         headers: {
           Authorization: `Bearer ${getToken()}`
         }
@@ -122,7 +122,7 @@ export default function ProfileItemEdit() {
             <form onSubmit={handleSubmit}>
               <h2>{profileItem.nickname}</h2>
 
-              <div className='form-field-group'>
+              {/* <div className='form-field-group'>
                 <p>Profile image:</p>
                 <img src={profileItem.image_profile} alt='profile image' />
                 <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image_profile'} />
@@ -132,8 +132,8 @@ export default function ProfileItemEdit() {
                 <p>Nickname: {profileItem.nickname}</p>
                 <label htmlFor='text'>Nickname<span className='required'>*</span></label>
                 <input type='text' placeholder={profileItem.nickname} name='nickname' id='nickname' value={formData.nickname} onChange={handleChange} />
-              </div>
-
+              </div> */}
+{/* 
               <div className='form-field-group'>
                 <p>Username: {profileItem.username}</p>
                 <label className='label-text' htmlFor='text'>Unique Username<span className='required'>*</span></label>
@@ -162,17 +162,17 @@ export default function ProfileItemEdit() {
                 <p>Birthday: {profileItem.birthday}</p>
                 <label htmlFor='birthday'>New birthday:</label>
                 <input type='date' id='birthday' name='birthday' value={formData.birthday} onChange={handleChange} placeholder={profileItem.birthday} />
-              </div>
+              </div> */}
 
               {/* If a Youngster, show 'birthday' field */}
-              {profileItem.access_level === 4 ?
+              {/* {profileItem.access_level === 4 ?
                 <div className='form-field-group'>
                   <p>Birthday: {profileItem.birthday}</p>
                   <label htmlFor='birthday'>Birthday</label>
                   <input type='date' id='birthday' name='birthday' value={formData.birthday} onChange={handleChange} placeholder={profileItem.birthday} />
                 </div>
                 : <div></div>
-              }
+              } */}
               {/* //! Need to add ability to change password */}
               {/* <p>Password: {profileItem.password}</p> */}
               {/* <p>Confirm password: {profileItem.password_confirmation}</p> */}
@@ -190,6 +190,11 @@ export default function ProfileItemEdit() {
                       <li>To transfer your role as the head owner, replace both &lsquo;username&rsquo; and &lsquo;email&rsquo; with the email address of the person you want to transfer to.</li>
                       <li>Note: if you wish to remain a member of this group afterwards, then <em>before transferring your head owner role,</em> first add a new account with yourself as a group member.</li>
                     </ul>
+                    <label htmlFor='access_level' hidden></label>
+                    <select value={profileItem.access_level} name='access_level' id='access_level' onChange={handleChange}>
+                      <option value={profileItem.access_level} >Pick an account type</option>
+                      <option key='1' value='1'>Head</option>
+                    </select>
                   </>
                   :
                   <>
@@ -198,12 +203,12 @@ export default function ProfileItemEdit() {
                       <option value={profileItem.access_level} >Pick an account type</option>
                       <option key='2' value='2' disabled>Elder</option>
                       <option key='3' value='3' disabled>Helper</option>
-                      {/* <option key='4' value='4'>Youngster</option> */}
+                      <option key='4' value='4'>Youngster</option>
                     </select>
                   </>
                 }
               </div>
-              <p><small><span className='required'>*</span> indicates a required field. You can edit these details later.</small></p>
+              {/* <p><small><span className='required'>*</span> indicates a required field. You can edit these details later.</small></p> */}
               <button type='submit'>Save</button>
             </form>
             :

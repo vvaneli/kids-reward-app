@@ -82,48 +82,52 @@ export default function Register() {
     <>
       <div className='register wrapper'>
         <main id='register'>
-          <section className='auth-form'>
-            <img className='logo' src={logoWord} alt='Smelly Earnie logo' />
-            <h1>Register</h1>
-            <form onSubmit={handleSubmit}>
+          <div className='auth-form-container'>
+            <article>
+              <img className='logo' src={logoWord} alt='Smelly Earnie logo' />
+              <h1>Register</h1>
+              <form onSubmit={handleSubmit}>
 
-              <label className='label-text' htmlFor='username'>Username</label>
-              <input className='input-text' type='text' placeholder='unique username' name='username' id='username' value={formData.username} onChange={handleChange} required />
+                <label className='label-text' htmlFor='username'>Username</label>
+                <input className='input-text' type='text' placeholder='unique username' name='username' id='username' value={formData.username} onChange={handleChange} required />
 
-              {/* <label htmlFor='nickname'>Nickname</label>
+                {/* <label htmlFor='nickname'>Nickname</label>
             <input type='text' placeholder='nickname' name='nickname' id='nickname' value={formData.nickname} onChange={handleChange} required /> */}
 
-              <label className='label-email' htmlFor='email'>E-mail</label>
-              <input className='input-email' type='email' placeholder='e-mail' name='email' id='email' value={formData.email} onChange={handleChange} required />
+                <label className='label-email' htmlFor='email'>E-mail</label>
+                <input className='input-email' type='email' placeholder='e-mail' name='email' id='email' value={formData.email} onChange={handleChange} required />
 
-              <label className='label-password' htmlFor='password'>Password</label>
-              <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
+                <label className='label-password' htmlFor='password'>Password</label>
+                <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
 
-              <label className='label-password' htmlFor='password_confirmation'>Confirm Password</label>
-              <input className='input-password' type='password' placeholder='confirm password' name='password_confirmation' id='password_confirmation' value={formData.password_confirmation} onChange={handleChange} required />
+                <label className='label-password' htmlFor='password_confirmation'>Confirm Password</label>
+                <input className='input-password' type='password' placeholder='confirm password' name='password_confirmation' id='password_confirmation' value={formData.password_confirmation} onChange={handleChange} required />
 
-              <label className='label-checkbox' htmlFor='legal_agree'><input className='input-checkbox' type='checkbox' name='legal_agree' value={formData.legal_agree} onChange={handleChange} required />
-                I agree
-              </label>
+                <label className='label-checkbox' htmlFor='legal_agree'><input className='input-checkbox' type='checkbox' name='legal_agree' value={formData.legal_agree} onChange={handleChange} required />
+                  I agree
+                </label>
 
-              <div className='auth-form-errors'>
-                {/* <FormErrors /> */}
-                {
-                  // errorMsgs.length > 0 ?
-                  errorMsgs ?
-                    errorMsgs.map(errorMsg => {
-                      return (
-                        <p className='error'>{errorMsg}</p>
-                      )
-                    })
-                    :
-                    <p className='error'></p>
-                }
-              </div>
-              <button type='submit'>Sign up</button>
-            </form>
-            <Link to={'/login'} className='link-to'>Already have an account? Log in</Link>
-          </section>
+                <div className='auth-form-errors'>
+                  {/* <FormErrors /> */}
+                  {
+                    // errorMsgs.length > 0 ?
+                    errorMsgs ?
+                      errorMsgs.map(errorMsg => {
+                        return (
+                          <p className='error'>{errorMsg}</p>
+                        )
+                      })
+                      :
+                      <p className='error'></p>
+                  }
+                </div>
+                <button type='submit'>Sign up</button>
+              </form>
+            </article>
+            <aside>
+              <Link to={'/login'} className='link-to'>Already have an account? Log in</Link>
+            </aside>
+          </div>
         </main>
       </div>
     </>

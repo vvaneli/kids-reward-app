@@ -1,5 +1,5 @@
-$splashMargin: 1.5em;
-
+// #root,
+// body,
 * {
   margin: 0;
   padding: 0;
@@ -7,15 +7,22 @@ $splashMargin: 1.5em;
 
 .wrapper {
   margin-top: $navbarHeight;
-  height: 100vh;
-  width: 100vw;
-  position: absolute;
+  max-width: 800px;
+  // min-width: 80vw;
+  padding: 0 1.5em;
+
   top: 0;
+  margin: 0 auto;
+  // background-color: red;
 }
 
-// .hide {
-//   display: none;
-// }
+header {
+  margin: 1.5em 0;
+}
+
+.hide {
+  display: none;
+}
 
 a {
   text-decoration: none;
@@ -28,6 +35,12 @@ a:visited {
   color: inherit;
 }
 
+.account-delete {
+  color: $colourBlossom;
+  position: absolute;
+  bottom: 2em;
+
+}
 // .hover,
 // .no-hover:hover {
 //   display: hide;

@@ -42,17 +42,22 @@ export default function StoriesList() {
             storiesList.map(storiesList => {
               return (
                 <article key={storiesList.id}>
-                  <h2>{storiesList.title}</h2>
-                  <img src={storiesList.scenes_artwork[1]} alt='start story' />
-                  <img src={storiesList.scenes_artwork[storiesList.steps + 1]} alt='story ending' />
-                  {/* <img src={storiesList.items_artwork} alt='' /> */}
-                  <p>{storiesList.title_audio_url}</p>
-                  <p>{storiesList.about}</p>
-                  <p>{storiesList.about_audio_url}</p>
-                  <p>{storiesList.scenes_narrative}</p>
-                  <p>{storiesList.scenes_narrative_audio}</p>
-                  {/* <p><a href=''>Details</a></p> */}
-                  <Link to={`/stories/${storiesList.id}`} className=''>Details</Link>
+                  <div>
+                    <h2>{storiesList.title}</h2>
+                    <img src={storiesList.scenes_artwork[3]} alt='start story' />
+                    <p>{storiesList.title_audio_url}</p>
+                    {/* <img src={storiesList.scenes_artwork[storiesList.steps + 1]} alt='story ending' /> */}
+                    {/* <img src={storiesList.items_artwork} alt='' /> */}
+                  </div>
+                  <div>
+                    <p>{storiesList.about}</p>
+                    <p>{storiesList.about_audio_url}</p>
+                    <p>{storiesList.scenes_narrative}</p>
+                    <p>{storiesList.scenes_narrative_audio}</p>
+                    {/* <p><a href=''>Details</a></p> */}
+                    <div className='spacer'></div>
+                    <Link to={`/stories/${storiesList.id}`} className='item-detail-link'>Details</Link>
+                  </div>
                 </article>
               )
             })

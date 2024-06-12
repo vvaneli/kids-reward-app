@@ -42,10 +42,15 @@ export default function ProfilesGroupList() {
             profilesList.map(profilesList => {
               return (
                 <article key={profilesList.id}>
-                  <h2>{profilesList.nickname}</h2>
+                  <div>
                   <img src={profilesList.image_profile} alt={profilesList.title} />
-                  <p>{profilesList.access_level}</p>
-                  <Link to={`/profiles/${profilesList.id}`} className=''>Details</Link>
+                  </div>
+                  <div>
+                  <h2>{profilesList.nickname}</h2>
+                  <p>Access level: {profilesList.access_level}</p>
+                  <div className='spacer'></div>
+                  <Link to={`/profiles/${profilesList.id}`} className='item-detail-link'>Details</Link>
+                  </div>
                 </article>
               )
             })

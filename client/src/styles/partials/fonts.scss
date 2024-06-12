@@ -3,7 +3,7 @@
 body {
   font-family: "Zen Maru Gothic", serif;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -11,6 +11,27 @@ h1 {
   font-family: "Staatliches", sans-serif;
   font-weight: 400;
   font-style: normal;
+  letter-spacing: 0.06em;
+}
+
+//f-wt: 300 400 500 700 900
+h2 {
+  font-weight: 700;
+  line-height: 1.2em;
+  margin-bottom: 1em;
+}
+
+h3 {
+  font-weight: 500;
+  margin-bottom: 0.7em;
+}
+
+// p small {
+//   line-height: 0.5em;
+// }
+
+li {
+  line-height: 1.3em;
 }
 
 .fancy {

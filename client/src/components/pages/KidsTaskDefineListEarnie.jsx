@@ -43,7 +43,7 @@ export default function KidsTaskDefineListEarnie() {
 
   return (
     <>
-      <div id='tasks-define-list' class='wrapper'>
+      <div id='kids-tasks-define-list' className='wrapper'>
         <main className='tasks-define kids'>
 
           <header>

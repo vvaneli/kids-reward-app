@@ -12,10 +12,11 @@ import Admin from './components/pages/Admin.jsx'  //* For AdminOnly
 import Register from './components/pages/Register.jsx'
 import Login from './components/pages/Login.jsx'
 // import LoginKids from './components/pages/LoginKids.jsx' //! TO DELETE
-import Onboard from './components/pages/Onboard.jsx'
-import OnboardAddProfile from './components/pages/OnboardAddProfile.jsx'
+import Onboard1 from './components/pages/Onboard1.jsx'
+import Onboard2 from './components/pages/Onboard2.jsx'
+import Onboard3 from './components/pages/Onboard3.jsx'
 import Dashboard from './components/pages/Dashboard.jsx'
-import ProfileItem from './components/pages/ProfileItem.jsx'
+import ProfileGroupItemEdit from './components/pages/ProfileGroupItemEdit.jsx'
 import ProfileItemEdit from './components/pages/ProfileItemEdit.jsx'
 import ProfileGroupAdd from './components/pages/ProfileGroupAdd.jsx'
 import ProfilesGroupList from './components/pages/ProfilesGroupList.jsx'
@@ -77,11 +78,15 @@ const router = createBrowserRouter([
       // },
       {
         path: 'welcome',
-        element: <Onboard />
+        element: <Onboard1 />
+      },
+      {
+        path: 'welcome/setup',
+        element: <Onboard2 />
       },
       {
         path: 'welcome/add',
-        element: <OnboardAddProfile />
+        element: <Onboard3 />
       },
       {
         path: 'dashboard/',
@@ -89,7 +94,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'profiles/:profileId',
-        element: <ProfileItem />
+        element: <ProfileGroupItemEdit />
       },
       {
         path: 'profiles/edit/:profileId',

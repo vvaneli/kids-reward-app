@@ -41,13 +41,25 @@ export default function RewardDefineList() {
             rewardDefineList.map(rewardDefineList => {
               return (
                 <article key={rewardDefineList.id}>
-                  <h2>{rewardDefineList.title}</h2>
-                  <img src={rewardDefineList.image1} alt={rewardDefineList.title} />
-                  <p>{rewardDefineList.title_audio_url}</p>
-                  <p>{rewardDefineList.value}</p>
-                  <p>{rewardDefineList.description}</p>
-                  <p>{rewardDefineList.description_audio_url}</p>
-                  <Link to={`/rewards-define/${rewardDefineList.id}`} className=''>Details</Link>
+                  <div>
+                    <h2>{rewardDefineList.title}</h2>
+                    <img src={rewardDefineList.image1} alt={rewardDefineList.title} />
+                    <p>{rewardDefineList.title_audio_url}</p>
+                  </div>
+                  <div>
+                    <p>Points required: {rewardDefineList.value}</p>
+
+                    {rewardDefineList.description ?
+                      <>
+                        <p>Description: {rewardDefineList.description}</p>
+                        <p>{rewardDefineList.description_audio_url}</p>
+                      </>
+                      :
+                      <></>
+                    }
+                    <div className='spacer'></div>
+                    {/* <Link to={`/rewards-define/${rewardDefineList.id}`} className='item-detail-link'>Details</Link> */}
+                  </div>
                 </article>
               )
             })

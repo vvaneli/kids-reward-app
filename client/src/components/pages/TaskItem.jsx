@@ -43,49 +43,75 @@ export default function TaskItem() {
           {taskItem ?
             <article>
               <h2>{taskItem.ref_task_define.title}</h2>
-              <p>{taskItem.timestamp_created}</p>
               <p>{taskItem.ref_task_define.title_audio_url}</p>
               {/* <h2>{taskItem.ref_task_define.title}</h2> */}
               {/* <img src={taskItem.scenes_artwork[1]} alt='start story' />
             <img src={taskItem.scenes_artwork[taskItem.steps + 1]} alt='story ending' /> */}
-              <img src={taskItem.image1} alt={taskItem.ref_task_define.title} />
 
+              {taskItem.image1 ?
+                <img className='hero' src={taskItem.image1} alt={taskItem.title} />
+                :
+                <img className='hero' src={taskItem.ref_task_define.image1} alt={taskItem.ref_task_define.title} />
+              }
+
+              {/* <img src={taskItem.image1} alt={taskItem.ref_task_define.title} />
               <img src={taskItem.image2} alt={taskItem.ref_task_define.title} />
-              <img src={taskItem.ref_task_define.image1} alt={taskItem.ref_task_define.title} />
+              <img src={taskItem.ref_task_define.image1} alt={taskItem.ref_task_define.title} /> */}
 
               {/* <p>{taskItem.about_audio_url}</p>
             <p>{taskItem.scenes_narrative}</p>
           <p>{taskItem.scenes_narrative_audio}</p> */}
               {/* <p>Steps: {taskItem.steps}</p> */}
               {/* <p>{taskItem.title_audio_url}</p> */}
-              <p>{taskItem.ref_task_define.value}</p>
-              <p>{taskItem.ref_task_define.description}</p>
-              <p>{taskItem.ref_task_define.description_audio_url}</p>
-              <p>{taskItem.notes}</p>
+              <p>Date: {taskItem.timestamp_created}</p>
+              <p>Points: {taskItem.ref_task_define.value}</p>
+              {taskItem.ref_task_define.description ?
+                <>
+                  <p>{taskItem.ref_task_define.description}</p>
+                  <p>{taskItem.ref_task_define.description_audio_url}</p>
+                </>
+                :
+                <></>
+              }
+
+              {taskItem.notes ?
+                <>
+                  <p>Notes: {taskItem.notes}</p>
+                </>
+                :
+                <></>
+              }
+
+              <hr />
+              <h3>Goal</h3>
               {taskItem.ref_goal_log ?
                 <>
                   <p>Goal: {taskItem.ref_goal_log.title}</p>
-                  <p><a href={`/goals/${taskItem.ref_goal_log.id}`}>Details</a></p>
+                  <p><a href={`/goals/${taskItem.ref_goal_log.id}`}>Go to goal</a></p>
                 </>
                 :
                 <p>Goal: unassigned</p>
               }
-              {taskItem.refs_assignees.length > 0 ?
-                taskItem.refs_assignees.map(assignee => {
-                  return (
-                    <>
-                      <p>Done by: {assignee.nickname}</p>
-                      <img src={assignee.image_profile} alt='assignee.nickname' />
-                    </>
-                  )
-                }
-                )
-                :
-                <p>Getting assignees&#8230;</p>
-              }
 
-              <p>Saved by: {taskItem.ref_owner.nickname}</p>
-              <img src={taskItem.ref_owner.image_profile} alt={taskItem.ref_owner.nickname} />
+              <hr />
+                <h3>People</h3>
+
+                {taskItem.refs_assignees.length > 0 ?
+                  taskItem.refs_assignees.map(assignee => {
+                    return (
+                      <>
+                        <p>Done by: {assignee.nickname}</p>
+                        <img className='' src={assignee.image_profile} alt='assignee.nickname' />
+                      </>
+                    )
+                  }
+                  )
+                  :
+                  <p>Getting assignees&#8230;</p>
+                }
+
+                <p>Saved by: {taskItem.ref_owner.nickname}</p>
+                <img className='' src={taskItem.ref_owner.image_profile} alt={taskItem.ref_owner.nickname} />
             </article>
             :
             errorMsg ?

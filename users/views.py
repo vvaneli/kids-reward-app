@@ -51,7 +51,7 @@ class MyProfileEditView_RUD(RetrieveUpdateDestroyAPIView):
 
 #? L1 to L2 Register another member view:
 # POST (item)
-# /api/account/add
+# /api/account/group/add/
 class AddGroupMemberView_C(GroupHeadView, CreateAPIView):
   permission_classes = [IsAuthenticated, IsUpToAccessL2]
   queryset = User.objects.all()

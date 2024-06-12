@@ -7,27 +7,25 @@ import { getToken, isLoggedIn } from '../../lib/auth.js'
 
 // Sub-Components
 import ImageUpload from '../elements/ImageUpload.jsx'
-import NavBar from '../subcomponents/NavBar.jsx'
-
 import profile from '../../assets/default_profile.svg'
 
-export default function ProfileGroupAdd() {
+export default function Onboard3() {
 
   // const [profileItem, setProfileItem] = useState()
 
   const [formData, setFormData] = useState({
     nickname: '',
     username: '',
-    email: '',
+    // email: '',
     image_profile: undefined, // so when image is not povided, DB default will be used
-    first_name: '',
-    last_name: '',
-    birthday: undefined,
+    // first_name: '',
+    // last_name: '',
+    // birthday: undefined,
     access_level: 4,
     legal_agree: Boolean(),
   })
 
-  const today = new Date().toISOString().slice(0, 10);
+  // const today = new Date().toISOString().slice(0, 10);
 
   const [errorMsgs, setErrorMsgs] = useState()
   const [formError, setFormError] = useState([])
@@ -47,9 +45,9 @@ export default function ProfileGroupAdd() {
         }
       })
       if (state) {
-        navigate('/welcome/add', { state: { access_level: state.access_level } }) // if came from onboarding, go back there to add another profile
+        navigate('/welcome/setup', { state: { access_level: state.access_level } }) // if came from onboarding, go back there to add another profile
       } else {
-        navigate(`/profiles/group`)
+        navigate(`/dashboard`)
       }
     } catch (error) {
       console.log(error)
@@ -111,14 +109,21 @@ export default function ProfileGroupAdd() {
   //   }
   // }
 
+  function handleCancel(){
+    if (state) {
+      navigate('/welcome/setup', { state: { access_level: state.access_level } }) // if came from onboarding, go back there to add another profile
+    } else {
+      navigate(`/dashboard`)
+    }
+  }
+
   return (
     <>
-      <NavBar />
-      <div className='wrapper'>
-        <header>
-          <h1>Add a Group Member</h1>
-        </header>
-        <main id='profile-group-add'>
+      <div className='onboard wrapper'>
+        <main id='onboard3'>
+          <header>
+            <h1>Add a Group Member</h1>
+          </header>
           {/* <Link to={'/profiles'}><p className=''>All Profiles</p></Link> */}
           {/* {profileItem ? */}
           <form onSubmit={handleSubmit}>
@@ -130,8 +135,8 @@ export default function ProfileGroupAdd() {
               <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image_profile'} />
             </div> */}
 
-            <p>Add an image:</p>
             <div className='form-field-group upload-field'>
+              <p>Profile image:</p>
               <img className='upload-preview-img' src={profile} alt='profile image' />
               <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image_profile'} />
             </div>
@@ -140,25 +145,22 @@ export default function ProfileGroupAdd() {
               {/* <p>Nickname:</p> */}
               <label htmlFor='text'>Nickname<span className='required'>*</span></label>
               <input type='text' placeholder='Name the youngster is called by' name='nickname' id='nickname' value={formData.nickname} onChange={handleChange} required />
-            </div>
+              {/* </div>
 
-            <div className='form-field-group'>
+            <div className='form-field-group'> */}
               {/* <p>Username:</p> */}
               <label className='label-text' htmlFor='username'>Unique Username<span className='required'>*</span></label>
-              <input className='input-text' type='text' placeholder='Unique username' name='username' id='username' value={formData.username} onChange={handleChange} required />
+              <input className='input-text' type='text' placeholder='' name='username' id='username' value={formData.username} onChange={handleChange} required />
             </div>
 
-            <div className='form-field-group'>
-              {/* <p>First name:</p> */}
+            {/* <div className='form-field-group'>
+              <p>First name:</p>
               <label htmlFor='first_name'>First name</label>
-              <input type='text' placeholder='First name' name='first_name' id='first_name' value={formData.first_name} onChange={handleChange} />
-            </div>
-
-            <div className='form-field-group'>
-              {/* <p>Last name:</p> */}
+              <input type='text' placeholder='' name='first_name' id='first_name' value={formData.first_name} onChange={handleChange} />
+              <p>Last name:</p>
               <label htmlFor='last_name'>Last name</label>
-              <input type='text' placeholder='Last name' name='last_name' id='last_name' value={formData.last_name} onChange={handleChange} />
-            </div>
+              <input type='text' placeholder='' name='last_name' id='last_name' value={formData.last_name} onChange={handleChange} />
+            </div> */}
 
             {/* <div className='form-field-group'>
               <p>Birthday:</p>
@@ -167,8 +169,8 @@ export default function ProfileGroupAdd() {
             </div> */}
 
             {/* If a Youngster, show 'birthday' and 'password' fields OR if adult, show email field */}
-            {/* {state && state.access_level === 4 ?
-              <> */}
+            {state && state.access_level === 4 ?
+              <>
                 <div className='form-field-group'>
                   <label className='label-password' htmlFor='password'>Password<span className='required'>*</span></label>
                   <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
@@ -176,19 +178,19 @@ export default function ProfileGroupAdd() {
                   <input className='input-password' type='password' placeholder='confirm password' name='password_confirmation' id='password_confirmation' value={formData.password_confirmation} onChange={handleChange} required />
                 </div>
 
-                <div className='form-field-group'>
+                {/* <div className='form-field-group'>
                   <label htmlFor='birthday'>Birthday</label>
                   <input type='date' max={today} id='birthday' name='birthday' value={formData.birthday} onChange={handleChange} />
-                </div>
+                </div> */}
 
                 <label className='label-checkbox' htmlFor='legal_agree'><input className='input-checkbox' type='checkbox' name='legal_agree' value={formData.legal_agree} onChange={handleChange} required />
                   I am, or have permission from, the legal guardian to add this child to my account
                 </label>
-              {/* </>
+              </>
               :
               <>
                 <div className='form-field-group'>
-                  <p>Email:</p>
+                  {/* <p>Email:</p> */}
                   <label className='label-email' htmlFor='email'>E-mail<span className='required'>*</span></label>
                   <input className='input-email' type='email' placeholder='E-mail' name='email' id='email' value={formData.email} onChange={handleChange} required />
                 </div>
@@ -196,7 +198,7 @@ export default function ProfileGroupAdd() {
                   I have permission from this person to add their details to my account
                 </label>
               </>
-            } */}
+            }
 
             {/* If coming from onboarding screens, hide dropdown */}
             {(state) ?
@@ -248,7 +250,12 @@ export default function ProfileGroupAdd() {
               }
             </div>
 
-            <button type='submit'>Save</button>
+            <div className='onboard-nav'>
+              <Link onClick={handleCancel} className=''>Cancel</Link>
+              <div className='spacer'></div>
+              <button type='submit'>Save</button>
+            </div>
+
           </form>
           {/* //   :
         //   errorMsg ?

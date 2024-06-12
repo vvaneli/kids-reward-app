@@ -105,10 +105,9 @@ export default function GoalItem() {
               <h2>Progress</h2>
               {/* goal image */}
               {goalItem ?
-                <img src={goalItem.ref_story.scenes_artwork[storyStep]} alt={goalItem.title} />
+                <img className='hero' src={goalItem.ref_story.scenes_artwork[storyStep]} alt={goalItem.title} />
                 :
                 <p>no image</p>
-
               }
 
               <p>{sumTaskPoints} out of {goalItem.ref_reward_define.value} completed</p>

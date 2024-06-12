@@ -1,0 +1,79 @@
+// FLEX C
+
+.onboard-nav {
+  display: flex;
+  margin-top: 3em;
+}
+
+// FLEX I
+
+//? ONBOARD COMMON
+
+.onboard {
+
+  p,
+  li {
+    font-weight: 500;
+  }
+}
+
+.onboard.wrapper {
+  padding: 0;
+  height: 100vh;
+  position: absolute;
+  min-width: 100vw;
+  background-color: $colourNavy;
+  box-sizing: border-box;
+  border: $splashMargin solid $colourBlossom;
+}
+
+.onboard input {
+
+  font-size: 1em;
+  letter-spacing: 0.03em;
+  // background-color: $colourSky;
+  width: 100%;
+  margin: 0.5em 0 1em 0;
+}
+
+.onboard label {
+  margin: 0;
+  padding: 0;
+}
+
+//? ONBOARD 1
+
+#onboard1, #onboard2, #onboard3 {
+  width: 50vw;
+  margin: 0 auto;
+  padding: 1em 3em;
+  box-sizing: border-box;
+  // background-color: aqua;
+  color: $colourWhiteAlpha7;
+
+  .onboard-info ul {
+    min-height: 18em;
+
+    li {
+      margin-left: 1em;
+      padding-left: 0.5em;
+      margin-bottom: 1.2em;
+    }
+  }
+
+  button {
+    background-color: $colourBlossom;
+  }
+  .form-field-group {
+    margin-top: 3em;
+    // border: 1px solid white;
+  }
+}
+
+#onboard3 .onboard-nav {
+  margin-top: 0;
+}
+
+
+
+

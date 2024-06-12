@@ -1,0 +1,199 @@
+//? DASHBOARD
+
+#home {
+  section {
+    margin-bottom: 4em;
+    // background-color: red;;
+  }
+
+  section h2 {
+    // margin: 5em 0;
+    color: $colourNavy;
+    ;
+    border-bottom: 3px dotted $colourBlackAlpha2;
+    margin: 2em 0;
+  }
+
+  button {
+    width: 15em;
+
+    img {
+      padding: 1em;
+    }
+  }
+}
+
+.dashboard-buttons {
+  display: flex;
+}
+
+//? tasks-define-list
+#home,
+#goals-list,
+#tasks-done-list,
+#profiles-list,
+#stories-list,
+#rewards-define-list,
+#tasks-define-list {
+  article {
+    display: flex;
+    margin-bottom: 3em;
+    padding: 1em;
+
+    div:first-child {
+      text-align: center;
+    }
+
+    :last-child {
+      display: flex;
+      flex-direction: column;
+    }
+
+    div {
+      width: 50%;
+      padding: 1em;
+
+      :last-child {
+        align-self: flex-end;
+      }
+
+    }
+
+    .item-detail-link {
+
+      // font-style: italic;
+      font-weight: 500;
+      display: inline-block;
+      padding: 0.5em 1em;
+      // text-align: right;
+
+    }
+
+  }
+
+  img {
+    width: 100px;
+    margin: 0 auto;
+  }
+}
+
+#tasks-define-list {
+  article {
+    border: 3px solid $colourGold50;
+  }
+
+  .item-detail-link {
+    background-color: $colourGold50;
+  }
+}
+
+#rewards-define-list {
+  article {
+    border: 3px solid $colourNavy;
+
+  }
+
+  .item-detail-link {
+    background-color: $colourNavy;
+  }
+}
+
+#stories-list {
+  article {
+    border: 3px solid $colourSea;
+  }
+
+  .item-detail-link {
+    background-color: $colourSea;
+  }
+
+  img {
+    width: 30vw;
+    max-width: 250px;
+  }
+}
+
+#profiles-list {
+  article {
+    border: 3px solid $colourPink50;
+  }
+
+  .item-detail-link {
+    background-color: $colourPink50;
+  }
+
+  img {
+    width: 20vw;
+    max-width: 150px;
+  }
+}
+
+#tasks-done-list {
+  article {
+    border: 3px solid $colourBlackAlpha2;
+  }
+
+  .item-detail-link {
+    background-color: $colourBlackAlpha2;
+  }
+
+  img {
+    width: 20vw;
+    max-width: 150px;
+  }
+}
+#goals-list {
+  article {
+    border: 3px solid $colourSky;
+  }
+
+  .item-detail-link {
+    background-color: $colourSky;
+  }
+
+  img {
+    width: 20vw;
+    max-width: 150px;
+  }
+}
+#home {
+  article {
+    border: 3px solid $colourSky;
+  }
+
+  .item-detail-link {
+    background-color: $colourSky;
+  }
+
+  // img {
+  //   width: 20vw;
+  //   max-width: 150px;
+  // }
+}
+
+#goals-list,
+#task-item {
+  img {
+    width: 80px;
+  }
+  .hero {
+    width: 30vw;
+    max-width: 250px;
+  }
+}
+
+#goal-item {
+  img {
+    width: 20vw;
+    max-width: 150px;
+  }
+  .hero {
+    width: 40vw;
+    max-width: 400px;
+
+  }
+}
+
+hr {
+  margin: 2em 0;
+}

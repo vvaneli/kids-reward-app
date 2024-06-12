@@ -34,7 +34,7 @@ export default function ImageUpload({ errors, formData, setFormData, fieldName }
   return (
     <>
       {formData[fieldName] && <img src={formData[fieldName]} className='upload-thumbnail' alt='Upload image' />}
-      <label hidden htmlFor={[fieldName]}>Media</label>
+      <label hidden htmlFor={[fieldName]}></label>
       <input type='file' name={[fieldName]} id={[fieldName]} onChange={handleImageUpload}/>
       {/* {error && errors[fieldName] && <p className='error'>{errors[fieldName]}</p>} */}
       { error && <p className='error'>{error}</p>}
