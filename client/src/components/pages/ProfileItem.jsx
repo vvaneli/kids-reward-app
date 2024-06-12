@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-// Sub-Components
 import { getToken, removeToken } from '../../lib/auth.js'
+
+// Sub-Components
+import NavBar from '../subcomponents/NavBar.jsx'
 
 export default function ProfileItem() {
   const [profileItem, setProfileItem] = useState()
@@ -51,8 +53,12 @@ export default function ProfileItem() {
 
   return (
     <>
-      <main id='profile-item'>
+    <NavBar />
+<div className='wrapper'>
+  <header>
         <h1>Profile Item</h1>
+  </header>
+      <main id='profile-item'>
         {/* <Link to={'/profiles'}><p className=''>All Profiles</p></Link> */}
         {profileItem ?
           <>
@@ -78,9 +84,10 @@ export default function ProfileItem() {
             <p><em>Downloading&#8230;</em></p>
         }
       </main>
-      <section className='account-delete'>
+      <aside className='account-delete'>
         <button type='button' onClick={deleteAccount}>Delete Account</button>
-      </section>
+      </aside>
+      </div>
     </>
   )
 

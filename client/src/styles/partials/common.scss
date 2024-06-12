@@ -5,9 +5,17 @@ $splashMargin: 1.5em;
   padding: 0;
 }
 
-.hide {
-  display: none;
+.wrapper {
+  margin-top: $navbarHeight;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
 }
+
+// .hide {
+//   display: none;
+// }
 
 a {
   text-decoration: none;

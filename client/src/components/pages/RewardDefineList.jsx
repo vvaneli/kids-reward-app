@@ -4,6 +4,7 @@ import axios from 'axios'
 
 // Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
+import NavBar from '../subcomponents/NavBar.jsx'
 
 export default function RewardDefineList() {
   const [rewardDefineList, setRewardDefineList] = useState([])
@@ -30,29 +31,34 @@ export default function RewardDefineList() {
 
   return (
     <>
-      <main id='rewards-define-list'>
-        <h1>rewards-define</h1>
-        {rewardDefineList.length > 0 ?
-              rewardDefineList.map(rewardDefineList => {
-                return (
-                  <article key={rewardDefineList.id}>
-                    <h2>{rewardDefineList.title}</h2>
-                    <img src={rewardDefineList.image1} alt={rewardDefineList.title} />
-                    <p>{rewardDefineList.title_audio_url}</p>
-                    <p>{rewardDefineList.value}</p>
-                    <p>{rewardDefineList.description}</p>
-                    <p>{rewardDefineList.description_audio_url}</p>
-                    <Link to={`/rewards-define/${rewardDefineList.id}`} className=''>Details</Link>
-                  </article>
-                )
-              })
+      <NavBar />
+      <div className='wrapper'>
+        <header>
+          <h1>rewards-define</h1>
+        </header>
+        <main id='rewards-define-list'>
+          {rewardDefineList.length > 0 ?
+            rewardDefineList.map(rewardDefineList => {
+              return (
+                <article key={rewardDefineList.id}>
+                  <h2>{rewardDefineList.title}</h2>
+                  <img src={rewardDefineList.image1} alt={rewardDefineList.title} />
+                  <p>{rewardDefineList.title_audio_url}</p>
+                  <p>{rewardDefineList.value}</p>
+                  <p>{rewardDefineList.description}</p>
+                  <p>{rewardDefineList.description_audio_url}</p>
+                  <Link to={`/rewards-define/${rewardDefineList.id}`} className=''>Details</Link>
+                </article>
+              )
+            })
+            :
+            errorMsg ?
+              <p><em>{errorMsg}</em></p>
               :
-              errorMsg ?
-                <p><em>{errorMsg}</em></p>
-                :
-                <p><em>Downloading&#8230;</em></p>
-            }
-      </main>
+              <p><em>Downloading&#8230;</em></p>
+          }
+        </main>
+      </div>
     </>
   )
 }

@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-// Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
+
+// Sub-Components
+import NavBar from '../subcomponents/NavBar.jsx'
 
 export default function StoriesList() {
   const [storiesList, setStoriesList] = useState([])
@@ -30,34 +32,38 @@ export default function StoriesList() {
 
   return (
     <>
-      <main id='stories-list'>
-        <h1>Stories List</h1>
-        {storiesList.length > 0 ?
-              storiesList.map(storiesList => {
-                return (
-                  <article key={storiesList.id}>
-                    <h2>{storiesList.title}</h2>
-                    <img src={storiesList.scenes_artwork[1]} alt='start story' />
-                    <img src={storiesList.scenes_artwork[storiesList.steps+1]} alt='story ending' />
-                    {/* <img src={storiesList.items_artwork} alt='' /> */}
-                    <p>{storiesList.title_audio_url}</p>
-                    <p>{storiesList.about}</p>
-                    <p>{storiesList.about_audio_url}</p>
-                    <p>{storiesList.scenes_narrative}</p>
-                    <p>{storiesList.scenes_narrative_audio}</p>
-                    {/* <p><a href=''>Details</a></p> */}
-                    <Link to={`/stories/${storiesList.id}`} className=''>Details</Link>
-                  </article>
-                )
-              })
+      <NavBar />
+      <div className='wrapper'>
+        <header>
+          <h1>Stories List</h1>
+        </header>
+        <main id='stories-list'>
+          {storiesList.length > 0 ?
+            storiesList.map(storiesList => {
+              return (
+                <article key={storiesList.id}>
+                  <h2>{storiesList.title}</h2>
+                  <img src={storiesList.scenes_artwork[1]} alt='start story' />
+                  <img src={storiesList.scenes_artwork[storiesList.steps + 1]} alt='story ending' />
+                  {/* <img src={storiesList.items_artwork} alt='' /> */}
+                  <p>{storiesList.title_audio_url}</p>
+                  <p>{storiesList.about}</p>
+                  <p>{storiesList.about_audio_url}</p>
+                  <p>{storiesList.scenes_narrative}</p>
+                  <p>{storiesList.scenes_narrative_audio}</p>
+                  {/* <p><a href=''>Details</a></p> */}
+                  <Link to={`/stories/${storiesList.id}`} className=''>Details</Link>
+                </article>
+              )
+            })
+            :
+            errorMsg ?
+              <p><em>{errorMsg}</em></p>
               :
-              errorMsg ?
-                <p><em>{errorMsg}</em></p>
-                :
-                <p><em>Downloading&#8230;</em></p>
-            }
-      </main>
+              <p><em>Downloading&#8230;</em></p>
+          }
+        </main>
+      </div>
     </>
   )
-
 }

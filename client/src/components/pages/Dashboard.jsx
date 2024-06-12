@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { getToken, getMyProfileId, isLoggedIn } from '../../lib/auth.js'
 
+import NavBar from '../subcomponents/NavBar.jsx'
 import smelly from '../../assets/smelly.svg'
 import earnie_blink from '../../assets/earnie.svg'
 import earnie from '../../assets/earnie2.svg'
@@ -86,8 +87,10 @@ export default function Dashboard() {
 
   return (
     <>
+      <NavBar />
       <div className='wrapper'>
         <header>
+
           <h1>Home</h1>
           {myAccount
             ? <h1>Hello, {myAccount.nickname}</h1>

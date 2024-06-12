@@ -4,6 +4,8 @@ import axios from 'axios'
 
 import { getToken, isLoggedIn } from '../../lib/auth.js'
 
+import NavBar from '../subcomponents/NavBar.jsx'
+
 export default function GoalItem() {
 
   const [goalItem, setGoalItem] = useState() // [] is truthy in py
@@ -79,7 +81,7 @@ export default function GoalItem() {
     const step = (Math.round((sumTaskPoints / goalItem.ref_reward_define.value) * goalItem.ref_story.steps))
 
     if (step >= 0) {
-      setStoryStep(step+1) // story image sequence starts at index 1
+      setStoryStep(step + 1) // story image sequence starts at index 1
     } else {
       setStoryStep(0) // show image for negative progress at index 0
     }
@@ -87,103 +89,109 @@ export default function GoalItem() {
 
   return (
     <>
-      <main id='goal-item'>
+      <NavBar />
+      <div className='wrapper'>
+        <header>
+          <h1>Goal</h1>
+        </header>
+        <main id='goal-item'>
 
-        <Link to={'/goals'}><p className=''>See all goals</p></Link>
+          <Link to={'/goals'}><p className=''>See all goals</p></Link>
 
-        {goalItem ?
-          <article>
-            <h1>{goalItem.title}</h1>
+          {goalItem ?
+            <article>
+              <h1>{goalItem.title}</h1>
 
-            <h2>Progress</h2>
-            {/* goal image */}
-            {goalItem ?
-              <img src={goalItem.ref_story.scenes_artwork[storyStep]} alt={goalItem.title} />
-              :
-              <p>no image</p>
-
-            }
-
-            <p>{sumTaskPoints} out of {goalItem.ref_reward_define.value} completed</p>
-
-            {/* dates */}
-            <p>Start: {goalItem.date_start}</p>
-            {
-              goalItem.date_end ?
-                <p>End: {goalItem.date_end}</p>
+              <h2>Progress</h2>
+              {/* goal image */}
+              {goalItem ?
+                <img src={goalItem.ref_story.scenes_artwork[storyStep]} alt={goalItem.title} />
                 :
-                <p>End: no end date</p>
-            }
+                <p>no image</p>
 
-            {/* notes */}
-            <p>Notes: {goalItem.notes}</p>
+              }
 
-            <hr />
+              <p>{sumTaskPoints} out of {goalItem.ref_reward_define.value} completed</p>
 
-            <h2>Reward</h2>
-            <h3>{goalItem.ref_reward_define.title}</h3>
-
-            {/* refs_assignees */}
-            <p>For:</p>
-            {goalItem.refs_assignees.length > 0 ?
-              goalItem.refs_assignees.map(assignee => {
-                return (
-                  <p>{assignee.nickname}</p>
-
-                  // :
-                  // <p>Finding youngsters</p>
-                )
-              })
-              :
-              errorMsg ?
-                <option>{errorMsg}</option>
-                :
-                <option>Getting list of people&#8230;</option>
-            }
-
-            {/* reward image */}
-            {goalItem.ref_reward_define.image1 ?
-              <img src={goalItem.ref_reward_define.image1} alt={goalItem.ref_reward_define.title} />
-              :
-              <></>
-            }
-
-          </article>
-          :
-          errorMsg ?
-            <p><em>{errorMsg}</em></p>
-            :
-            <p><em>Downloading&#8230;</em></p>
-        }
-        <hr />
-        <aside>
-          <h2>Tasks</h2>
-          <h3>Tasks done towards this goal</h3>
-
-          {tasksList.length > 0 ?
-            tasksList.map(taskItem => {
-              return (
-                (taskItem.ref_goal_log && taskItem.ref_goal_log.id === goalItem.id) ?
-                  <div key={taskItem.id}>
-                    <img src={taskItem.ref_task_define.image1} alt={taskItem.ref_task_define.title} />
-                    <p>{taskItem.ref_task_define.title}</p>
-                    <p>{taskItem.ref_task_define.timestamp_created}</p>
-                    <p>Points: {taskItem.ref_task_define.value}</p>
-                    <p><a href={`/tasks/${taskItem.id}`}>Details</a></p>
-                  </div>
+              {/* dates */}
+              <p>Start: {goalItem.date_start}</p>
+              {
+                goalItem.date_end ?
+                  <p>End: {goalItem.date_end}</p>
                   :
-                  <></>
-              )
-            })
+                  <p>End: no end date</p>
+              }
+
+              {/* notes */}
+              <p>Notes: {goalItem.notes}</p>
+
+              <hr />
+
+              <h2>Reward</h2>
+              <h3>{goalItem.ref_reward_define.title}</h3>
+
+              {/* refs_assignees */}
+              <p>For:</p>
+              {goalItem.refs_assignees.length > 0 ?
+                goalItem.refs_assignees.map(assignee => {
+                  return (
+                    <p>{assignee.nickname}</p>
+
+                    // :
+                    // <p>Finding youngsters</p>
+                  )
+                })
+                :
+                errorMsg ?
+                  <option>{errorMsg}</option>
+                  :
+                  <option>Getting list of people&#8230;</option>
+              }
+
+              {/* reward image */}
+              {goalItem.ref_reward_define.image1 ?
+                <img src={goalItem.ref_reward_define.image1} alt={goalItem.ref_reward_define.title} />
+                :
+                <></>
+              }
+
+            </article>
             :
             errorMsg ?
               <p><em>{errorMsg}</em></p>
               :
               <p><em>Downloading&#8230;</em></p>
           }
+          <hr />
+          <aside>
+            <h2>Tasks</h2>
+            <h3>Tasks done towards this goal</h3>
 
-        </aside>
-      </main>
+            {tasksList.length > 0 ?
+              tasksList.map(taskItem => {
+                return (
+                  (taskItem.ref_goal_log && taskItem.ref_goal_log.id === goalItem.id) ?
+                    <div key={taskItem.id}>
+                      <img src={taskItem.ref_task_define.image1} alt={taskItem.ref_task_define.title} />
+                      <p>{taskItem.ref_task_define.title}</p>
+                      <p>{taskItem.ref_task_define.timestamp_created}</p>
+                      <p>Points: {taskItem.ref_task_define.value}</p>
+                      <p><a href={`/tasks/${taskItem.id}`}>Details</a></p>
+                    </div>
+                    :
+                    <></>
+                )
+              })
+              :
+              errorMsg ?
+                <p><em>{errorMsg}</em></p>
+                :
+                <p><em>Downloading&#8230;</em></p>
+            }
+
+          </aside>
+        </main>
+      </div>
     </>
   )
 }

@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-// Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
+
+// Sub-Components
+import NavBar from '../subcomponents/NavBar.jsx'
 
 export default function TaskDefineList() {
   const [taskDefineList, setTaskDefineList] = useState([])
@@ -30,29 +32,34 @@ export default function TaskDefineList() {
 
   return (
     <>
-      <main id='tasks-define-list'>
-        <h1>tasks-define</h1>
-        {taskDefineList.length > 0 ?
-              taskDefineList.map(taskDefineList => {
-                return (
-                  <article key={taskDefineList.id}>
-                    <h2>{taskDefineList.title}</h2>
-                    <img src={taskDefineList.image1} alt={taskDefineList.title} />
-                    <p>{taskDefineList.title_audio_url}</p>
-                    <p>{taskDefineList.value}</p>
-                    <p>{taskDefineList.description}</p>
-                    <p>{taskDefineList.description_audio_url}</p>
-                    <Link to={`/tasks-define/${taskDefineList.id}`} className=''>Details</Link>
-                  </article>
-                )
-              })
+      <NavBar />
+      <div className='wrapper'>
+        <header>
+          <h1>tasks-define</h1>
+        </header>
+        <main id='tasks-define-list'>
+          {taskDefineList.length > 0 ?
+            taskDefineList.map(taskDefineList => {
+              return (
+                <article key={taskDefineList.id}>
+                  <h2>{taskDefineList.title}</h2>
+                  <img src={taskDefineList.image1} alt={taskDefineList.title} />
+                  <p>{taskDefineList.title_audio_url}</p>
+                  <p>{taskDefineList.value}</p>
+                  <p>{taskDefineList.description}</p>
+                  <p>{taskDefineList.description_audio_url}</p>
+                  <Link to={`/tasks-define/${taskDefineList.id}`} className=''>Details</Link>
+                </article>
+              )
+            })
+            :
+            errorMsg ?
+              <p><em>{errorMsg}</em></p>
               :
-              errorMsg ?
-                <p><em>{errorMsg}</em></p>
-                :
-                <p><em>Downloading&#8230;</em></p>
-            }
-      </main>
+              <p><em>Downloading&#8230;</em></p>
+          }
+        </main>
+      </div>
     </>
   )
 }

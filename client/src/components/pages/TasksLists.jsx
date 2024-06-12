@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
-// Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
+
+// Sub-Components
+import NavBar from '../subcomponents/NavBar.jsx'
 
 export default function TasksList() {
   const [tasksList, setTasksList] = useState([])
@@ -30,8 +32,12 @@ export default function TasksList() {
 
   return (
     <>
-      <main id='tasks-list'>
+    <NavBar />
+<div className='wrapper'>
+  <header>
         <h1>Tasks</h1>
+  </header>
+      <main id='tasks-list'>
         {tasksList.length > 0 ?
               tasksList.map(taskItem => {
                 return (
@@ -68,6 +74,7 @@ export default function TasksList() {
 
             }
       </main>
+      </div>
     </>
   )
 }

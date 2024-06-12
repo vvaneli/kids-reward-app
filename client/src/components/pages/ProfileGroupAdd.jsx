@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import { Link, useNavigate, useLocation, useParams } from 'react-router-dom'
 import axios from 'axios'
 
-// Sub-Components
 import { getToken, isLoggedIn } from '../../lib/auth.js'
 // import accessLevelByName from '../elements/accessLevelByName'
-import profile from '../../assets/default_profile.svg'
+
+// Sub-Components
 import ImageUpload from '../elements/ImageUpload.jsx'
+import NavBar from '../subcomponents/NavBar.jsx'
+
+import profile from '../../assets/default_profile.svg'
 
 export default function ProfileGroupAdd() {
 
@@ -110,91 +113,95 @@ export default function ProfileGroupAdd() {
 
   return (
     <>
-      <main id='profile-group-add'>
-        <h1>Add a Group Member</h1>
-        {/* <Link to={'/profiles'}><p className=''>All Profiles</p></Link> */}
-        {/* {profileItem ? */}
-        <form onSubmit={handleSubmit}>
-          {/* <h2>{profileItem.nickname}</h2> */}
+      <NavBar />
+      <div className='wrapper'>
+        <header>
+          <h1>Add a Group Member</h1>
+        </header>
+        <main id='profile-group-add'>
+          {/* <Link to={'/profiles'}><p className=''>All Profiles</p></Link> */}
+          {/* {profileItem ? */}
+          <form onSubmit={handleSubmit}>
+            {/* <h2>{profileItem.nickname}</h2> */}
 
-          <div className='form-field-group'>
-            <p>Profile image:</p>
-            <img src={profile} alt='profile image' />
-            <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image_profile'} />
-          </div>
+            <div className='form-field-group'>
+              <p>Profile image:</p>
+              <img src={profile} alt='profile image' />
+              <ImageUpload formData={formData} setFormData={setFormData} fieldName={'image_profile'} />
+            </div>
 
-          <div className='form-field-group'>
-            {/* <p>Nickname:</p> */}
-            <label htmlFor='text'>Nickname<span className='required'>*</span></label>
-            <input type='text' placeholder='Name the youngster is called by' name='nickname' id='nickname' value={formData.nickname} onChange={handleChange} required />
-          </div>
+            <div className='form-field-group'>
+              {/* <p>Nickname:</p> */}
+              <label htmlFor='text'>Nickname<span className='required'>*</span></label>
+              <input type='text' placeholder='Name the youngster is called by' name='nickname' id='nickname' value={formData.nickname} onChange={handleChange} required />
+            </div>
 
-          <div className='form-field-group'>
-            {/* <p>Username:</p> */}
-            <label className='label-text' htmlFor='username'>Unique Username<span className='required'>*</span></label>
-            <input className='input-text' type='text' placeholder='Unique username' name='username' id='username' value={formData.username} onChange={handleChange} required />
-          </div>
+            <div className='form-field-group'>
+              {/* <p>Username:</p> */}
+              <label className='label-text' htmlFor='username'>Unique Username<span className='required'>*</span></label>
+              <input className='input-text' type='text' placeholder='Unique username' name='username' id='username' value={formData.username} onChange={handleChange} required />
+            </div>
 
-          <div className='form-field-group'>
-            {/* <p>First name:</p> */}
-            <label htmlFor='first_name'>First name</label>
-            <input type='text' placeholder='First name' name='first_name' id='first_name' value={formData.first_name} onChange={handleChange} />
-          </div>
+            <div className='form-field-group'>
+              {/* <p>First name:</p> */}
+              <label htmlFor='first_name'>First name</label>
+              <input type='text' placeholder='First name' name='first_name' id='first_name' value={formData.first_name} onChange={handleChange} />
+            </div>
 
-          <div className='form-field-group'>
-            {/* <p>Last name:</p> */}
-            <label htmlFor='last_name'>Last name</label>
-            <input type='text' placeholder='Last name' name='last_name' id='last_name' value={formData.last_name} onChange={handleChange} />
-          </div>
+            <div className='form-field-group'>
+              {/* <p>Last name:</p> */}
+              <label htmlFor='last_name'>Last name</label>
+              <input type='text' placeholder='Last name' name='last_name' id='last_name' value={formData.last_name} onChange={handleChange} />
+            </div>
 
-          {/* <div className='form-field-group'>
+            {/* <div className='form-field-group'>
               <p>Birthday:</p>
               <label htmlFor='birthday'>New birthday:</label>
               <input type='date' max={today} id='birthday' name='birthday' value={formData.birthday} onChange={handleChange} />
             </div> */}
 
-          {/* If a Youngster, show 'birthday' and 'password' fields OR if adult, show email field */}
-          {state && state.access_level === 4 ?
-            <>
-              <div className='form-field-group'>
-                <label className='label-password' htmlFor='password'>Password<span className='required'>*</span></label>
-                <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
-                <label className='label-password' htmlFor='password_confirmation'>Confirm Password<span className='required'>*</span></label>
-                <input className='input-password' type='password' placeholder='confirm password' name='password_confirmation' id='password_confirmation' value={formData.password_confirmation} onChange={handleChange} required />
-              </div>
+            {/* If a Youngster, show 'birthday' and 'password' fields OR if adult, show email field */}
+            {state && state.access_level === 4 ?
+              <>
+                <div className='form-field-group'>
+                  <label className='label-password' htmlFor='password'>Password<span className='required'>*</span></label>
+                  <input className='input-password' type='password' placeholder='password' name='password' id='password' value={formData.password} onChange={handleChange} required />
+                  <label className='label-password' htmlFor='password_confirmation'>Confirm Password<span className='required'>*</span></label>
+                  <input className='input-password' type='password' placeholder='confirm password' name='password_confirmation' id='password_confirmation' value={formData.password_confirmation} onChange={handleChange} required />
+                </div>
 
-              <div className='form-field-group'>
-                <label htmlFor='birthday'>Birthday</label>
-                <input type='date' max={today} id='birthday' name='birthday' value={formData.birthday} onChange={handleChange} />
-              </div>
+                <div className='form-field-group'>
+                  <label htmlFor='birthday'>Birthday</label>
+                  <input type='date' max={today} id='birthday' name='birthday' value={formData.birthday} onChange={handleChange} />
+                </div>
 
-              <label className='label-checkbox' htmlFor='legal_agree'><input className='input-checkbox' type='checkbox' name='legal_agree' value={formData.legal_agree} onChange={handleChange} required />
-                I am, or have permission from, the legal guardian to add this child to my account
-              </label>
-            </>
-            :
-            <>
-              <div className='form-field-group'>
-                {/* <p>Email:</p> */}
-                <label className='label-email' htmlFor='email'>E-mail<span className='required'>*</span></label>
-                <input className='input-email' type='email' placeholder='E-mail' name='email' id='email' value={formData.email} onChange={handleChange} required />
-              </div>
-              <label className='label-checkbox' htmlFor='legal_agree'><input className='input-checkbox' type='checkbox' name='legal_agree' value={formData.legal_agree} onChange={handleChange} required />
-                I have permission from this person to add their details to my account
-              </label>
-            </>
-          }
+                <label className='label-checkbox' htmlFor='legal_agree'><input className='input-checkbox' type='checkbox' name='legal_agree' value={formData.legal_agree} onChange={handleChange} required />
+                  I am, or have permission from, the legal guardian to add this child to my account
+                </label>
+              </>
+              :
+              <>
+                <div className='form-field-group'>
+                  {/* <p>Email:</p> */}
+                  <label className='label-email' htmlFor='email'>E-mail<span className='required'>*</span></label>
+                  <input className='input-email' type='email' placeholder='E-mail' name='email' id='email' value={formData.email} onChange={handleChange} required />
+                </div>
+                <label className='label-checkbox' htmlFor='legal_agree'><input className='input-checkbox' type='checkbox' name='legal_agree' value={formData.legal_agree} onChange={handleChange} required />
+                  I have permission from this person to add their details to my account
+                </label>
+              </>
+            }
 
-          {/* If coming from onboarding screens, hide dropdown */}
-          {(state) ?
-            <div></div>
-            :
-            <>
-              <hr />
-              <div className='form-field-group'>
-                {/* <p>Access level: {profileItem.access_level}</p> */}
-                <p>Account type:</p>
-                {/* {profileItem.access_level === 1 ?
+            {/* If coming from onboarding screens, hide dropdown */}
+            {(state) ?
+              <div></div>
+              :
+              <>
+                <hr />
+                <div className='form-field-group'>
+                  {/* <p>Access level: {profileItem.access_level}</p> */}
+                  <p>Account type:</p>
+                  {/* {profileItem.access_level === 1 ?
                   <>
                     <p><strong>You are the head owner of this group.</strong></p>
                     <ul>
@@ -205,43 +212,44 @@ export default function ProfileGroupAdd() {
                   </>
                   :
                   <> */}
-                    <label htmlFor='access_level' hidden></label>
-                    <select value={formData.access_level} name='access_level' id='access_level' onChange={handleChange} required>
-                      <option value='' >Pick an account type</option>
-                      <option key='2' value='2' disabled>Elder</option>
-                      <option key='3' value='3' disabled>Helper</option>
-                      <option key='4' value='4'>Youngster</option>
-                    </select>
+                  <label htmlFor='access_level' hidden></label>
+                  <select value={formData.access_level} name='access_level' id='access_level' onChange={handleChange} required>
+                    <option value='' >Pick an account type</option>
+                    <option key='2' value='2' disabled>Elder</option>
+                    <option key='3' value='3' disabled>Helper</option>
+                    <option key='4' value='4'>Youngster</option>
+                  </select>
                   {/* </>
                 } */}
-              </div>
-            </>
-          }
-
-          <p><small><span className='required'>*</span> indicates a required field. You can edit these details later.</small></p>
-          <button type='submit'>Save</button>
-          <div className='auth-form-errors'>
-            {/* <FormErrors /> */}
-            {
-              // errorMsgs.length > 0 ?
-              errorMsgs ?
-                errorMsgs.map(errorMsg => {
-                  return (
-                    <p className='error'>{errorMsg}</p>
-                  )
-                })
-                :
-                <p className='error'></p>
+                </div>
+              </>
             }
-          </div>
-        </form>
-        {/* //   :
+
+            <p><small><span className='required'>*</span> indicates a required field. You can edit these details later.</small></p>
+            <button type='submit'>Save</button>
+            <div className='auth-form-errors'>
+              {/* <FormErrors /> */}
+              {
+                // errorMsgs.length > 0 ?
+                errorMsgs ?
+                  errorMsgs.map(errorMsg => {
+                    return (
+                      <p className='error'>{errorMsg}</p>
+                    )
+                  })
+                  :
+                  <p className='error'></p>
+              }
+            </div>
+          </form>
+          {/* //   :
         //   errorMsg ?
         //     <p><em>{errorMsg}</em></p>
         //     :
         //     <p><em>Downloading&#8230;</em></p>
         // } */}
-      </main >
+        </main >
+      </div>
     </>
   )
 

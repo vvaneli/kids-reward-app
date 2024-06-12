@@ -3,6 +3,8 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { getToken } from '../../lib/auth'
+
+import NavBar from '../subcomponents/NavBar.jsx'
 // import ImageUpload from '../elements/ImageUpload'
 import MediaUpload from '../elements/MediaUpload'
 
@@ -113,7 +115,7 @@ export default function GoalAddNew() {
     if (e.target.name.includes('date_')) {
       value = new Date(value).toISOString().slice(0, 10)
     }
-    if (e.target.multiple){
+    if (e.target.multiple) {
       const valueOptions = ([...e.target.options].filter(option => option.selected).map(option => option.value))
       value = [...valueOptions]
     }
@@ -125,98 +127,103 @@ export default function GoalAddNew() {
 
   return (
     <>
-      <main id='goal-add-new'>
-        <h1>Goal Add New</h1>
-        <form onSubmit={handleSubmit}>
-          {/* title */}
-          <label htmlFor='title'>Title<span className='required'>*</span></label>
-          <input type='text' id='title' name='title' value={formData.title} onChange={handleChange} required placeholder='Brief headline' />
+      <NavBar />
+      <div className='wrapper'>
+        <header>
+          <h1>Goal Add New</h1>
+        </header>
+        <main id='goal-add-new'>
+          <form onSubmit={handleSubmit}>
+            {/* title */}
+            <label htmlFor='title'>Title<span className='required'>*</span></label>
+            <input type='text' id='title' name='title' value={formData.title} onChange={handleChange} required placeholder='Brief headline' />
 
-          {/* title_audio_url */}
-          {/* <label htmlFor='title_audio_url'>Audio file of spoken title</label>
+            {/* title_audio_url */}
+            {/* <label htmlFor='title_audio_url'>Audio file of spoken title</label>
           <input type='text' id='title_audio_url' name='title_audio_url' value={formData.title_audio_url} onChange={handleChange} /> */}
-          {/* <MediaUpload formData={formData} setFormData={setFormData} fieldName={'title_audio_url'} /> */}
+            {/* <MediaUpload formData={formData} setFormData={setFormData} fieldName={'title_audio_url'} /> */}
 
-          {/* date_start */}
-          <label htmlFor='date_start'>Goal start date<span className='required'>*</span></label>
-          <input type='date' id='date_start' name='date_start' min={today} value={formData.date_start} onChange={handleChange} required placeholder={today} />
-          {/* date_end */}
-          <label htmlFor='date_end'>Goal end date</label>
-          <input type='date' id='date_end' name='date_end' value={formData.date_end} onChange={handleChange} placeholder='' />
+            {/* date_start */}
+            <label htmlFor='date_start'>Goal start date<span className='required'>*</span></label>
+            <input type='date' id='date_start' name='date_start' min={today} value={formData.date_start} onChange={handleChange} required placeholder={today} />
+            {/* date_end */}
+            <label htmlFor='date_end'>Goal end date</label>
+            <input type='date' id='date_end' name='date_end' value={formData.date_end} onChange={handleChange} placeholder='' />
 
-          {/* image1 */}
-          {/* <label htmlFor='image1'>Image</label>
+            {/* image1 */}
+            {/* <label htmlFor='image1'>Image</label>
           <input type='text' id='image1' name='image1' value={formData.image1} onChange={handleChange} /> */}
-          <p>Add an image:</p>
-          <MediaUpload formData={formData} setFormData={setFormData} fieldName={'image1'} />
+            <p>Add an image:</p>
+            <MediaUpload formData={formData} setFormData={setFormData} fieldName={'image1'} />
 
-          {/* notes */}
-          <label htmlFor='notes'>Notes</label>
-          <input type='text' id='notes' name='notes' value={formData.notes} onChange={handleChange} placeholder='Add a note about this goal' />
+            {/* notes */}
+            <label htmlFor='notes'>Notes</label>
+            <input type='text' id='notes' name='notes' value={formData.notes} onChange={handleChange} placeholder='Add a note about this goal' />
 
-          {/* refs_assignees */}
-          <label htmlFor='refs_assignees'>Set goal for</label>
-          {profilesList.length > 0 ?
-            <select multiple value={formData.refs_assignees} name='refs_assignees' id='refs_assignees' onChange={handleChange} required>
-              <option value='' disabled>Pick a person</option>
-              {profilesList.map(profileItem => {
-                return (
-                  profileItem.access_level === 4 ?
-                  <option key={profileItem.id} value={profileItem.id}>{profileItem.nickname}</option>
-                  :
-                  <option disabled >No youngsters found</option>
-                )
-              })}
-            </select>
-            :
-            errorMsg ?
-              <option>{errorMsg}</option>
+            {/* refs_assignees */}
+            <label htmlFor='refs_assignees'>Set goal for</label>
+            {profilesList.length > 0 ?
+              <select multiple value={formData.refs_assignees} name='refs_assignees' id='refs_assignees' onChange={handleChange} required>
+                <option value='' disabled>Pick a person</option>
+                {profilesList.map(profileItem => {
+                  return (
+                    profileItem.access_level === 4 ?
+                      <option key={profileItem.id} value={profileItem.id}>{profileItem.nickname}</option>
+                      :
+                      <option disabled >No youngsters found</option>
+                  )
+                })}
+              </select>
               :
-              <option>Getting list of people&#8230;</option>
-          }
+              errorMsg ?
+                <option>{errorMsg}</option>
+                :
+                <option>Getting list of people&#8230;</option>
+            }
 
-          {/* ref_reward_define */}
-          <label htmlFor='ref_reward_define'>Reward if goal is achieved</label>
-          {rewardDefineList.length > 0 ?
-            <select value={formData.ref_reward_define} name='ref_reward_define' id='ref_reward_define' onChange={handleChange} required>
-              <option value='' disabled>Pick a reward</option>
-              {rewardDefineList.map(rewardDefineItem => {
-                return (
-                  <option key={rewardDefineItem.id} value={rewardDefineItem.id}>{rewardDefineItem.title} (target {rewardDefineItem.value})</option>
-                )
-              })}
-            </select>
-            :
-            errorMsg ?
-              <p>{errorMsg}</p>
+            {/* ref_reward_define */}
+            <label htmlFor='ref_reward_define'>Reward if goal is achieved</label>
+            {rewardDefineList.length > 0 ?
+              <select value={formData.ref_reward_define} name='ref_reward_define' id='ref_reward_define' onChange={handleChange} required>
+                <option value='' disabled>Pick a reward</option>
+                {rewardDefineList.map(rewardDefineItem => {
+                  return (
+                    <option key={rewardDefineItem.id} value={rewardDefineItem.id}>{rewardDefineItem.title} (target {rewardDefineItem.value})</option>
+                  )
+                })}
+              </select>
               :
-              <p>Getting reward list&#8230;</p>
-          }
+              errorMsg ?
+                <p>{errorMsg}</p>
+                :
+                <p>Getting reward list&#8230;</p>
+            }
 
-          {/* ref_story */}
-          <label htmlFor='ref_story'>Story</label>
-          {storiesList.length > 0 ?
-            <select value={formData.ref_story} name='ref_story' id='ref_story' onChange={handleChange} required>
-              <option value='' disabled>Pick a story</option>
-              {storiesList.map(storyItem => {
-                return (
-                  <option key={storyItem.id} value={storyItem.id}>{storyItem.title}</option>
-                  // <Link to={`/stories/${storiesList.id}`} className=''>Details</Link>
-                )
-              })}
-            </select>
-            :
-            errorMsg ?
-              <p>{errorMsg}</p>
+            {/* ref_story */}
+            <label htmlFor='ref_story'>Story</label>
+            {storiesList.length > 0 ?
+              <select value={formData.ref_story} name='ref_story' id='ref_story' onChange={handleChange} required>
+                <option value='' disabled>Pick a story</option>
+                {storiesList.map(storyItem => {
+                  return (
+                    <option key={storyItem.id} value={storyItem.id}>{storyItem.title}</option>
+                    // <Link to={`/stories/${storiesList.id}`} className=''>Details</Link>
+                  )
+                })}
+              </select>
               :
-              <p>Getting story list&#8230;</p>
-          }
-          {formError && <p><em>{formError}</em></p>}
-          <button type='submit'>Save</button>
-        </form>
-        {/* <Form request={handleCreate} fields={fields} submit="Create"/> */}
+              errorMsg ?
+                <p>{errorMsg}</p>
+                :
+                <p>Getting story list&#8230;</p>
+            }
+            {formError && <p><em>{formError}</em></p>}
+            <button type='submit'>Save</button>
+          </form>
+          {/* <Form request={handleCreate} fields={fields} submit="Create"/> */}
 
-      </main>
+        </main>
+      </div>
     </>
   )
 }
