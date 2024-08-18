@@ -1,6 +1,6 @@
 from django.contrib import admin
-from django.urls import path, include, re_path # <-- added this new import re_path
-from .views import index # <-- also new
+from django.urls import path, include, re_path # for deployment
+from .views import index # for deployment
 
 """
 URL configuration for project project.
