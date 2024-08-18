@@ -38,7 +38,7 @@ Worked solo over 2 weeks
 
 ## Planning
 ### Application audit
-'Smelly Earnie' is based on an app I had previously made using a low code tool. I started by mapping this out.
+'Smelly Earnie' is based on an app I had previously made using a low code tool. I started by mapping out this existing app:
 
 ![Audit the structure of previous app](https://github.com/user-attachments/assets/2adb28c6-cc7c-4653-9ef5-ff2dfac20979)
 
@@ -50,19 +50,33 @@ Worked solo over 2 weeks
 
 ![Access level plan](https://github.com/user-attachments/assets/6f644d89-74f6-4c99-a8de-9213120b2497)
 
-### Map out application structure and end points
+### Design current application structure and end points
 
 ![Flowchart of current application structure and end points](https://github.com/user-attachments/assets/a27820f2-bfd2-4fd8-82b1-479261fe2a89)
 
-
 ### Low fidelity wireframes
+![Wireframes](https://github.com/user-attachments/assets/d9905982-5a0d-44d3-881e-d85c0a8c5ac7)
+
+Adult UI:
+![Wireframes for adults' app view](https://github.com/user-attachments/assets/4ef6a4d3-9387-4266-a8be-9d98fbb2a39b)
+
+Kid's UI, built for tablet and horizontal swipe gestures:
+![Wireframes for kids' app view](https://github.com/user-attachments/assets/9f51c7e7-fee1-4995-b8d6-d8b33d86c8f4)
+
 
 ### UX click through usign Adobe XD
+Create click through of wireframes to test flow and UX:
+![Wireframes click through](https://github.com/user-attachments/assets/49c2d3d9-836c-46fe-a0a3-8533344d1275)
+
+Demo: https://xd.adobe.com/view/68ca9303-eb7f-4d02-91b3-d230ce600ed6-3d99/grid
 
 ## Build/Code Process
 I started on the back end. Set up a pipenv shell and installed Django. Define the database schema and end points. Set up model serializers, controller views, JSON Web Token authentication, secured routes and custom permission levels. Create and populate with seed data. Test each end point for each relevant access level. When the end points worked as intended, I added the front end.
 
-I managed the build by defining user stories. Break them into tasks, then prioritise them using a kanban board.
+I managed the build by defining user stories. Break them into tasks, then prioritise them using a kanban board:
+
+![Kanban](https://github.com/user-attachments/assets/009963b0-408d-4b04-ba87-676d5244b468)
+
 
 ## Reflections
 ### Challenges
