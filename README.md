@@ -58,14 +58,17 @@ Worked solo over 2 weeks
 ![Wireframes](https://github.com/user-attachments/assets/d9905982-5a0d-44d3-881e-d85c0a8c5ac7)
 
 Adult UI:
+
 ![Wireframes for adults' app view](https://github.com/user-attachments/assets/4ef6a4d3-9387-4266-a8be-9d98fbb2a39b)
 
 Kid's UI, built for tablet and horizontal swipe gestures:
+
 ![Wireframes for kids' app view](https://github.com/user-attachments/assets/9f51c7e7-fee1-4995-b8d6-d8b33d86c8f4)
 
 
-### UX click through usign Adobe XD
+### UX click through
 Create click through of wireframes to test flow and UX:
+
 ![Wireframes click through](https://github.com/user-attachments/assets/49c2d3d9-836c-46fe-a0a3-8533344d1275)
 
 Demo: https://xd.adobe.com/view/68ca9303-eb7f-4d02-91b3-d230ce600ed6-3d99/grid
