@@ -1,6 +1,8 @@
 # Smelly Earnie
 __‘Smelly Earnie’ is an app for 3- to 7-year-olds to learn good behaviours.__
 
+![Login and register screens](https://github.com/user-attachments/assets/a9441841-6d5b-440a-b8e4-e0bd367062cc)
+
 Features include:
 * Define rewards
 * Define goals
@@ -11,6 +13,9 @@ Features include:
 * Onboarding sequence to set up an account
 * Adults’ app view differ from Kids’ view. Kids’ view is built for tablets, the user interface accommodates for low dexterity and does not require literacy (suitable for very young children).
 * Children see their progress visualised as a picture story.
+
+![Various screenshots of the application](https://github.com/user-attachments/assets/dc90b7d0-5986-4c8b-b01c-f00236d4d19c)
+
 
 ## Deployment
 Try it out: https://smelly-earnie-7519489a8af6.herokuapp.com/
@@ -35,11 +40,20 @@ Worked solo over 2 weeks
 ### Application audit
 'Smelly Earnie' is based on an app I had previously made using a low code tool. I started by mapping this out.
 
+![Audit the structure of previous app](https://github.com/user-attachments/assets/2adb28c6-cc7c-4653-9ef5-ff2dfac20979)
+
 ### Database ERD (Entity Relationship Diagram)
+
+![Entity Relationship Diagram](https://github.com/user-attachments/assets/3e6e13be-ca37-4901-8f6d-fefa6756c2a1)
 
 ### Determine access levels for different user roles
 
+![Access level plan](https://github.com/user-attachments/assets/6f644d89-74f6-4c99-a8de-9213120b2497)
+
 ### Map out application structure and end points
+
+![Flowchart of current application structure and end points](https://github.com/user-attachments/assets/a27820f2-bfd2-4fd8-82b1-479261fe2a89)
+
 
 ### Low fidelity wireframes
 
